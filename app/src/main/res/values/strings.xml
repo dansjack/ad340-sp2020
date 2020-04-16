@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">djackAD340</string>
-    <string name="simpsonsImgDesc">Toggled image from The Simpsons</string>
+    <string name="simpsons_fine">Simpsons - Things are fine</string>
+    <string name="simpsons_hell">Simpsons - Hell</string>
     <string name="feelin_fine">Feelin fine</string>
     <string name="nameDate">Jack, Daniel 04/16/2020</string>
+    <string name="helloWorld">Hello World!</string>
 </resources>

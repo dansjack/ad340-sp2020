@@ -21,9 +21,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (btnIsPressed) {
                     myImg.setImageResource(R.drawable.things_are_fine);
+                    myImg.setContentDescription("Simpsons - Things are fine");
                     btnIsPressed = false;
                 } else {
                     myImg.setImageResource(R.drawable.hell);
+                    myImg.setContentDescription("Simpsons - Hell");
                     btnIsPressed = true;
                 }
             }
