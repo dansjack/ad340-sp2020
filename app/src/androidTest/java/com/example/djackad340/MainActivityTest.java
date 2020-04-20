@@ -21,27 +21,11 @@ public class MainActivityTest {
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
     @Test
-    public void hasHelloWorld() {
-        onView(withId(R.id.helloWorld))
-                .check(matches(withText(R.string.helloWorld)));
-    }
-
-    @Test
     public void hasNameDate() {
         onView(withId(R.id.nameDateView))
                 .check(matches(withText(R.string.nameDate)));
     }
 
-    @Test
-    public void hasCorrectImage() {
-        onView(withId(R.id.simpsons)) // check for correct image
-                .check(matches(withContentDescription(R.string.simpsons_fine)));
 
-        onView(withId(R.id.myButton)).perform(click()); // toggle button
-
-        onView(withId(R.id.simpsons)) //check again for correct image
-                .check(matches(withContentDescription(R.string.simpsons_hell)));
-
-    }
 
 }
