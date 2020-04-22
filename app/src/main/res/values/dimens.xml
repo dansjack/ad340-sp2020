@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="my_value">16dp</dimen>
+    <dimen name="form_text_size">18sp</dimen>
+    <dimen name="form_heading">30sp</dimen>
+    <dimen name="form_text_width">356dp</dimen>
+    <dimen name="form_text_margin">40dp</dimen>
+    <dimen name="dbl_form_text_margin">80dp</dimen>
+    <item name="form_text_guide_perc" type="dimen">0.08</item>
+</resources>

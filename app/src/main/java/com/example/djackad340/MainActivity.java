@@ -7,17 +7,14 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -29,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText nameText;
     private EditText emailText;
     private EditText usernameText;
-    private TextView dobText;
+    private Button dobText;
     private TextView ageText;
     private int yearsOfAge;
 
@@ -43,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         usernameText = findViewById(R.id.usernameText);
         dobText = findViewById(R.id.dobText);
         ageText = findViewById(R.id.ageText);
-
     }
 
     @Override
@@ -61,29 +57,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     (String) savedInstanceState.get(Constants.KEY_AGE));
             dobText.setText(
                     (String) savedInstanceState.get(Constants.KEY_DOB));
-            yearsOfAge = Integer.parseInt((String) Objects.requireNonNull(savedInstanceState.get(Constants.KEY_AGE)));
+            try {
+                yearsOfAge = Integer.parseInt(
+                        (String) Objects.requireNonNull(savedInstanceState.get(Constants.KEY_AGE)));
+            } catch(NumberFormatException exception){ // handle your exception
+                Log.i(TAG, "onRestoreInstanceState: Exception success");
+                yearsOfAge = 0;
+            }
+
         }
     }
 
     public void getFormSuccessActivity(View view) {
-        boolean isValid = true;
-
-        if (nameText.getText().toString().isEmpty()) { // user didn't enter a name
-            isValid = false;
-            Toast.makeText(this, "Enter your name", Toast.LENGTH_SHORT).show();
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(
-                emailText.getText().toString().trim()).matches()) { // user didn't enter a valid password
-            isValid = false;
-            Toast.makeText(this, "Enter a valid email", Toast.LENGTH_SHORT).show();
-        } else if (usernameText.getText().toString().isEmpty()) { // user didn't entered a username
-            isValid = false;
-            Toast.makeText(this, "Enter a username", Toast.LENGTH_SHORT).show();
-        } else if (yearsOfAge < 18) { // user is under 18 or over
-            isValid = false;
-            Toast.makeText(this, "Must be 18 to sign up", Toast.LENGTH_SHORT).show();
-        }
-
-        if (isValid) {
+        if (isFormValid()) {
             Intent intent = new Intent(MainActivity.this, FormSuccessActivity.class);
             intent.putExtra(Constants.KEY_NAME, nameText.getText().toString());
             intent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
@@ -93,6 +79,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         }
     }
 
+    public boolean isFormValid() {
+        boolean isValid = true;
+
+        if (nameText.getText().toString().isEmpty()) { // user didn't enter a name
+            isValid = false;
+            Toast.makeText(this, R.string.toast_enter_name, Toast.LENGTH_SHORT).show();
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(
+                emailText.getText().toString().trim()).matches()) { // user didn't enter a valid password
+            isValid = false;
+            Toast.makeText(this, R.string.toast_enter_email, Toast.LENGTH_SHORT).show();
+        } else if (usernameText.getText().toString().isEmpty()) { // user didn't entered a username
+            isValid = false;
+            Toast.makeText(this, R.string.toast_enter_username, Toast.LENGTH_SHORT).show();
+        } else if (yearsOfAge < 18) { // user is under 18 or over
+            isValid = false;
+            Toast.makeText(this, R.string.toast_enter_dob, Toast.LENGTH_SHORT).show();
+        }
+        return isValid;
+    }
+
     public void getDatePicker(View view) {
         DialogFragment datePicker = new DatePickerFragment();
         datePicker.show(getSupportFragmentManager(), "date picker");
@@ -100,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
         Calendar c = Calendar.getInstance();
         int currentYear = c.get(Calendar.YEAR);
         int currentMonth = c.get(Calendar.MONTH);
@@ -121,5 +126,4 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         dobText.setText(currentDateString);
         ageText.setText(String.valueOf(yearsOfAge));
     }
-
 }

@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class FormSuccessActivity extends AppCompatActivity {
-    private static final String TAG = FormSuccessActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +31,6 @@ public class FormSuccessActivity extends AppCompatActivity {
             email = bundle.getString(Constants.KEY_EMAIL);
             username = bundle.getString(Constants.KEY_USERNAME);
             dob = bundle.getString(Constants.KEY_DOB);
-
-            Log.i(TAG, name);
-            Log.i(TAG, email);
-            Log.i(TAG, username);
-            Log.i(TAG, dob);
-
-        } else {
-            Log.i(TAG, "onCreate: Bundle is null");
         }
         msg.append(username).append("!");
         successMsg.setText(msg);

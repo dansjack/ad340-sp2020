@@ -59,7 +59,7 @@
                 android:hint="@string/username"
                 android:inputType="textPersonName" />
 
-            <TextView
+            <Button
                 android:id="@+id/dobText"
                 android:layout_width="736dp"
                 android:layout_height="48dp"
@@ -77,8 +77,11 @@
                 android:layout_width="736dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/age"
+                android:autofillHints="@string/age"
+                android:hint="@string/age"
+                android:gravity="center_vertical"
                 android:textSize="18sp"
+                android:background="?attr/editTextBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dobText" />

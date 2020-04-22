@@ -8,81 +8,81 @@
 
     <EditText
         android:id="@+id/emailText"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/form_text_margin"
         android:autofillHints="@string/email"
-        android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/form_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
     <EditText
         android:id="@+id/nameText"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="@dimen/dbl_form_text_margin"
         android:autofillHints="@string/name"
-        android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="@dimen/form_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
+        app:layout_constraintTop_toBottomOf="@+id/signUpText" />
 
-    <TextView
+    <Button
         android:id="@+id/dobText"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/form_text_margin"
         android:autofillHints="@string/date_of_birth"
-        android:ems="10"
         android:focusable="false"
         android:hint="@string/date_of_birth"
         android:onClick="getDatePicker"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/form_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@+id/usernameText" />
 
     <EditText
         android:id="@+id/usernameText"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/form_text_margin"
         android:autofillHints="@string/username"
-        android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/form_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="@dimen/dbl_form_text_margin"
+        android:onClick="getFormSuccessActivity"
         android:text="@string/submit"
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="getFormSuccessActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/ageText" />
 
     <TextView
         android:id="@+id/signUpText"
-        android:layout_width="136dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/form_text_margin"
         android:fontFamily="@font/lato_bold"
         android:text="@string/sign_up"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="@dimen/form_heading"
+        app:layout_constraintBottom_toTopOf="@+id/formTopGuide"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/nameDateView"
@@ -95,13 +95,36 @@
 
     <TextView
         android:id="@+id/ageText"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/age"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/form_text_margin"
+        android:autofillHints="@string/age"
+        android:background="?attr/editTextBackground"
+        android:hint="@string/age"
+        android:textSize="@dimen/form_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@+id/dobText" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/formLeftGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/form_text_guide_perc" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/formTopGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/form_text_guide_perc" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/formRightGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
