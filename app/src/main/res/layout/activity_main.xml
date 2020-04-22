@@ -24,10 +24,10 @@
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/form_text_margin"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/last_name"
         android:autofillHints="@string/last_name"
+        android:hint="@string/last_name"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/form_text_size"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
@@ -79,6 +79,7 @@
         android:layout_height="wrap_content"
         android:onClick="getFormSuccessActivity"
         android:text="@string/submit"
+        android:textSize="@dimen/form_text_size"
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
@@ -87,7 +88,7 @@
     <TextView
         android:id="@+id/signUpText"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/form_text_margin"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/lato_bold"
         android:text="@string/sign_up"
         android:textAlignment="center"
@@ -101,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nameDate"
+        android:textSize="@dimen/signature_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

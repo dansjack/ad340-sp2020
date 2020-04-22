@@ -32,13 +32,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nameDate"
+        android:textSize="@dimen/signature_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuideLand"
@@ -53,83 +54,95 @@
             <EditText
                 android:id="@+id/firstNameText"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/first_name"
-                android:ems="10"
                 android:hint="@string/first_name"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="@dimen/form_text_size" />
+
+            <EditText
+                android:id="@+id/lastNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin_land"
+                android:autofillHints="@string/last_name"
+                android:hint="@string/last_name"
+                android:inputType="textPersonName"
+                android:textSize="@dimen/form_text_size" />
 
             <EditText
                 android:id="@+id/emailText"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/email"
-                android:ems="10"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/form_text_size" />
 
             <EditText
                 android:id="@+id/usernameText"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/username"
-                android:ems="10"
                 android:hint="@string/username"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="@dimen/form_text_size" />
 
             <Button
                 android:id="@+id/dobBtn"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/date_of_birth"
-                android:ems="10"
                 android:focusable="false"
                 android:hint="@string/date_of_birth"
                 android:onClick="getDatePicker"
                 android:textAlignment="textStart"
-                android:textSize="18sp" />
+                android:textSize="@dimen/form_text_size" />
 
             <TextView
                 android:id="@+id/ageText"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/age"
                 android:background="?attr/editTextBackground"
                 android:gravity="center_vertical"
                 android:hint="@string/age"
-                android:textSize="18sp"
+                android:textSize="@dimen/form_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dobBtn" />
 
             <Button
                 android:id="@+id/submitBtn"
-                android:layout_width="736dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin_land"
+                android:layout_marginBottom="@dimen/form_text_margin_land"
                 android:onClick="getFormSuccessActivity"
-                android:text="@string/submit" />
+                android:text="@string/submit"
+                android:textSize="@dimen/form_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="16dp" />
+                android:layout_height="@dimen/form_text_margin_land" />
         </LinearLayout>
     </ScrollView>
 
     <TextView
         android:id="@+id/signUpText"
-        android:layout_width="136dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/lato_bold"
         android:text="@string/sign_up"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="@dimen/form_heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/formTopGuideLand" />
