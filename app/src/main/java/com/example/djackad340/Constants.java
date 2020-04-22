@@ -1,7 +1,8 @@
 package com.example.djackad340;
 
 class Constants {
-    static final String KEY_NAME = "name";
+    static final String KEY_FNAME = "firstName";
+    static final String KEY_LNAME = "lastName";
     static final String KEY_EMAIL = "email";
     static final String KEY_USERNAME = "username";
     static final String KEY_DOB = "dateOfBirth";

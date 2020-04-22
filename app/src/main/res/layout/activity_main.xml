@@ -7,8 +7,34 @@
     tools:context=".MainActivity">
 
     <EditText
+        android:id="@+id/firstNameText"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/form_text_margin"
+        android:autofillHints="@string/first_name"
+        android:hint="@string/first_name"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/form_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
+        app:layout_constraintTop_toBottomOf="@+id/signUpText" />
+
+    <EditText
+        android:id="@+id/lastNameText"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/form_text_margin"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/last_name"
+        android:autofillHints="@string/last_name"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
+
+    <EditText
         android:id="@+id/emailText"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/form_text_margin"
         android:autofillHints="@string/email"
@@ -17,24 +43,11 @@
         android:textSize="@dimen/form_text_size"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
-        app:layout_constraintTop_toBottomOf="@+id/nameText" />
-
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dbl_form_text_margin"
-        android:autofillHints="@string/name"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:textSize="@dimen/form_text_size"
-        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
-        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
-        app:layout_constraintTop_toBottomOf="@+id/signUpText" />
+        app:layout_constraintTop_toBottomOf="@+id/lastNameText" />
 
     <Button
-        android:id="@+id/dobText"
-        android:layout_width="0dp"
+        android:id="@+id/dobBtn"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/form_text_margin"
         android:autofillHints="@string/date_of_birth"
@@ -49,12 +62,12 @@
 
     <EditText
         android:id="@+id/usernameText"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/form_text_margin"
         android:autofillHints="@string/username"
         android:hint="@string/username"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:textSize="@dimen/form_text_size"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
@@ -62,14 +75,13 @@
 
     <Button
         android:id="@+id/submitBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dbl_form_text_margin"
         android:onClick="getFormSuccessActivity"
         android:text="@string/submit"
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@+id/ageText" />
 
     <TextView
@@ -95,7 +107,7 @@
 
     <TextView
         android:id="@+id/ageText"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/form_text_margin"
         android:autofillHints="@string/age"
@@ -104,7 +116,7 @@
         android:textSize="@dimen/form_text_size"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
-        app:layout_constraintTop_toBottomOf="@+id/dobText" />
+        app:layout_constraintTop_toBottomOf="@+id/dobBtn" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/formLeftGuide"
@@ -125,6 +137,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="@dimen/form_text_guide_rperc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

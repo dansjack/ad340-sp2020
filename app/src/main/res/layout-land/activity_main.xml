@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/formRightGuideLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/form_text_guide_rperc" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/formTopGuideLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/form_text_guide_perc" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/formLeftGuideLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/form_text_guide_perc" />
+
     <TextView
         android:id="@+id/nameDateView"
         android:layout_width="wrap_content"
@@ -16,12 +37,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
-        android:layout_width="735dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuideLand"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuideLand"
         app:layout_constraintTop_toBottomOf="@+id/signUpText">
 
         <LinearLayout
@@ -30,18 +51,18 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/nameText"
-                android:layout_width="736dp"
+                android:id="@+id/firstNameText"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
-                android:autofillHints="@string/name"
+                android:autofillHints="@string/first_name"
                 android:ems="10"
-                android:hint="@string/name"
+                android:hint="@string/first_name"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/emailText"
-                android:layout_width="736dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:autofillHints="@string/email"
@@ -51,7 +72,7 @@
 
             <EditText
                 android:id="@+id/usernameText"
-                android:layout_width="736dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:autofillHints="@string/username"
@@ -60,8 +81,8 @@
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/dobText"
-                android:layout_width="736dp"
+                android:id="@+id/dobBtn"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:autofillHints="@string/date_of_birth"
@@ -74,17 +95,17 @@
 
             <TextView
                 android:id="@+id/ageText"
-                android:layout_width="736dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:autofillHints="@string/age"
-                android:hint="@string/age"
-                android:gravity="center_vertical"
-                android:textSize="18sp"
                 android:background="?attr/editTextBackground"
+                android:gravity="center_vertical"
+                android:hint="@string/age"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dobText" />
+                app:layout_constraintTop_toBottomOf="@+id/dobBtn" />
 
             <Button
                 android:id="@+id/submitBtn"
@@ -105,13 +126,12 @@
         android:id="@+id/signUpText"
         android:layout_width="136dp"
         android:layout_height="49dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/lato_bold"
         android:text="@string/sign_up"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/formTopGuideLand" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

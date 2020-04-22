@@ -23,10 +23,11 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private EditText nameText;
+    private EditText firstNameText;
+    private EditText lastNameText;
     private EditText emailText;
     private EditText usernameText;
-    private Button dobText;
+    private Button dobBtn;
     private TextView ageText;
     private int yearsOfAge;
 
@@ -35,10 +36,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nameText = findViewById(R.id.nameText);
+        firstNameText = findViewById(R.id.firstNameText);
+        lastNameText = findViewById(R.id.lastNameText);
         emailText = findViewById(R.id.emailText);
         usernameText = findViewById(R.id.usernameText);
-        dobText = findViewById(R.id.dobText);
+        dobBtn = findViewById(R.id.dobBtn);
         ageText = findViewById(R.id.ageText);
     }
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(Constants.KEY_AGE, ageText.getText().toString());
-        outState.putString(Constants.KEY_DOB, dobText.getText().toString());
+        outState.putString(Constants.KEY_DOB, dobBtn.getText().toString());
     }
 
     @Override
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (savedInstanceState.containsKey(Constants.KEY_AGE)) {
             ageText.setText(
                     (String) savedInstanceState.get(Constants.KEY_AGE));
-            dobText.setText(
+            dobBtn.setText(
                     (String) savedInstanceState.get(Constants.KEY_DOB));
             try {
                 yearsOfAge = Integer.parseInt(
@@ -71,10 +73,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void getFormSuccessActivity(View view) {
         if (isFormValid()) {
             Intent intent = new Intent(MainActivity.this, FormSuccessActivity.class);
-            intent.putExtra(Constants.KEY_NAME, nameText.getText().toString());
+            intent.putExtra(Constants.KEY_FNAME, firstNameText.getText().toString());
+            intent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
             intent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
             intent.putExtra(Constants.KEY_USERNAME, usernameText.getText().toString());
-            intent.putExtra(Constants.KEY_DOB, dobText.getText().toString());
+            intent.putExtra(Constants.KEY_DOB, dobBtn.getText().toString());
             startActivity(intent);
         }
     }
@@ -82,7 +85,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public boolean isFormValid() {
         boolean isValid = true;
 
-        if (nameText.getText().toString().isEmpty()) { // user didn't enter a name
+        if (firstNameText.getText().toString().isEmpty() ||
+                (lastNameText.getText().toString().isEmpty())) { // user didn't enter a name
             isValid = false;
             Toast.makeText(this, R.string.toast_enter_name, Toast.LENGTH_SHORT).show();
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(
@@ -123,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (yearsOfAge < 1) yearsOfAge = 0;
 
 
-        dobText.setText(currentDateString);
+        dobBtn.setText(currentDateString);
         ageText.setText(String.valueOf(yearsOfAge));
     }
 }

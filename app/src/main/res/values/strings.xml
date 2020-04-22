@@ -6,7 +6,8 @@
     <string name="feelin_fine">Feelin fine</string>
     <string name="nameDate">Jack, Daniel 04/16/2020</string>
     <string name="helloWorld">Hello World!</string>
-    <string name="name">Name</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="date_of_birth">Date of Birth</string>
@@ -15,7 +16,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="age">Age</string>
-    <string name="toast_enter_name">Enter your name</string>
+    <string name="toast_enter_name">Enter your full name</string>
     <string name="toast_enter_email">Enter a valid email</string>
     <string name="toast_enter_username">Enter a username</string>
     <string name="toast_enter_dob">Must be 18 to sign up</string>

@@ -17,7 +17,8 @@ public class FormSuccessActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        String name = "";
+        String firstName = "";
+        String lastName = "";
         String email = "";
         String username = "";
         String dob = "";
@@ -26,8 +27,9 @@ public class FormSuccessActivity extends AppCompatActivity {
         StringBuilder msg = new StringBuilder("Thanks for Signing Up, ");
 
 
-        if (bundle != null && bundle.containsKey(Constants.KEY_NAME)) {
-            name = bundle.getString(Constants.KEY_NAME);
+        if (bundle != null && bundle.containsKey(Constants.KEY_FNAME)) {
+            firstName = bundle.getString(Constants.KEY_FNAME);
+            lastName = bundle.getString(Constants.KEY_FNAME);
             email = bundle.getString(Constants.KEY_EMAIL);
             username = bundle.getString(Constants.KEY_USERNAME);
             dob = bundle.getString(Constants.KEY_DOB);
