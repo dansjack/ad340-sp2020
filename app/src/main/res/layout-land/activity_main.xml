@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/signUpText">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,15 +59,29 @@
                 android:hint="@string/username"
                 android:inputType="textPersonName" />
 
-            <EditText
+            <TextView
                 android:id="@+id/dobText"
                 android:layout_width="736dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:autofillHints="@string/date_of_birth"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="@string/date_of_birth"
-                android:inputType="textPersonName" />
+                android:onClick="getDatePicker"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/ageText"
+                android:layout_width="736dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/age"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dobText" />
 
             <Button
                 android:id="@+id/submitBtn"
@@ -85,7 +99,7 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/signUpText"
         android:layout_width="136dp"
         android:layout_height="49dp"
         android:layout_marginTop="16dp"

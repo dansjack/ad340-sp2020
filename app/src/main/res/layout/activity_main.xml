@@ -8,53 +8,55 @@
 
     <EditText
         android:id="@+id/emailText"
-        android:layout_width="wrap_content"
+        android:layout_width="356dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:autofillHints="@string/email"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
     <EditText
         android:id="@+id/nameText"
-        android:layout_width="wrap_content"
+        android:layout_width="356dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="184dp"
         android:autofillHints="@string/name"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/dobText"
-        android:layout_width="wrap_content"
+        android:layout_width="356dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:autofillHints="@string/date_of_birth"
         android:ems="10"
+        android:focusable="false"
         android:hint="@string/date_of_birth"
-        android:inputType="textPersonName"
+        android:onClick="getDatePicker"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameText" />
 
     <EditText
         android:id="@+id/usernameText"
-        android:layout_width="wrap_content"
+        android:layout_width="356dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:autofillHints="@string/username"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
@@ -70,7 +72,7 @@
         android:onClick="getFormSuccessActivity"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/signUpText"
         android:layout_width="136dp"
         android:layout_height="49dp"
         android:layout_marginTop="28dp"
@@ -90,5 +92,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ageText"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/age"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dobText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
