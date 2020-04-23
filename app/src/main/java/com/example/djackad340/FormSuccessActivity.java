@@ -38,7 +38,6 @@ public class FormSuccessActivity extends AppCompatActivity {
 
     public void returnToSignUp(View view) {
         Intent returnIntent = new Intent();
-        returnIntent.putExtra(RETURN_TO_MAIN, true);
         setResult(Constants.CODE_NEW_SIGNUP, returnIntent);
         finish();
     }
