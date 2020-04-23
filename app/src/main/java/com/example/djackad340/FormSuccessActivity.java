@@ -24,7 +24,7 @@ public class FormSuccessActivity extends AppCompatActivity {
         String dob = "";
 
         TextView successMsg = findViewById(R.id.successMsg);
-        StringBuilder msg = new StringBuilder("Thanks for Signing Up, ");
+        StringBuilder msg = new StringBuilder(getString(R.string.SUCCESS_MSG_START));
 
 
         if (bundle != null && bundle.containsKey(Constants.KEY_FNAME)) {
@@ -34,7 +34,7 @@ public class FormSuccessActivity extends AppCompatActivity {
             username = bundle.getString(Constants.KEY_USERNAME);
             dob = bundle.getString(Constants.KEY_DOB);
         }
-        msg.append(username).append("!");
+        msg.append(username).append(getString(R.string.SUCCESS_MSG_END));
         successMsg.setText(msg);
     }
 

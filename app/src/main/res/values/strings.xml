@@ -20,4 +20,7 @@
     <string name="toast_enter_email">Enter a valid email</string>
     <string name="toast_enter_username">Enter a username</string>
     <string name="toast_enter_dob">Must be 18 to sign up</string>
+    <string name="SUCCESS_MSG_START">Thanks for Signing Up, </string>
+    <string name="SUCCESS_MSG_END">!</string>
+    <string name="date_picker_tag">date picker</string>
 </resources>
