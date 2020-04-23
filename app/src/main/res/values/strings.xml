@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">djackAD340</string>
-    <string name="simpsons_fine">Simpsons - Things are fine</string>
-    <string name="simpsons_hell">Simpsons - Hell</string>
-    <string name="feelin_fine">Feelin fine</string>
-    <string name="nameDate">Jack, Daniel 04/23/2020</string>
+    <string name="nameDate">Jack, Daniel 04/16/2020</string>
     <string name="helloWorld">Hello World!</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>

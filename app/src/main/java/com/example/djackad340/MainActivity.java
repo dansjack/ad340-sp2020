@@ -1,6 +1,7 @@
 package com.example.djackad340;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -61,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 yearsOfAge = Integer.parseInt(
                         (String) Objects.requireNonNull(savedInstanceState.get(Constants.KEY_AGE)));
             } catch(NumberFormatException exception){ // handle your exception
-//                Log.i(TAG, "onRestoreInstanceState: Exception success");
                 yearsOfAge = 0;
             }
 
@@ -70,13 +70,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void getFormSuccessActivity(View view) {
         if (isFormValid()) {
-            Intent intent = new Intent(MainActivity.this, FormSuccessActivity.class);
-            intent.putExtra(Constants.KEY_FNAME, firstNameText.getText().toString());
-            intent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
-            intent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
-            intent.putExtra(Constants.KEY_USERNAME, usernameText.getText().toString());
-            intent.putExtra(Constants.KEY_DOB, dobBtn.getText().toString());
-            startActivity(intent);
+            Intent formSuccessIntent = new Intent(this, FormSuccessActivity.class);
+            formSuccessIntent.putExtra(Constants.KEY_FNAME, firstNameText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_USERNAME, usernameText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_DOB, dobBtn.getText().toString());
+            startActivityForResult(formSuccessIntent, Constants.CODE_SIGNUP);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constants.CODE_SIGNUP && resultCode == Constants.CODE_NEW_SIGNUP) {
+            firstNameText.setText(Constants.EMPTY_STRING);
+            lastNameText.setText(Constants.EMPTY_STRING);
+            emailText.setText(Constants.EMPTY_STRING);
+            usernameText.setText(Constants.EMPTY_STRING);
+            dobBtn.setText(R.string.date_of_birth);
+            ageText.setText(Constants.EMPTY_STRING);
         }
     }
 
