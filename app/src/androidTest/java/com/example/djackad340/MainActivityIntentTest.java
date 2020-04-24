@@ -28,27 +28,27 @@ public class MainActivityIntentTest {
     public IntentsTestRule<MainActivity> mActivityRule = new IntentsTestRule<>(
             MainActivity.class);
 
-    @Test
-    public void verifyMessageSentToMessageActivity() {
-        onView(withId(R.id.firstNameText)) // Enter First Name
-                .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
-        onView(withId(R.id.lastNameText)) // Enter Last Name
-                .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
-        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.usernameText)) // Enter Username
-                .perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
-
-        onView(withId(R.id.submitBtn)).perform(click());
-        intended(allOf(
-                hasComponent(hasShortClassName(".FormSuccessActivity")),
-                toPackage("com.example.djackad340"),
-                hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
-
-    }
+//    @Test
+//    public void verifyMessageSentToMessageActivity() {
+//        onView(withId(R.id.firstNameText)) // Enter First Name
+//                .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+//        onView(withId(R.id.lastNameText)) // Enter Last Name
+//                .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+//        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+//        onView(withId(R.id.usernameText)) // Enter Username
+//                .perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+//        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+//                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+//        onView(withId(android.R.id.button1)).perform(click());
+//
+//        onView(withId(R.id.submitBtn)).perform(click());
+//        intended(allOf(
+//                hasComponent(hasShortClassName(".FormSuccessActivity")),
+//                toPackage("com.example.djackad340"),
+//                hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
+//
+//    }
 
 
 }
