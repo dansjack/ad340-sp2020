@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             lastNameText.setText(Constants.EMPTY_STRING);
             emailText.setText(Constants.EMPTY_STRING);
             usernameText.setText(Constants.EMPTY_STRING);
-            dobBtn.setText(R.string.date_of_birth);
+            dobBtn.setText(Constants.EMPTY_STRING);
             ageText.setText(Constants.EMPTY_STRING);
         }
     }
