@@ -117,6 +117,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dobBtn" />
 
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin"
+                android:gravity="center"
+                android:textColor="#AE2E2E"
+                android:textSize="@dimen/form_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+                app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
+                app:layout_constraintTop_toBottomOf="@+id/ageText" />
+
             <Button
                 android:id="@+id/submitBtn"
                 android:layout_width="match_parent"

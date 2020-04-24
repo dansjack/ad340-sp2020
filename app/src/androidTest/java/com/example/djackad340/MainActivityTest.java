@@ -12,7 +12,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.app.PendingIntent.getActivity;
 import static android.provider.ContactsContract.Directory.PACKAGE_NAME;
+
+
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -87,5 +94,72 @@ public class MainActivityTest {
         UiDevice device = UiDevice.getInstance(getInstrumentation());
         device.setOrientationLeft();
         onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
+        device.setOrientationNatural();
+        onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
     }
+
+    @Test
+    public void hasInvalidFirstName() {
+        onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_name)));
+    }
+
+    @Test
+    public void hasInvalidLastName() {
+        onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_name)));
+    }
+
+    @Test
+    public void hasInvalidEmail() {
+        onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_email)));
+    }
+
+    @Test
+    public void invalidUsername() {
+        onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_username)));
+    }
+
+    @Test
+    public void hasInvalidBirthday() {
+        onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_dob)));
+    }
+
+
 }

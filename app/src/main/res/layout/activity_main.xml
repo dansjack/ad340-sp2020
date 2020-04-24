@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
-        app:layout_constraintTop_toBottomOf="@+id/ageText" />
+        app:layout_constraintTop_toBottomOf="@+id/errorText" />
 
     <TextView
         android:id="@+id/signUpText"
@@ -140,5 +140,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="@dimen/form_text_guide_rperc" />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/form_text_margin"
+        android:gravity="center"
+        android:textColor="#AE2E2E"
+        android:textSize="@dimen/form_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
+        app:layout_constraintTop_toBottomOf="@+id/ageText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

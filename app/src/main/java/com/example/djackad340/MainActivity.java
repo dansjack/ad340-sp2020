@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText usernameText;
     private Button dobBtn;
     private TextView ageText;
+    private TextView errorText;
     private int yearsOfAge;
 
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         usernameText = findViewById(R.id.usernameText);
         dobBtn = findViewById(R.id.dobBtn);
         ageText = findViewById(R.id.ageText);
+        errorText = findViewById(R.id.errorText);
     }
 
     @Override
@@ -98,17 +100,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (firstNameText.getText().toString().isEmpty() ||
                 (lastNameText.getText().toString().isEmpty())) { // user didn't enter a full name
             isValid = false;
-            Toast.makeText(this, R.string.toast_enter_name, Toast.LENGTH_SHORT).show();
+            errorText.setText(R.string.err_enter_name);
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(
                 emailText.getText().toString().trim()).matches()) { // user didn't enter a valid password
             isValid = false;
-            Toast.makeText(this, R.string.toast_enter_email, Toast.LENGTH_SHORT).show();
+            errorText.setText(R.string.err_enter_email);
         } else if (usernameText.getText().toString().isEmpty()) { // user didn't entered a username
             isValid = false;
-            Toast.makeText(this, R.string.toast_enter_username, Toast.LENGTH_SHORT).show();
+            errorText.setText(R.string.err_enter_username);
         } else if (yearsOfAge < 18) { // user is under 18 or over
             isValid = false;
-            Toast.makeText(this, R.string.toast_enter_dob, Toast.LENGTH_SHORT).show();
+            errorText.setText(R.string.err_enter_dob);
+        } else {
+            errorText.setText("");
         }
         return isValid;
     }
