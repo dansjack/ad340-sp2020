@@ -98,6 +98,7 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
 
+        closeSoftKeyboard();
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_name)));
     }
@@ -110,7 +111,9 @@ public class MainActivityTest {
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
+        Thread.sleep(250);
 
+        closeSoftKeyboard();
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_name)));
     }
@@ -123,7 +126,9 @@ public class MainActivityTest {
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
+        Thread.sleep(250);
 
+        closeSoftKeyboard();
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_email)));
     }
@@ -136,7 +141,8 @@ public class MainActivityTest {
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
-
+        Thread.sleep(250);
+        closeSoftKeyboard();
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_username)));
     }
@@ -147,7 +153,9 @@ public class MainActivityTest {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        Thread.sleep(250);
 
+        closeSoftKeyboard();
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_dob)));
     }
