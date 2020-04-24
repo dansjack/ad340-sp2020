@@ -99,7 +99,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasInvalidFirstName() {
+    public void hasNoFirstName() {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
@@ -113,7 +113,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasInvalidLastName() {
+    public void hasNoLastName() {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
@@ -127,7 +127,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasInvalidEmail() {
+    public void hasNoEmail() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
@@ -141,7 +141,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void invalidUsername() {
+    public void hasNoUsername() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
@@ -155,7 +155,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasInvalidBirthday() {
+    public void hasNoBirthday() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
