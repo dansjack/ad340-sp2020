@@ -107,7 +107,7 @@ public class MainActivityTest {
 
     @Test
     public void hasNoLastName() throws InterruptedException {
-        onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
