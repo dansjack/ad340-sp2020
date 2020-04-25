@@ -18,8 +18,11 @@ class Constants {
     static final String TEST_EMAIL = "thatMyPurse@idontknowyou.com";
     static final String TEST_USERNAME = "Kidney Boy";
     static final String TEST_AGE = "33";
+    static final String TEST_AGE_INVALID = "0";
 
     static final int TEST_YEAR = 1987;
+    static final int TEST_YEAR_INVALID = 2030;
+    static final int TEST_MONTH_INVALID = 5;
     static final int TEST_MONTH = 4;
     static final int TEST_DAY = 22;
     static final String TEST_DOB = "WEDNESDAY, APRIL 22, 1987";
