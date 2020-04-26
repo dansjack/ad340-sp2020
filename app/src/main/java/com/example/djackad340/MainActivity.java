@@ -57,14 +57,16 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.containsKey(Constants.KEY_AGE)) {
+            ageText.setText( (String) savedInstanceState.get(Constants.KEY_AGE));
+            dobBtn.setText( (String) savedInstanceState.get(Constants.KEY_DOB));
+            try {
+                yearsOfAge = Integer.parseInt(
+                        (String) Objects.requireNonNull(savedInstanceState.get(Constants.KEY_AGE)));
+            } catch(NumberFormatException exception){ // handle your exception
+                yearsOfAge = 0;
+            }
 
-        ageText.setText( (String) savedInstanceState.get(Constants.KEY_AGE));
-        dobBtn.setText( (String) savedInstanceState.get(Constants.KEY_DOB));
-        try {
-            yearsOfAge = Integer.parseInt(
-                    (String) Objects.requireNonNull(savedInstanceState.get(Constants.KEY_AGE)));
-        } catch(NumberFormatException exception){ // handle your exception
-            yearsOfAge = 0;
         }
     }
 
