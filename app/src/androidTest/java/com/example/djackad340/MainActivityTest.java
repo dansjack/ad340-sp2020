@@ -63,9 +63,11 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasCorrectUsername() {
+    public void hasCorrectUsername() throws InterruptedException {
         onView(withId(R.id.usernameText)) // Enter Username
                 .perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+
+        Thread.sleep(250);
 
         onView(withId(R.id.usernameText))
                 .check(matches(withText(Constants.TEST_USERNAME)));
