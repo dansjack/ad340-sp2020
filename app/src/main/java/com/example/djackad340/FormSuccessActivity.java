@@ -25,7 +25,7 @@ public class FormSuccessActivity extends AppCompatActivity {
         TextView successMsg = findViewById(R.id.successMsg);
         StringBuilder msg = new StringBuilder(getString(R.string.SUCCESS_MSG_START));
 
-        if (bundle != null && bundle.containsKey(Constants.KEY_FNAME)) {
+        if (bundle != null) {
             firstName = bundle.getString(Constants.KEY_FNAME);
             lastName = bundle.getString(Constants.KEY_FNAME);
             email = bundle.getString(Constants.KEY_EMAIL);

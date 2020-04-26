@@ -12,6 +12,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Calendar;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -25,6 +27,11 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
+    Calendar c = Calendar.getInstance();
+    int currentYear = c.get(Calendar.YEAR);
+    int currentMonth = c.get(Calendar.MONTH);
+    int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
@@ -68,11 +75,23 @@ public class MainActivityTest {
     public void hasCorrectBirthday() {
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+                Constants.TEST_YEAR, currentMonth + 1, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
 
         onView(withId(R.id.dobBtn)).check(matches(withText(Constants.TEST_DOB))); // Birthday
         onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
+    }
+
+    @Test
+    public void hasCorrectBirthdayAlt() {
+        if (currentDayOfMonth < 28) {
+            onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+            onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                    Constants.TEST_YEAR, currentMonth, currentDayOfMonth + 1));
+            onView(withId(android.R.id.button1)).perform(click());
+
+            onView(withId(R.id.ageText)).check(matches(withText(Integer.toString((currentYear - Constants.TEST_YEAR))))); // Age
+        }
     }
 
     @Test
@@ -171,7 +190,7 @@ public class MainActivityTest {
     public void hasInvalidBirthday() throws InterruptedException {
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-                Constants.TEST_YEAR_INVALID, Constants.TEST_MONTH_INVALID, Constants.TEST_DAY));
+                Constants.TEST_YEAR_2, Constants.TEST_MONTH_2, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
 
         Thread.sleep(250);
@@ -179,6 +198,8 @@ public class MainActivityTest {
 
         onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE_INVALID))); // Age
     }
+
+
 
     @Test
     public void noFailOnOrientationChange() throws RemoteException {
