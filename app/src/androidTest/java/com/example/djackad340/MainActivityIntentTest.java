@@ -31,7 +31,9 @@ public class MainActivityIntentTest {
             MainActivity.class);
 
     @Test
-    public void verifyMessageSentToMessageActivity() {
+    public void verifyMessageSentToMessageActivity() throws InterruptedException {
+        Thread.sleep(250);
+
         onView(withId(R.id.firstNameText)) // Enter First Name
                 .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)) // Enter Last Name

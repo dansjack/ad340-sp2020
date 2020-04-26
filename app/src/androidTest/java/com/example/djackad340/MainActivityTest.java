@@ -192,7 +192,7 @@ public class MainActivityTest {
     public void hasInvalidBirthday() throws InterruptedException {
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-                Constants.TEST_YEAR_2, Constants.TEST_MONTH_2, Constants.TEST_DAY));
+                currentYear + 10, 1, 31));
         onView(withId(android.R.id.button1)).perform(click());
 
         Thread.sleep(250);
