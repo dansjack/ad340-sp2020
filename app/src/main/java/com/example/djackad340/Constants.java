@@ -21,12 +21,9 @@ class Constants {
     static final String TEST_AGE_INVALID = "0";
 
     static final int TEST_YEAR = 1987;
-    static final int TEST_YEAR_2 = 2030;
     static final int TEST_MONTH = 4;
-    static final int TEST_MONTH_2 = 5;
     static final int TEST_DAY = 22;
-    static final int TEST_DAY_2 = 28;
-    static final String TEST_DOB = "WEDNESDAY, APRIL 22, 1987";
+    static final String TEST_DOB = "TUESDAY, DECEMBER 22, 1987";
 
     static final String TEST_SUCCESS_MSG = "Thanks for Signing Up, Kidney Boy";
 
