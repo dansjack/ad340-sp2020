@@ -27,7 +27,7 @@ public class FormSuccessActivity extends AppCompatActivity {
             firstName = bundle.getString(Constants.KEY_FNAME);
             lastName = bundle.getString(Constants.KEY_FNAME);
             email = bundle.getString(Constants.KEY_EMAIL);
-            username = bundle.getString(Constants.KEY_USERNAME);
+            username = bundle.getString(Constants.KEY_OCCUPATION);
             dob = bundle.getString(Constants.KEY_DOB);
         }
         msg.append(username).append(getString(R.string.SUCCESS_MSG_END));

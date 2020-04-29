@@ -39,8 +39,8 @@ public class MainActivityIntentTest {
         onView(withId(R.id.lastNameText)) // Enter Last Name
                 .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.usernameText)) // Enter Username
-                .perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)) // Enter Occupation
+                .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
@@ -62,8 +62,8 @@ public class MainActivityIntentTest {
         onView(withId(R.id.lastNameText)) // Enter Last Name
                 .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.usernameText)) // Enter Username
-                .perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)) // Enter Occupation
+                .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));

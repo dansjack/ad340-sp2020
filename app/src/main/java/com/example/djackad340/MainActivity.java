@@ -8,7 +8,6 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText firstNameText;
     private EditText lastNameText;
     private EditText emailText;
-    private EditText usernameText;
+    private EditText occupationText;
     private Button dobBtn;
     private TextView ageText;
     private TextView errorText;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         firstNameText = findViewById(R.id.firstNameText);
         lastNameText = findViewById(R.id.lastNameText);
         emailText = findViewById(R.id.emailText);
-        usernameText = findViewById(R.id.usernameText);
+        occupationText = findViewById(R.id.occupationText);
         dobBtn = findViewById(R.id.dobBtn);
         ageText = findViewById(R.id.ageText);
         errorText = findViewById(R.id.errorText);
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             formSuccessIntent.putExtra(Constants.KEY_FNAME, firstNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
-            formSuccessIntent.putExtra(Constants.KEY_USERNAME, usernameText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_OCCUPATION, occupationText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_DOB, dobBtn.getText().toString());
             startActivityForResult(formSuccessIntent, Constants.CODE_SIGNUP);
         }
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             firstNameText.setText(Constants.EMPTY_STRING);
             lastNameText.setText(Constants.EMPTY_STRING);
             emailText.setText(Constants.EMPTY_STRING);
-            usernameText.setText(Constants.EMPTY_STRING);
+            occupationText.setText(Constants.EMPTY_STRING);
             dobBtn.setText(Constants.EMPTY_STRING);
             ageText.setText(Constants.EMPTY_STRING);
         }
@@ -102,9 +101,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 emailText.getText().toString().trim()).matches()) { // user didn't enter a valid password
             isValid = false;
             errorText.setText(R.string.err_enter_email);
-        } else if (usernameText.getText().toString().isEmpty()) { // user didn't entered a username
+        } else if (occupationText.getText().toString().isEmpty()) { // user didn't entered a occupation
             isValid = false;
-            errorText.setText(R.string.err_enter_username);
+            errorText.setText(R.string.err_enter_occupation);
         } else if (yearsOfAge < 18) { // user is under 18 or over
             isValid = false;
             errorText.setText(R.string.err_enter_dob);
