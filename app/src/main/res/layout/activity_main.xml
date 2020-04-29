@@ -8,8 +8,8 @@
 
     <ScrollView
         android:id="@+id/formContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
         android:isScrollContainer="false"
         app:layout_constraintBottom_toTopOf="@id/formBottomGuide"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
@@ -82,6 +82,17 @@
                 android:background="?attr/editTextBackground"
                 android:hint="@string/age"
                 android:textSize="@dimen/form_text_size" />
+
+            <EditText
+                android:id="@+id/descText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/desc_text_height"
+                android:layout_marginTop="@dimen/form_text_margin"
+                android:autofillHints="@string/description"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/description"
+                android:inputType="textMultiLine" />
         </LinearLayout>
     </ScrollView>
 

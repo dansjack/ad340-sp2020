@@ -5,6 +5,7 @@ class Constants {
     static final String KEY_LNAME = "lastName";
     static final String KEY_EMAIL = "email";
     static final String KEY_OCCUPATION = "occupation";
+    static final String KEY_DESCRIPTION = "description";
     static final String KEY_DOB = "dateOfBirth";
     static final String KEY_AGE = "age";
     static final String RETURN_TO_MAIN = "newSignUp";
@@ -16,7 +17,8 @@ class Constants {
     static final String TEST_FNAME = "Bobby";
     static final String TEST_LNAME = "Hill";
     static final String TEST_EMAIL = "thatMyPurse@idontknowyou.com";
-    static final String TEST_OCCUPATION = "Propane Salesman";
+    static final String TEST_OCCUPATION = "Mascot";
+    static final String TEST_DESCRIPTION = "Howdy, I'm Bobby and I've got the gout!";
     static final String TEST_AGE = "33";
     static final String TEST_AGE_INVALID = "0";
 

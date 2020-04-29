@@ -1,7 +1,6 @@
 package com.example.djackad340;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -28,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText occupationText;
     private Button dobBtn;
     private TextView ageText;
+    private EditText descText;
     private TextView errorText;
     private int yearsOfAge;
 
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         occupationText = findViewById(R.id.occupationText);
         dobBtn = findViewById(R.id.dobBtn);
         ageText = findViewById(R.id.ageText);
+        descText = findViewById(R.id.descText);
         errorText = findViewById(R.id.errorText);
     }
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
         ageText.setText( (String) savedInstanceState.get(Constants.KEY_AGE));
@@ -73,13 +74,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             formSuccessIntent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_OCCUPATION, occupationText.getText().toString());
-            formSuccessIntent.putExtra(Constants.KEY_DOB, dobBtn.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_AGE, ageText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_DESCRIPTION, descText.getText().toString());
             startActivityForResult(formSuccessIntent, Constants.CODE_SIGNUP);
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.CODE_SIGNUP && resultCode == Constants.CODE_NEW_SIGNUP) {
             firstNameText.setText(Constants.EMPTY_STRING);
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             occupationText.setText(Constants.EMPTY_STRING);
             dobBtn.setText(Constants.EMPTY_STRING);
             ageText.setText(Constants.EMPTY_STRING);
+            descText.setText(Constants.EMPTY_STRING);
         }
     }
 
@@ -107,7 +110,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else if (yearsOfAge < 18) { // user is under 18 or over
             isValid = false;
             errorText.setText(R.string.err_enter_dob);
-        } else {
+        } else if (descText.getText().toString().isEmpty()) { // user didn't entered any description
+            isValid = false;
+            errorText.setText(R.string.err_enter_desc);
+        }
+
+        else {
             errorText.setText("");
         }
         return isValid;
