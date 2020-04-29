@@ -46,7 +46,7 @@ public class MainActivityTestIntent {
         onView(withId(R.id.descText)) // Enter Description
                 .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
 
-        onView(withId(R.id.submitBtn)).perform(click());
+        onView(withId(R.id.submitBtn)).perform(click(), closeSoftKeyboard());
         intended(allOf(
                 hasComponent(hasShortClassName(".FormSuccessActivity")),
                 toPackage("com.example.djackad340"),
@@ -69,8 +69,8 @@ public class MainActivityTestIntent {
         onView(withId(R.id.descText)) // Enter Description
                 .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
 
-        onView(withId(R.id.submitBtn)).perform(click());
-        onView(withId(R.id.goBackBtn)).perform(click());
+        onView(withId(R.id.submitBtn)).perform(click(), closeSoftKeyboard());
+        onView(withId(R.id.goBackBtn)).perform(click(), closeSoftKeyboard());
         onView(withId(R.id.firstNameText)).check(matches(withText(Constants.EMPTY_STRING)));
         onView(withId(R.id.lastNameText)).check(matches(withText(Constants.EMPTY_STRING)));
         onView(withId(R.id.emailText)).check(matches(withText(Constants.EMPTY_STRING)));
