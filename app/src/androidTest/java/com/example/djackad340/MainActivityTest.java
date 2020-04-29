@@ -4,6 +4,7 @@ import android.os.RemoteException;
 import android.widget.DatePicker;
 
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.uiautomator.UiDevice;
@@ -21,6 +22,8 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -213,5 +216,57 @@ public class MainActivityTest {
         Thread.sleep(250);
         device.setOrientationNatural();
         onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
+    }
+
+    @Test
+    public void verifyMessageSentToMessageActivity() throws InterruptedException {
+        onView(withId(R.id.firstNameText)) // Enter First Name
+                .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.lastNameText)) // Enter Last Name
+                .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)) // Enter Occupation
+                .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.descText)) // Enter Description
+                .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
+
+        Intents.init();
+        Thread.sleep(250);
+        onView(withId(R.id.submitBtn)).perform(click());
+        Thread.sleep(250);
+        Intents.intended(hasComponent(FormSuccessActivity.class.getName()));
+        Intents.intended(hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME));
+        Intents.release();
+    }
+
+    @Test
+    public void verifyFormEmptyOnBack() throws InterruptedException {
+        onView(withId(R.id.firstNameText)) // Enter First Name
+                .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.lastNameText)) // Enter Last Name
+                .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)) // Enter Occupation
+                .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.descText)) // Enter Description
+                .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+        Thread.sleep(250);
+        onView(withId(R.id.goBackBtn)).perform(click());
+        onView(withId(R.id.firstNameText)).check(matches(withText(Constants.EMPTY_STRING)));
+        onView(withId(R.id.lastNameText)).check(matches(withText(Constants.EMPTY_STRING)));
+        onView(withId(R.id.emailText)).check(matches(withText(Constants.EMPTY_STRING)));
+        onView(withId(R.id.dobBtn)).check(matches(withText(Constants.EMPTY_STRING)));
+        onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING)));
+        onView(withId(R.id.descText)).check(matches(withText(Constants.EMPTY_STRING)));
     }
 }
