@@ -5,7 +5,7 @@
     <dimen name="form_heading">30sp</dimen>
     <dimen name="match_constraint">0dp</dimen>
     <dimen name="form_text_margin">16dp</dimen>
-    <item name="form_text_guide_perc" type="dimen">0.08</item>
-    <item name="form_text_guide_rperc" type="dimen">0.92</item>
+    <item name="form_text_guide_perc" type="dimen">0.02</item>
+    <item name="form_text_guide_rperc" type="dimen">0.98</item>
     <item name="form_text_guide_bperc" type="dimen">0.8</item>
 </resources>
