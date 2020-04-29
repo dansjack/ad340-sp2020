@@ -31,9 +31,7 @@ public class MainActivityTestIntent {
             MainActivity.class);
 
     @Test
-    public void verifyMessageSentToMessageActivity() throws InterruptedException {
-        Thread.sleep(250);
-
+    public void verifyMessageSentToMessageActivity() {
         onView(withId(R.id.firstNameText)) // Enter First Name
                 .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)) // Enter Last Name
@@ -78,6 +76,4 @@ public class MainActivityTestIntent {
         onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING)));
 
     }
-
-
 }
