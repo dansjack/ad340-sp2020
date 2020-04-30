@@ -22,6 +22,7 @@ class Constants {
     static final String TEST_USERNAME = "Kidney Boy";
     static final String TEST_AGE = "33";
     static final String TEST_AGE_INVALID = "0";
+    static final String TEST_DESC = "Hello there";
 
     static final int TEST_YEAR = 1987;
     static final int TEST_MONTH = 4;

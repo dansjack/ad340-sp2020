@@ -110,15 +110,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else if (yearsOfAge < 18) { // user is under 18 or over
             isValid = false;
             errorText.setText(R.string.err_enter_dob);
+        } else if (descText.getText().toString().isEmpty()) { // user didn't entered any description
+            isValid = false;
+            errorText.setText(R.string.err_enter_desc);
         } else {
             errorText.setText("");
         }
         return isValid;
 
-//        else if (descText.getText().toString().isEmpty()) { // user didn't entered any description
-//            isValid = false;
-//            errorText.setText(R.string.err_enter_desc);
-//        }
+
     }
 
     public void getDatePicker(View view) {

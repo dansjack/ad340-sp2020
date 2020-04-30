@@ -46,6 +46,9 @@ public class MainActivityIntentTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.descText)) // Enter Description
+                .perform(ViewActions.scrollTo())
+                .perform(typeText(Constants.TEST_DESC), closeSoftKeyboard());
 
         onView(withId(R.id.submitBtn)).perform(click());
         intended(allOf(
@@ -71,6 +74,9 @@ public class MainActivityIntentTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.descText)) // Enter Description
+                .perform(ViewActions.scrollTo())
+                .perform(typeText(Constants.TEST_DESC), closeSoftKeyboard());
 
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.goBackBtn)).perform(click());
@@ -80,6 +86,7 @@ public class MainActivityIntentTest {
         onView(withId(R.id.occupationText)).check(matches(withText(Constants.EMPTY_STRING)));
         onView(withId(R.id.dobBtn)).check(matches(withText(Constants.EMPTY_STRING)));
         onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING)));
+        onView(withId(R.id.descText)).check(matches(withText(Constants.EMPTY_STRING)));
 
     }
 
