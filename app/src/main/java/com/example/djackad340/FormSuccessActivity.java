@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import static com.example.djackad340.Constants.RETURN_TO_MAIN;
+
 public class FormSuccessActivity extends AppCompatActivity {
     private String firstName = "";
     private String lastName = "";

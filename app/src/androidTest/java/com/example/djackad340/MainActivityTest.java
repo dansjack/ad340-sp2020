@@ -34,7 +34,7 @@ public class MainActivityTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
-            new ActivityScenarioRule<>(MainActivity.class);
+            new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
 
     @Test
@@ -57,11 +57,8 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasCorrectEmail() throws InterruptedException { // Enter Email
+    public void hasCorrectEmail() { // Enter Email
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-
-        Thread.sleep(250);
-
         onView(withId(R.id.emailText)).check(matches(withText(Constants.TEST_EMAIL)));
     }
 
@@ -97,6 +94,20 @@ public class MainActivityTest {
 
             onView(withId(R.id.ageText)).check(matches(withText(Integer.toString((currentYear - Constants.TEST_YEAR))))); // Age
         }
+    }
+
+    @Test
+    public void dataPersistsOnOrientationChange() throws RemoteException {
+        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        UiDevice device = UiDevice.getInstance(getInstrumentation());
+        device.setOrientationLeft();
+        onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
+        device.setOrientationNatural();
+        onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
     }
 
     @Test
@@ -164,7 +175,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasNoBDay() throws InterruptedException {
+    public void hasNoBirthday() throws InterruptedException {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
@@ -199,25 +210,6 @@ public class MainActivityTest {
         onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING))); // Age
         device.setOrientationNatural();
         onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING))); // Age
-
-        closeSoftKeyboard();
-    }
-
-    @Test
-    public void dataPersistsOnOrientationChange() throws RemoteException, InterruptedException {
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
-
-        UiDevice device = UiDevice.getInstance(getInstrumentation());
-        device.setOrientationLeft();
-        onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
-
-        device.setOrientationNatural();
-        onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
-
-        closeSoftKeyboard();
     }
 
 
