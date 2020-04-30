@@ -12,7 +12,7 @@ public class FormSuccessActivity extends AppCompatActivity {
     private String lastName = "";
     private String email = "";
     private String username = "";
-    private String age = "";
+    private String dob = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class FormSuccessActivity extends AppCompatActivity {
             lastName = bundle.getString(Constants.KEY_FNAME);
             email = bundle.getString(Constants.KEY_EMAIL);
             username = bundle.getString(Constants.KEY_OCCUPATION);
-            age = bundle.getString(Constants.KEY_AGE);
+            dob = bundle.getString(Constants.KEY_DOB);
         }
         msg.append(username).append(getString(R.string.SUCCESS_MSG_END));
         successMsg.setText(msg);
