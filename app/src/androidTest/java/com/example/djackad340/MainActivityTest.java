@@ -101,7 +101,9 @@ public class MainActivityTest {
 
     @Test
     public void dataPersistsOnOrientationChange() throws RemoteException {
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
@@ -118,7 +120,9 @@ public class MainActivityTest {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
 
