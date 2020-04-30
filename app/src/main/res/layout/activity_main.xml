@@ -52,12 +52,12 @@
                 android:textSize="@dimen/form_text_size" />
 
             <EditText
-                android:id="@+id/occupationText"
+                android:id="@+id/usernameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
-                android:autofillHints="@string/occupation"
-                android:hint="@string/occupation"
+                android:autofillHints="@string/username"
+                android:hint="@string/username"
                 android:inputType="text"
                 android:textSize="@dimen/form_text_size" />
 
