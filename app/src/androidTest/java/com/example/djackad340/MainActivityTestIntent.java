@@ -2,13 +2,9 @@ package com.example.djackad340;
 
 import android.widget.DatePicker;
 
-import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import org.hamcrest.Matchers;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -31,9 +27,8 @@ import static org.hamcrest.core.AllOf.allOf;
 public class MainActivityTestIntent {
 
     @Rule
-    public ActivityScenarioRule<MainActivity> activityScenarioRule =
-            new ActivityScenarioRule<>(MainActivity.class);
-
+    public IntentsTestRule<MainActivity> mActivityRule = new IntentsTestRule<>(
+            MainActivity.class);
 
     @Test
     public void verifyMessageSentToMessageActivity() {
@@ -51,12 +46,9 @@ public class MainActivityTestIntent {
         onView(withId(R.id.descText)) // Enter Description
                 .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitBtn)).perform(click());
         intended(hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME));
         intended(hasComponent(FormSuccessActivity.class.getName()));
-        Intents.release();
-
     }
 
     @Test
@@ -85,5 +77,4 @@ public class MainActivityTestIntent {
         onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING)));
         onView(withId(R.id.descText)).check(matches(withText(Constants.EMPTY_STRING)));
     }
-
 }
