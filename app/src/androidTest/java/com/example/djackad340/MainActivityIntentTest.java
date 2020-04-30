@@ -2,6 +2,7 @@ package com.example.djackad340;
 
 import android.widget.DatePicker;
 
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
 import org.hamcrest.Matchers;
@@ -41,7 +42,9 @@ public class MainActivityIntentTest {
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)) // Enter Occupation
                 .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
@@ -64,7 +67,9 @@ public class MainActivityIntentTest {
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)) // Enter Occupation
                 .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());

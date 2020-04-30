@@ -3,6 +3,7 @@ package com.example.djackad340;
 import android.os.RemoteException;
 import android.widget.DatePicker;
 
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.uiautomator.UiDevice;
@@ -75,7 +76,9 @@ public class MainActivityTest {
 
     @Test
     public void hasCorrectBirthday() {
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, 12, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
@@ -131,7 +134,9 @@ public class MainActivityTest {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
 
@@ -147,7 +152,9 @@ public class MainActivityTest {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
 
@@ -159,11 +166,13 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasNoUsername() throws InterruptedException {
+    public void hasNoOccupation() throws InterruptedException {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
 
@@ -190,7 +199,9 @@ public class MainActivityTest {
 
     @Test
     public void hasInvalidBirthday() throws InterruptedException {
-        onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 currentYear + 10, 1, 31));
         onView(withId(android.R.id.button1)).perform(click());
