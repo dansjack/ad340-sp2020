@@ -63,14 +63,14 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasCorrectUsername() throws InterruptedException {
-        onView(withId(R.id.usernameText)) // Enter Username
-                .perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+    public void hasCorrectOccupation() throws InterruptedException {
+        onView(withId(R.id.occupationText)) // Enter Occupation
+                .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
 
         Thread.sleep(250);
 
-        onView(withId(R.id.usernameText))
-                .check(matches(withText(Constants.TEST_USERNAME)));
+        onView(withId(R.id.occupationText))
+                .check(matches(withText(Constants.TEST_OCCUPATION)));
     }
 
     @Test
@@ -114,7 +114,7 @@ public class MainActivityTest {
     public void hasNoFirstName() throws InterruptedException {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
@@ -130,7 +130,7 @@ public class MainActivityTest {
     public void hasNoLastName() throws InterruptedException {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
@@ -146,7 +146,7 @@ public class MainActivityTest {
     public void hasNoEmail() throws InterruptedException {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
-        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
         onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());
@@ -171,7 +171,7 @@ public class MainActivityTest {
         closeSoftKeyboard();
 
         onView(withId(R.id.submitBtn)).perform(click());
-        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_username)));
+        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_occ)));
     }
 
     @Test
@@ -179,7 +179,7 @@ public class MainActivityTest {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.usernameText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
 
         Thread.sleep(250);
         closeSoftKeyboard();

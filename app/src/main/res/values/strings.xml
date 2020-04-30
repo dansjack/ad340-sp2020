@@ -15,9 +15,11 @@
     <string name="age">Age</string>
     <string name="err_enter_name">Enter your full name</string>
     <string name="err_enter_email">Enter a valid email</string>
-    <string name="err_enter_username">Enter a username</string>
+    <string name="err_enter_occ">Enter your occupation</string>
     <string name="err_enter_dob">Must be 18 to sign up</string>
     <string name="SUCCESS_MSG_START">Thanks for Signing Up, </string>
     <string name="SUCCESS_MSG_END">!</string>
     <string name="date_picker_tag">date picker</string>
+    <string name="occupation">Occupation</string>
+    <string name="description">Describe yourself a bit</string>
 </resources>

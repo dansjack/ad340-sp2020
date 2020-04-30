@@ -10,4 +10,5 @@
     <dimen name="form_text_width">356dp</dimen>
     <item name="form_text_guide_perc" type="dimen">0.08</item>
     <item name="form_text_guide_rperc" type="dimen">0.92</item>
+    <item name="form_text_guide_bperc" type="dimen">0.8</item>
 </resources>

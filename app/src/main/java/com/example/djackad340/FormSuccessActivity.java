@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import static com.example.djackad340.Constants.RETURN_TO_MAIN;
-
 public class FormSuccessActivity extends AppCompatActivity {
     private String firstName = "";
     private String lastName = "";
     private String email = "";
-    private String username = "";
+    private String occ = "";
     private String dob = "";
 
     @Override
@@ -29,10 +27,10 @@ public class FormSuccessActivity extends AppCompatActivity {
             firstName = bundle.getString(Constants.KEY_FNAME);
             lastName = bundle.getString(Constants.KEY_FNAME);
             email = bundle.getString(Constants.KEY_EMAIL);
-            username = bundle.getString(Constants.KEY_USERNAME);
+            occ = bundle.getString(Constants.KEY_OCC);
             dob = bundle.getString(Constants.KEY_DOB);
         }
-        msg.append(username).append(getString(R.string.SUCCESS_MSG_END));
+        msg.append(" ").append(occ).append(getString(R.string.SUCCESS_MSG_END));
         successMsg.setText(msg);
     }
 
