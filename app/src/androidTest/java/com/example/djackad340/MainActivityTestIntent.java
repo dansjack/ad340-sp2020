@@ -36,7 +36,7 @@ public class MainActivityTestIntent {
 
 
     @Test
-    public void verifyMessageSentToMessageActivity() throws InterruptedException {
+    public void verifyMessageSentToMessageActivity() {
         onView(withId(R.id.firstNameText)) // Enter First Name
                 .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)) // Enter Last Name
@@ -52,12 +52,11 @@ public class MainActivityTestIntent {
                 .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
 
         Intents.init();
-        Thread.sleep(250);
         onView(withId(R.id.submitBtn)).perform(click());
-        Thread.sleep(250);
-        intended(hasComponent(FormSuccessActivity.class.getName()));
         intended(hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME));
+        intended(hasComponent(FormSuccessActivity.class.getName()));
         Intents.release();
+
     }
 
     @Test
