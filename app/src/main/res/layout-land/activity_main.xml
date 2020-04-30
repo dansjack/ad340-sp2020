@@ -55,7 +55,7 @@
                 android:id="@+id/firstNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_text_margin"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/first_name"
                 android:hint="@string/first_name"
                 android:inputType="textPersonName"
@@ -65,7 +65,7 @@
                 android:id="@+id/lastNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_text_margin"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/last_name"
                 android:hint="@string/last_name"
                 android:inputType="textPersonName"
@@ -75,7 +75,7 @@
                 android:id="@+id/emailText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_text_margin"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/email"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
@@ -85,7 +85,7 @@
                 android:id="@+id/usernameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_text_margin"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/username"
                 android:hint="@string/username"
                 android:inputType="textPersonName"
@@ -95,7 +95,7 @@
                 android:id="@+id/dobBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_text_margin"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/date_of_birth"
                 android:focusable="false"
                 android:hint="@string/date_of_birth"
@@ -107,7 +107,7 @@
                 android:id="@+id/ageText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_text_margin"
+                android:layout_marginTop="@dimen/form_text_margin_land"
                 android:autofillHints="@string/age"
                 android:background="?attr/editTextBackground"
                 android:gravity="center_vertical"
@@ -133,8 +133,8 @@
                 android:id="@+id/submitBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_text_margin"
-                android:layout_marginBottom="@dimen/form_text_margin"
+                android:layout_marginTop="@dimen/form_text_margin_land"
+                android:layout_marginBottom="@dimen/form_text_margin_land"
                 android:onClick="getFormSuccessActivity"
                 android:text="@string/submit"
                 android:textSize="@dimen/form_text_size"
@@ -143,7 +143,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/form_text_margin" />
+                android:layout_height="@dimen/form_text_margin_land" />
         </LinearLayout>
     </ScrollView>
 
