@@ -23,6 +23,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withResourceName;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
@@ -94,13 +95,13 @@ public class MainActivityTest {
         }
     }
 
-//    @Test
-//    public void hasCorrectDescription() {
-//        onView(withId(R.id.descText)) // Enter Occupation
-//                .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
-//        onView(withId(R.id.descText))
-//                .check(matches(withText(Constants.TEST_DESCRIPTION)));
-//    }
+    @Test
+    public void hasCorrectDescription() {
+        onView(withResourceName("descText")) // Enter Occupation
+                .perform(typeText(Constants.TEST_DESCRIPTION), closeSoftKeyboard());
+        onView(withId(R.id.descText))
+                .check(matches(withText(Constants.TEST_DESCRIPTION)));
+    }
 
     @Test
     public void hasNoFirstName() {
