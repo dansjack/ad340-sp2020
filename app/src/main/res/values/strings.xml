@@ -13,6 +13,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="age">Age</string>
     <string name="occupation">Occupation</string>
+    <string name="location">Location (e.g. Seattle, WA)</string>
     <string name="description">Describe yourself a bit</string>
 
 
@@ -26,9 +27,10 @@
     <string name="profile_name">Name:</string>
     <string name="profile_occ">Occupation:</string>
     <string name="profile_age">Age:</string>
-    <string name="profile_desc">Description:</string>
+    <string name="profile_desc">About me:</string>
 
 
     <string name="date_picker_tag">date picker</string>
+    <string name="err_enter_loc">Enter your location</string>
 
 </resources>

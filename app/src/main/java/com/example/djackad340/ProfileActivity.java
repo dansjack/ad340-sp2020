@@ -8,35 +8,35 @@ import android.view.View;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
-    private TextView profName ;
-    private TextView profAge;
-    private TextView profOcc ;
-    private TextView profDesc;
+
+    public ProfileActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        profName = findViewById(R.id.profileName);
-        profAge = findViewById(R.id.profileAge);
-        profOcc = findViewById(R.id.profileOcc);
-        profDesc = findViewById(R.id.profileDesc);
+        TextView profName = findViewById(R.id.profileName);
+        TextView profAgeLoc = findViewById(R.id.profileAge);
+        TextView profOcc = findViewById(R.id.profileOcc);
+        TextView profDesc = findViewById(R.id.profileDesc);
         Intent mainIntent = getIntent();
         Bundle bundle = mainIntent.getExtras();
-        StringBuilder nameString = new StringBuilder(getString(R.string.profile_name));
-        StringBuilder ageString = new StringBuilder(getString(R.string.profile_age));
-        StringBuilder occString = new StringBuilder(getString(R.string.profile_occ));
+        StringBuilder nameString = new StringBuilder();
+        StringBuilder ageLocString = new StringBuilder();
+        StringBuilder occString = new StringBuilder();
         StringBuilder descString = new StringBuilder(getString(R.string.profile_desc));
 
         if (bundle != null) {
             nameString
-                    .append(" ")
                     .append(bundle.getString(Constants.KEY_FNAME).trim())
                     .append(" ")
                     .append(bundle.getString(Constants.KEY_LNAME).trim());
-            ageString
+            ageLocString
                     .append(" ")
-                    .append(bundle.getString(Constants.KEY_AGE));
+                    .append(bundle.getString(Constants.KEY_AGE))
+                    .append(", ")
+                    .append(bundle.getString(Constants.KEY_LOC).trim());
             occString
                     .append(" ")
                     .append(bundle.getString(Constants.KEY_OCC).trim());
@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
                     .append(bundle.getString(Constants.KEY_DESC));
         }
         profName.setText(nameString);
-        profAge.setText(ageString);
+        profAgeLoc.setText(ageLocString);
         profOcc.setText(occString);
         profDesc.setText(descString);
     }

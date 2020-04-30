@@ -61,6 +61,16 @@
                 android:inputType="text"
                 android:textSize="@dimen/form_text_size" />
 
+            <EditText
+                android:id="@+id/locationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_text_margin"
+                android:autofillHints="@string/location"
+                android:hint="@string/location"
+                android:inputType="text"
+                android:textSize="@dimen/form_text_size" />
+
             <Button
                 android:id="@+id/dobBtn"
                 android:layout_width="match_parent"

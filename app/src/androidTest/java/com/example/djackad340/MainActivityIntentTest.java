@@ -40,6 +40,8 @@ public class MainActivityIntentTest {
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)) // Enter Occupation
                 .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.locationText)) // Enter Location
+                .perform(typeText(Constants.TEST_LOCATION), closeSoftKeyboard());
         onView(withId(R.id.dobBtn))
                 .perform(ViewActions.scrollTo())
                 .perform(click()); // Enter Birthday
@@ -68,6 +70,8 @@ public class MainActivityIntentTest {
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)) // Enter Occupation
                 .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.locationText)) // Enter Location
+                .perform(typeText(Constants.TEST_LOCATION), closeSoftKeyboard());
         onView(withId(R.id.dobBtn))
                 .perform(ViewActions.scrollTo())
                 .perform(click()); // Enter Birthday
@@ -87,7 +91,6 @@ public class MainActivityIntentTest {
         onView(withId(R.id.dobBtn)).check(matches(withText(Constants.EMPTY_STRING)));
         onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING)));
         onView(withId(R.id.descText)).check(matches(withText(Constants.EMPTY_STRING)));
-
     }
 
 

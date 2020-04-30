@@ -1,6 +1,8 @@
 package com.example.djackad340;
 
 class Constants {
+    static final String TEST_LOCATION = "Seattle, WA";
+    static final String KEY_LOC = "location";
     static final String KEY_DESC = "description";
     static final String KEY_OCC = "occupation";
     static final String TEST_OCCUPATION = "Clown";

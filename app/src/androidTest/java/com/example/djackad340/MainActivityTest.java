@@ -72,6 +72,14 @@ public class MainActivityTest {
     }
 
     @Test
+    public void hasCorrectLocation() {
+        onView(withId(R.id.locationText)) // Enter Location
+                .perform(typeText(Constants.TEST_LOCATION), closeSoftKeyboard());
+        onView(withId(R.id.locationText))
+                .check(matches(withText(Constants.TEST_LOCATION)));
+    }
+
+    @Test
     public void hasCorrectBirthday() {
         onView(withId(R.id.dobBtn))
                 .perform(ViewActions.scrollTo())
@@ -157,11 +165,23 @@ public class MainActivityTest {
     }
 
     @Test
+    public void hasNoLocation() {
+        onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+        onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_loc)));
+    }
+
+    @Test
     public void hasNoBirthday() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.locationText)).perform(typeText(Constants.TEST_LOCATION), closeSoftKeyboard());
 
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_dob)));
@@ -173,9 +193,9 @@ public class MainActivityTest {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn))
-                .perform(ViewActions.scrollTo())
-                .perform(click()); // Enter Birthday
+        onView(withId(R.id.locationText)).perform(typeText(Constants.TEST_LOCATION), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn)).perform(ViewActions.scrollTo()).perform(click());
+
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, 12, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText lastNameText;
     private EditText emailText;
     private EditText occupationText;
+    private EditText locationText;
     private Button dobBtn;
     private TextView ageText;
     private EditText descText;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         lastNameText = findViewById(R.id.lastNameText);
         emailText = findViewById(R.id.emailText);
         occupationText = findViewById(R.id.occupationText);
+        locationText = findViewById(R.id.locationText);
         dobBtn = findViewById(R.id.dobBtn);
         ageText = findViewById(R.id.ageText);
         descText = findViewById(R.id.descText);
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             formSuccessIntent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_OCC, occupationText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_LOC, locationText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_AGE, ageText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_DESC, descText.getText().toString());
             startActivityForResult(formSuccessIntent, Constants.CODE_SIGNUP);
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             lastNameText.setText(Constants.EMPTY_STRING);
             emailText.setText(Constants.EMPTY_STRING);
             occupationText.setText(Constants.EMPTY_STRING);
+            locationText.setText(Constants.EMPTY_STRING);
             dobBtn.setText(Constants.EMPTY_STRING);
             ageText.setText(Constants.EMPTY_STRING);
             descText.setText(Constants.EMPTY_STRING);
@@ -107,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else if (occupationText.getText().toString().isEmpty()) { // user didn't entered a occupation
             isValid = false;
             errorText.setText(R.string.err_enter_occ);
+        } else if (locationText.getText().toString().isEmpty()) { // user didn't entered a location
+            isValid = false;
+            errorText.setText(R.string.err_enter_loc);
         } else if (yearsOfAge < 18) { // user is under 18 or over
             isValid = false;
             errorText.setText(R.string.err_enter_dob);
