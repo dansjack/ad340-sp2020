@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">djackAD340</string>
     <string name="nameDate">Jack, Daniel 04/16/2020</string>
+    <string name="helloWorld">Hello World!</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
@@ -10,6 +11,7 @@
     <string name="submit">Submit</string>
     <string name="new_sign_up">New Sign Up</string>
     <string name="sign_up">Sign Up</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="age">Age</string>
     <string name="err_enter_name">Enter your full name</string>
     <string name="err_enter_email">Enter a valid email</string>

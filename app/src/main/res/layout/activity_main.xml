@@ -8,9 +8,8 @@
 
     <ScrollView
         android:id="@+id/formContainer"
-        android:layout_width="344dp"
-        android:layout_height="420dp"
-        app:layout_constraintBottom_toTopOf="@id/formBottomGuide"
+        android:layout_width="0dp"
+        android:layout_height="545dp"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@id/formTopGuide">
@@ -94,8 +93,7 @@
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
-        app:layout_constraintTop_toBottomOf="@id/errorText" />
+        app:layout_constraintStart_toStartOf="@+id/formLeftGuide" />
 
     <TextView
         android:id="@+id/signUpText"
@@ -117,8 +115,7 @@
         android:textSize="@dimen/signature_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitBtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/formLeftGuide"
@@ -133,13 +130,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="@dimen/form_text_guide_perc" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/formBottomGuide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@dimen/form_text_guide_bperc" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/formRightGuide"
