@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/unbleachedSilk"
     tools:context=".ProfileActivity">
 
     <Button
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:onClick="returnToSignUp"
         android:text="@string/new_sign_up"
+        android:background="@color/melon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -28,27 +30,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/profileName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:textSize="@dimen/form_text_size" />
 
             <TextView
                 android:id="@+id/profileAge"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/form_text_size" />
 
             <TextView
                 android:id="@+id/profileOcc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/form_text_size" />
 
             <TextView
                 android:id="@+id/profileDesc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/form_text_size" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

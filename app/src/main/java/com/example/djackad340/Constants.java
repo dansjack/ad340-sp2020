@@ -29,7 +29,7 @@ class Constants {
     static final int TEST_YEAR = 1987;
     static final int TEST_MONTH = 4;
     static final int TEST_DAY = 22;
-    static final String TEST_DOB = "TUESDAY, DECEMBER 22, 1987";
+    static final String TEST_DOB = " TUESDAY, DECEMBER 22, 1987";
 
     static final String TEST_SUCCESS_MSG = "Thanks for Signing Up, Kidney Boy";
 

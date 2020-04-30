@@ -28,21 +28,14 @@ public class ProfileActivity extends AppCompatActivity {
         StringBuilder descString = new StringBuilder(getString(R.string.profile_desc));
 
         if (bundle != null) {
-            nameString
-                    .append(bundle.getString(Constants.KEY_FNAME).trim())
+            nameString.append(bundle.getString(Constants.KEY_FNAME).trim())
                     .append(" ")
                     .append(bundle.getString(Constants.KEY_LNAME).trim());
-            ageLocString
-                    .append(" ")
-                    .append(bundle.getString(Constants.KEY_AGE))
+            ageLocString.append(bundle.getString(Constants.KEY_AGE))
                     .append(", ")
                     .append(bundle.getString(Constants.KEY_LOC).trim());
-            occString
-                    .append(" ")
-                    .append(bundle.getString(Constants.KEY_OCC).trim());
-            descString
-                    .append(" ")
-                    .append(bundle.getString(Constants.KEY_DESC));
+            occString.append(bundle.getString(Constants.KEY_OCC).trim());
+            descString.append(" ").append(bundle.getString(Constants.KEY_DESC));
         }
         profName.setText(nameString);
         profAgeLoc.setText(ageLocString);

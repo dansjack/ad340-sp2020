@@ -4,33 +4,31 @@
     <string name="nameDate">Jack, Daniel 04/16/2020</string>
 
 
+    <!--Form Fields-->
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
-    <string name="date_of_birth">Date of Birth</string>
-    <string name="submit">Submit</string>
-    <string name="new_sign_up">New Sign Up</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="date_of_birth">" Date of Birth"</string>
     <string name="age">Age</string>
     <string name="occupation">Occupation</string>
     <string name="location">Location (e.g. Seattle, WA)</string>
     <string name="description">Describe yourself a bit</string>
 
-
+    <!--Form Validation Error Messages-->
     <string name="err_enter_name">Enter your full name</string>
     <string name="err_enter_email">Enter a valid email</string>
     <string name="err_enter_occ">Enter your occupation</string>
     <string name="err_enter_dob">Must be 18 to sign up</string>
     <string name="err_enter_desc">Describe yourself!</string>
-
-
-    <string name="profile_name">Name:</string>
-    <string name="profile_occ">Occupation:</string>
-    <string name="profile_age">Age:</string>
-    <string name="profile_desc">About me:</string>
-
-
-    <string name="date_picker_tag">date picker</string>
     <string name="err_enter_loc">Enter your location</string>
+
+
+    <string name="profile_desc">About me:</string>
+    <string name="date_picker_tag">date picker</string>
+
+    <!--Form/Profile Buttons-->
+    <string name="submit">Submit</string>
+    <string name="new_sign_up">New Sign Up</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>

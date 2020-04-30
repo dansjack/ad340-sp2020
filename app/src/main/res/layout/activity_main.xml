@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/unbleachedSilk"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -77,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
                 android:autofillHints="@string/date_of_birth"
+                android:background="@color/melon"
                 android:focusable="false"
                 android:hint="@string/date_of_birth"
                 android:onClick="getDatePicker"
@@ -113,6 +115,7 @@
         android:onClick="getFormSuccessActivity"
         android:text="@string/submit"
         android:textSize="@dimen/form_text_size"
+        android:background="@color/melon"
         app:layout_constraintBottom_toTopOf="@+id/nameDateView"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintHorizontal_bias="0.0"

@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        String currentDateString = " " + DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
         yearsOfAge = currentYear - year;
         if ((month > currentMonth) || (month == currentMonth && dayOfMonth > currentDayOfMonth)) {
