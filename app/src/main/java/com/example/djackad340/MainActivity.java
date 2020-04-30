@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void getFormSuccessActivity(View view) {
         if (isFormValid()) {
-            Intent formSuccessIntent = new Intent(this, FormSuccessActivity.class);
+            Intent formSuccessIntent = new Intent(this, ProfileActivity.class);
             formSuccessIntent.putExtra(Constants.KEY_FNAME, firstNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());

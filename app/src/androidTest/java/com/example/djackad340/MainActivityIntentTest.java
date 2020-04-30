@@ -32,7 +32,7 @@ public class MainActivityIntentTest {
             MainActivity.class);
 
     @Test
-    public void verifyMessageSentToMessageActivity() throws InterruptedException {
+    public void verifyFormSentToProfileActivity() {
         onView(withId(R.id.firstNameText)) // Enter First Name
                 .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)) // Enter Last Name
@@ -52,7 +52,7 @@ public class MainActivityIntentTest {
 
         onView(withId(R.id.submitBtn)).perform(click());
         intended(allOf(
-                hasComponent(hasShortClassName(".FormSuccessActivity")),
+                hasComponent(hasShortClassName(".ProfileActivity")),
                 toPackage("com.example.djackad340"),
                 hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
 
