@@ -64,7 +64,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasCorrectOccupation() throws InterruptedException {
+    public void hasCorrectOccupation() {
         onView(withId(R.id.occupationText)) // Enter Occupation
                 .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
         onView(withId(R.id.occupationText))
@@ -113,67 +113,42 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasNoFirstName() throws InterruptedException {
+    public void hasNoFirstName() {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
-        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn))
-                .perform(ViewActions.scrollTo())
-                .perform(click()); // Enter Birthday
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
 
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_name)));
     }
 
     @Test
-    public void hasNoLastName() throws InterruptedException {
+    public void hasNoLastName() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
-        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn))
-                .perform(ViewActions.scrollTo())
-                .perform(click()); // Enter Birthday
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
 
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_name)));
     }
 
     @Test
-    public void hasNoEmail() throws InterruptedException {
+    public void hasNoEmail() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
-        onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn))
-                .perform(ViewActions.scrollTo())
-                .perform(click()); // Enter Birthday
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
 
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_email)));
     }
 
     @Test
-    public void hasNoOccupation() throws InterruptedException {
+    public void hasNoOccupation() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn))
-                .perform(ViewActions.scrollTo())
-                .perform(click()); // Enter Birthday
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
 
         onView(withId(R.id.submitBtn)).perform(click());
         onView(withId(R.id.errorText)).check(matches(withText(R.string.err_enter_occ)));
     }
 
     @Test
-    public void hasNoBirthday() throws InterruptedException {
+    public void hasNoBirthday() {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
@@ -184,7 +159,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasInvalidBirthday() throws InterruptedException {
+    public void hasInvalidBirthday() {
         onView(withId(R.id.dobBtn))
                 .perform(ViewActions.scrollTo())
                 .perform(click()); // Enter Birthday

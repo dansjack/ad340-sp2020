@@ -1,7 +1,6 @@
 package com.example.djackad340;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -25,9 +24,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText firstNameText;
     private EditText lastNameText;
     private EditText emailText;
-    private EditText occText;
+    private EditText occupationText;
     private Button dobBtn;
     private TextView ageText;
+    private EditText descText;
     private TextView errorText;
     private int yearsOfAge;
 
@@ -39,9 +39,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         firstNameText = findViewById(R.id.firstNameText);
         lastNameText = findViewById(R.id.lastNameText);
         emailText = findViewById(R.id.emailText);
-        occText = findViewById(R.id.occupationText);
+        occupationText = findViewById(R.id.occupationText);
         dobBtn = findViewById(R.id.dobBtn);
         ageText = findViewById(R.id.ageText);
+        descText = findViewById(R.id.descText);
         errorText = findViewById(R.id.errorText);
     }
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
         ageText.setText( (String) savedInstanceState.get(Constants.KEY_AGE));
@@ -72,26 +73,28 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             formSuccessIntent.putExtra(Constants.KEY_FNAME, firstNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_LNAME, lastNameText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_EMAIL, emailText.getText().toString());
-            formSuccessIntent.putExtra(Constants.KEY_USERNAME, occText.getText().toString());
-            formSuccessIntent.putExtra(Constants.KEY_DOB, dobBtn.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_OCC, occupationText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_AGE, ageText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_DESC, descText.getText().toString());
             startActivityForResult(formSuccessIntent, Constants.CODE_SIGNUP);
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.CODE_SIGNUP && resultCode == Constants.CODE_NEW_SIGNUP) {
             firstNameText.setText(Constants.EMPTY_STRING);
             lastNameText.setText(Constants.EMPTY_STRING);
             emailText.setText(Constants.EMPTY_STRING);
-            occText.setText(Constants.EMPTY_STRING);
+            occupationText.setText(Constants.EMPTY_STRING);
             dobBtn.setText(Constants.EMPTY_STRING);
             ageText.setText(Constants.EMPTY_STRING);
+            descText.setText(Constants.EMPTY_STRING);
         }
     }
 
-    public boolean isFormValid() {
+    private boolean isFormValid() {
         boolean isValid = true;
         if (firstNameText.getText().toString().isEmpty() ||
                 (lastNameText.getText().toString().isEmpty())) { // user didn't enter a full name
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 emailText.getText().toString().trim()).matches()) { // user didn't enter a valid password
             isValid = false;
             errorText.setText(R.string.err_enter_email);
-        } else if (occText.getText().toString().isEmpty()) { // user didn't entered a username
+        } else if (occupationText.getText().toString().isEmpty()) { // user didn't entered a occupation
             isValid = false;
             errorText.setText(R.string.err_enter_occ);
         } else if (yearsOfAge < 18) { // user is under 18 or over
@@ -111,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             errorText.setText("");
         }
         return isValid;
+
+//        else if (descText.getText().toString().isEmpty()) { // user didn't entered any description
+//            isValid = false;
+//            errorText.setText(R.string.err_enter_desc);
+//        }
     }
 
     public void getDatePicker(View view) {
