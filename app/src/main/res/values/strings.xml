@@ -22,5 +22,4 @@
     <string name="date_picker_tag">date picker</string>
     <string name="occupation">Occupation</string>
     <string name="description">Describe yourself a bit</string>
-    <string name="err_enter_desc">Describe yourself!</string>
 </resources>

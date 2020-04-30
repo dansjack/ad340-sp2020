@@ -64,7 +64,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasCorrectOccupation() {
+    public void hasCorrectOccupation() throws InterruptedException {
         onView(withId(R.id.occupationText)) // Enter Occupation
                 .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
         onView(withId(R.id.occupationText))
@@ -113,7 +113,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasNoFirstName() {
+    public void hasNoFirstName() throws InterruptedException {
         onView(withId(R.id.lastNameText)).perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
@@ -128,7 +128,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasNoLastName() {
+    public void hasNoLastName() throws InterruptedException {
         onView(withId(R.id.firstNameText)).perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
         onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.occupationText)).perform(typeText(Constants.TEST_USERNAME), closeSoftKeyboard());
@@ -184,7 +184,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasInvalidBirthday() {
+    public void hasInvalidBirthday() throws InterruptedException {
         onView(withId(R.id.dobBtn))
                 .perform(ViewActions.scrollTo())
                 .perform(click()); // Enter Birthday
