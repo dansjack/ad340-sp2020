@@ -18,7 +18,7 @@ class Constants {
     static final String TEST_LNAME = "Hill";
     static final String TEST_EMAIL = "thatMyPurse@idontknowyou.com";
     static final String TEST_OCCUPATION = "Mascot";
-    static final String TEST_DESCRIPTION = "I got gout!";
+    static final String TEST_DESCRIPTION = "Howdy, I'm Bobby and I've got the gout!";
     static final String TEST_AGE = "33";
     static final String TEST_AGE_INVALID = "0";
 

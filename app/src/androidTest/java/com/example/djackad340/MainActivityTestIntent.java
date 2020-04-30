@@ -48,7 +48,7 @@ public class MainActivityTestIntent {
 
         onView(withId(R.id.submitBtn)).perform(click());
         intended(allOf(
-                hasComponent(FormSuccessActivity.class.getName()),
+                hasComponent(hasShortClassName(".FormSuccessActivity")),
                 toPackage("com.example.djackad340"),
                 hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
     }
