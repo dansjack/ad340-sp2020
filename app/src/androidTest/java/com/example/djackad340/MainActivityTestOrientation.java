@@ -13,6 +13,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Calendar;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -24,6 +26,10 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTestOrientation {
+    Calendar c = Calendar.getInstance();
+    int currentYear = c.get(Calendar.YEAR);
+    int currentMonth = c.get(Calendar.MONTH);
+    int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
@@ -53,4 +59,6 @@ public class MainActivityTestOrientation {
         device.setOrientationNatural();
         onView(withId(R.id.ageText)).check(matches(withText(Constants.TEST_AGE))); // Age
     }
+
+
 }
