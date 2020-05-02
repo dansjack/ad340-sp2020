@@ -36,9 +36,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/profile_picture"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/bobby"
-                    android:contentDescription="@string/profile_picture" />
+                    app:srcCompat="@drawable/bobby" />
             </androidx.cardview.widget.CardView>
 
             <TextView
