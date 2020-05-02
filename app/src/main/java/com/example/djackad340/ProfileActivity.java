@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    public ProfileActivity() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +24,13 @@ public class ProfileActivity extends AppCompatActivity {
         StringBuilder occString = new StringBuilder();
         StringBuilder descString = new StringBuilder();
 
-        if (bundle != null) {
-            nameString.append(bundle.getString(Constants.KEY_FNAME).trim());
-            ageLocString.append(bundle.getString(Constants.KEY_AGE))
+        nameString.append(bundle.getString(Constants.KEY_FNAME).trim());
+        ageLocString.append(bundle.getString(Constants.KEY_AGE))
                     .append(", ")
                     .append(bundle.getString(Constants.KEY_LOC).trim());
-            occString.append(" ").append(bundle.getString(Constants.KEY_OCC).trim());
-            descString.append(bundle.getString(Constants.KEY_DESC).trim());
-        }
+        occString.append(" ").append(bundle.getString(Constants.KEY_OCC).trim());
+        descString.append(bundle.getString(Constants.KEY_DESC).trim());
+
         profName.setText(nameString);
         profAgeLoc.setText(ageLocString);
         profOcc.setText(occString);
