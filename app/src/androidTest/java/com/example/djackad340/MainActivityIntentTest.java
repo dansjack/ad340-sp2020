@@ -57,41 +57,5 @@ public class MainActivityIntentTest {
                 hasComponent(hasShortClassName(".ProfileActivity")),
                 toPackage("com.example.djackad340"),
                 hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
-
-        onView(withId(R.id.goBackBtn)).perform(click());
     }
-
-    @Test
-    public void verifyFormEmptyOnBack() {
-        onView(withId(R.id.firstNameText)) // Enter First Name
-                .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
-        onView(withId(R.id.lastNameText)) // Enter Last Name
-                .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
-        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.occupationText)) // Enter Occupation
-                .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
-        onView(withId(R.id.locationText)) // Enter Location
-                .perform(typeText(Constants.TEST_LOCATION), closeSoftKeyboard());
-        onView(withId(R.id.dobBtn))
-                .perform(ViewActions.scrollTo())
-                .perform(click()); // Enter Birthday
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
-        onView(withId(R.id.descText)) // Enter Description
-                .perform(ViewActions.scrollTo())
-                .perform(typeText(Constants.TEST_DESC), closeSoftKeyboard());
-
-        onView(withId(R.id.submitBtn)).perform(click());
-        onView(withId(R.id.goBackBtn)).perform(click());
-        onView(withId(R.id.firstNameText)).check(matches(withText(Constants.EMPTY_STRING)));
-        onView(withId(R.id.lastNameText)).check(matches(withText(Constants.EMPTY_STRING)));
-        onView(withId(R.id.emailText)).check(matches(withText(Constants.EMPTY_STRING)));
-        onView(withId(R.id.occupationText)).check(matches(withText(Constants.EMPTY_STRING)));
-        onView(withId(R.id.dobBtn)).check(matches(withText(Constants.EMPTY_STRING)));
-        onView(withId(R.id.ageText)).check(matches(withText(Constants.EMPTY_STRING)));
-        onView(withId(R.id.descText)).check(matches(withText(Constants.EMPTY_STRING)));
-    }
-
-
 }

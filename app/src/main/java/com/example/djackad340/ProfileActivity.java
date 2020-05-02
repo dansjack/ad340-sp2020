@@ -17,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         TextView profName = findViewById(R.id.profileName);
-        TextView profAgeLoc = findViewById(R.id.profileAge);
+        TextView profAgeLoc = findViewById(R.id.profileAgeLoc);
         TextView profOcc = findViewById(R.id.profileOcc);
         TextView profDesc = findViewById(R.id.profileDesc);
         Intent mainIntent = getIntent();
@@ -25,17 +25,15 @@ public class ProfileActivity extends AppCompatActivity {
         StringBuilder nameString = new StringBuilder();
         StringBuilder ageLocString = new StringBuilder();
         StringBuilder occString = new StringBuilder();
-        StringBuilder descString = new StringBuilder(getString(R.string.profile_desc));
+        StringBuilder descString = new StringBuilder();
 
         if (bundle != null) {
-            nameString.append(bundle.getString(Constants.KEY_FNAME).trim())
-                    .append(" ")
-                    .append(bundle.getString(Constants.KEY_LNAME).trim());
+            nameString.append(bundle.getString(Constants.KEY_FNAME).trim());
             ageLocString.append(bundle.getString(Constants.KEY_AGE))
                     .append(", ")
                     .append(bundle.getString(Constants.KEY_LOC).trim());
-            occString.append(bundle.getString(Constants.KEY_OCC).trim());
-            descString.append(" ").append(bundle.getString(Constants.KEY_DESC));
+            occString.append(" ").append(bundle.getString(Constants.KEY_OCC).trim());
+            descString.append(bundle.getString(Constants.KEY_DESC).trim());
         }
         profName.setText(nameString);
         profAgeLoc.setText(ageLocString);

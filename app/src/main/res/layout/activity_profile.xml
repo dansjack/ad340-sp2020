@@ -4,25 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/unbleachedSilk"
     tools:context=".ProfileActivity">
 
-    <Button
-        android:id="@+id/goBackBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="returnToSignUp"
-        android:text="@string/new_sign_up"
-        android:background="@color/melon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ScrollView
+        android:id="@+id/profileContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/profile_bmargin"
-        app:layout_constraintBottom_toTopOf="@+id/goBackBtn"
+        android:layout_marginHorizontal="@dimen/profileMarginHorizontal"
+        android:layout_marginTop="@dimen/profileMarginTop"
+        android:layout_marginBottom="@dimen/profileMarginTop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,15 +23,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profilePicContainer"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/melon"
+                app:cardCornerRadius="16dp">
+
+                <ImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/bobby"
+                    android:contentDescription="@string/profile_picture" />
+            </androidx.cardview.widget.CardView>
+
             <TextView
                 android:id="@+id/profileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:textSize="@dimen/form_text_size" />
+                android:layout_marginTop="@dimen/profileMarginBottom"
+                android:textSize="@dimen/profileNameSize"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/profileAge"
+                android:id="@+id/profileAgeLoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/form_text_size" />
@@ -49,13 +59,27 @@
                 android:id="@+id/profileOcc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_work_black_24dp"
+                android:textColor="@color/darkBlueGray"
+                android:textSize="@dimen/form_text_size" />
+
+            <TextView
+                android:id="@+id/aboutMeIntroText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profileMarginTop"
+                android:text="@string/about_me"
+                android:textColor="@color/material_on_surface_emphasis_medium"
                 android:textSize="@dimen/form_text_size" />
 
             <TextView
                 android:id="@+id/profileDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/material_on_surface_disabled"
                 android:textSize="@dimen/form_text_size" />
+
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

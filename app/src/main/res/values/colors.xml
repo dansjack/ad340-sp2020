@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#FCB1A6</color>
     <color name="colorPrimaryDark">#5D2A42</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#FB6376</color>
     <color name="unbleachedSilk">#FFDCCC</color>
     <color name="melon">#FCB1A6</color>
     <color name="fieryRose">#FB6376</color>
     <color name="floralWhite">#FFF9EC</color>
+    <color name="black">#2C2625</color>
+    <color name="darkBlueGray">#6D668A</color>
+
 </resources>
