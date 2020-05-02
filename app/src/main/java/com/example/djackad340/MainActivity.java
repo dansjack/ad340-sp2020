@@ -6,12 +6,15 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private EditText descText;
     private TextView errorText;
     private int yearsOfAge;
+    private Uri imageUri;
+    private ImageView profilePicThumb;
+
 
 
     @Override
@@ -50,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         ageText = findViewById(R.id.ageText);
         descText = findViewById(R.id.descText);
         errorText = findViewById(R.id.errorText);
+        profilePicThumb = findViewById(R.id.profilePicThumb);
     }
 
     @Override
@@ -83,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             formSuccessIntent.putExtra(Constants.KEY_LOC, locationText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_AGE, ageText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_DESC, descText.getText().toString());
+
+            if (imageUri != null) {
+                formSuccessIntent.putExtra(Constants.KEY_Uri, imageUri);
+            }
             startActivity(formSuccessIntent);
         }
     }
@@ -106,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else if (yearsOfAge < 18) { // user is under 18 or over
             isValid = false;
             errorText.setText(R.string.err_enter_dob_young);
-        } else if (yearsOfAge > 99) {
+        } else if (yearsOfAge > 99) { // user is improbably old
             isValid = false;
             errorText.setText(R.string.err_enter_dob_invalid);
         } else if (descText.getText().toString().isEmpty()) { // user didn't entered any description
@@ -140,5 +151,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         dobBtn.setText(currentDateString);
         ageText.setText(String.valueOf(yearsOfAge));
+    }
+
+    public void getImageFromPhone(View view) {
+        Intent gallery = new Intent(Intent.ACTION_GET_CONTENT, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, Constants.GET_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == Constants.GET_IMAGE){
+            imageUri = data.getData();
+            profilePicThumb.setImageURI(imageUri);
+        }
     }
 }

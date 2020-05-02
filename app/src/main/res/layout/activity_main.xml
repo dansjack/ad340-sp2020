@@ -21,6 +21,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/ProfilePicContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/profilePicBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="getImageFromPhone"
+                    android:text="@string/add_photo_text"
+                    android:textColor="?android:textColorHint"
+                    android:theme="@style/ButtonStyles" />
+
+                <ImageView
+                    android:id="@+id/profilePicThumb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_person_melon_48dp"
+                    android:contentDescription="@string/profile_picture_thumbnail" />
+            </LinearLayout>
+
             <EditText
                 android:id="@+id/firstNameText"
                 android:layout_width="match_parent"

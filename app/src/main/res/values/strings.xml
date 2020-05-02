@@ -34,5 +34,7 @@
     <string name="about_me">About me…</string>
     <string name="profile_picture">Profile Picture</string>
     <string name="ellipses">"…"</string>
+    <string name="add_photo_text">Add Photo</string>
+    <string name="profile_picture_thumbnail">Profile picture thumbnail</string>
 
 </resources>

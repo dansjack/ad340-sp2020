@@ -3,7 +3,9 @@ package com.example.djackad340;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -17,8 +19,11 @@ public class ProfileActivity extends AppCompatActivity {
         TextView profAgeLoc = findViewById(R.id.profileAgeLoc);
         TextView profOcc = findViewById(R.id.profileOcc);
         TextView profDesc = findViewById(R.id.profileDesc);
+        ImageView profilePic = findViewById(R.id.profilePic);
+
         Intent mainIntent = getIntent();
         Bundle bundle = mainIntent.getExtras();
+
         StringBuilder nameString = new StringBuilder();
         StringBuilder ageLocString = new StringBuilder();
         StringBuilder occString = new StringBuilder();
@@ -31,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         occString.append(" ").append(bundle.getString(Constants.KEY_OCC).trim());
         descString.append(bundle.getString(Constants.KEY_DESC).trim());
 
+        profilePic.setImageURI((Uri) bundle.get(Constants.KEY_Uri));
         profName.setText(nameString);
         profAgeLoc.setText(ageLocString);
         profOcc.setText(occString);
