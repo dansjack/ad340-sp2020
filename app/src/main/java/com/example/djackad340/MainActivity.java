@@ -7,7 +7,6 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
@@ -106,7 +105,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             errorText.setText(R.string.err_enter_loc);
         } else if (yearsOfAge < 18) { // user is under 18 or over
             isValid = false;
-            errorText.setText(R.string.err_enter_dob);
+            errorText.setText(R.string.err_enter_dob_young);
+        } else if (yearsOfAge > 99) {
+            isValid = false;
+            errorText.setText(R.string.err_enter_dob_invalid);
         } else if (descText.getText().toString().isEmpty()) { // user didn't entered any description
             isValid = false;
             errorText.setText(R.string.err_enter_desc);

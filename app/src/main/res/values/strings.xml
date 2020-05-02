@@ -18,7 +18,8 @@
     <string name="err_enter_name">Enter your full name</string>
     <string name="err_enter_email">Enter a valid email</string>
     <string name="err_enter_occ">Enter your occupation</string>
-    <string name="err_enter_dob">Must be 18 to sign up</string>
+    <string name="err_enter_dob_young">Must be 18 to sign up</string>
+    <string name="err_enter_dob_invalid">Select a valid age</string>
     <string name="err_enter_desc">Describe yourself!</string>
     <string name="err_enter_loc">Enter your location</string>
 
@@ -32,5 +33,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="about_me">About me…</string>
     <string name="profile_picture">Profile Picture</string>
+    <string name="ellipses">"…"</string>
 
 </resources>

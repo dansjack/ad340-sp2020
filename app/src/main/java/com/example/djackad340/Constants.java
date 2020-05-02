@@ -17,9 +17,9 @@ class Constants {
     static final String TEST_FNAME = "Bobby";
     static final String TEST_LNAME = "Hill";
     static final String TEST_EMAIL = "thatMyPurse@idontknowyou.com";
-    static final String TEST_USERNAME = "Kidney Boy";
     static final String TEST_AGE = "33";
-    static final String TEST_AGE_INVALID = "0";
+    static final String TEST_AGE_TOO_LOW = "0";
+    static final String TEST_AGE_TOO_HIGH = "100";
     static final String TEST_DESC = "Hello there";
 
     static final int TEST_YEAR = 1987;
