@@ -79,22 +79,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             formSuccessIntent.putExtra(Constants.KEY_LOC, locationText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_AGE, ageText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_DESC, descText.getText().toString());
-            startActivityForResult(formSuccessIntent, Constants.CODE_SIGNUP);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.CODE_SIGNUP && resultCode == Constants.CODE_NEW_SIGNUP) {
-            firstNameText.setText(Constants.EMPTY_STRING);
-            lastNameText.setText(Constants.EMPTY_STRING);
-            emailText.setText(Constants.EMPTY_STRING);
-            occupationText.setText(Constants.EMPTY_STRING);
-            locationText.setText(Constants.EMPTY_STRING);
-            dobBtn.setText(Constants.EMPTY_STRING);
-            ageText.setText(Constants.EMPTY_STRING);
-            descText.setText(Constants.EMPTY_STRING);
+            startActivity(formSuccessIntent);
         }
     }
 

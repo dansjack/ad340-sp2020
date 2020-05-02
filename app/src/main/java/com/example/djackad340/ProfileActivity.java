@@ -40,11 +40,4 @@ public class ProfileActivity extends AppCompatActivity {
         profOcc.setText(occString);
         profDesc.setText(descString);
     }
-
-    public void returnToSignUp(View view) {
-        setResult(Constants.CODE_NEW_SIGNUP);
-        finish();
-    }
-
-
 }
