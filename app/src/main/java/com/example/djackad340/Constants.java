@@ -9,13 +9,9 @@ class Constants {
     static final String KEY_FNAME = "firstName";
     static final String KEY_LNAME = "lastName";
     static final String KEY_EMAIL = "email";
-    static final String KEY_USERNAME = "username";
     static final String KEY_DOB = "dateOfBirth";
     static final String KEY_AGE = "age";
-    static final String RETURN_TO_MAIN = "newSignUp";
     static final String EMPTY_STRING = "";
-    static final int CODE_SIGNUP = 1;
-    static final int CODE_NEW_SIGNUP = 2;
 
     // Test Constants
     static final String TEST_FNAME = "Bobby";
@@ -31,6 +27,5 @@ class Constants {
     static final int TEST_DAY = 22;
     static final String TEST_DOB = " TUESDAY, DECEMBER 22, 1987";
 
-    static final String TEST_SUCCESS_MSG = "Thanks for Signing Up, Kidney Boy";
 
 }

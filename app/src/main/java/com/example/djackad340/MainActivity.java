@@ -7,6 +7,7 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
@@ -15,7 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 
@@ -109,8 +114,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             errorText.setText("");
         }
         return isValid;
-
-
     }
 
     public void getDatePicker(View view) {
@@ -121,19 +124,16 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
-        int currentYear = c.get(Calendar.YEAR);
-        int currentMonth = c.get(Calendar.MONTH);
-        int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
 
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(c.getTime());
+        Period dateDiff = Period.between(LocalDate.parse(currentDate), java.time.LocalDate.now());
         String currentDateString = " " + DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
-        yearsOfAge = currentYear - year;
-        if ((month > currentMonth) || (month == currentMonth && dayOfMonth > currentDayOfMonth)) {
-            yearsOfAge--;
-        }
+        yearsOfAge = dateDiff.getYears();
         if (yearsOfAge < 1) yearsOfAge = 0;
 
         dobBtn.setText(currentDateString);
