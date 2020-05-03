@@ -67,7 +67,7 @@ public class MainActivityIntentTest {
     }
 
     @Test
-    public void validateCameraInput() {
+    public void checkImageInput() {
 
         // simulated image
 
@@ -76,6 +76,25 @@ public class MainActivityIntentTest {
         Intent intent = new Intent();
         intent.putExtra(Constants.KEY_Uri, "img");
         Instrumentation.ActivityResult result = new Instrumentation.ActivityResult(Activity.RESULT_OK, intent);
+
+        // tells Espresso to respond with the ActivityResult
+        intending(toPackage("com.google.android.apps.photos")).respondWith(result);
+
+        // check an intent was sent to photos package
+        onView(withId(R.id.profilePicBtn)).perform(click());
+        intended(toPackage("com.google.android.apps.photos"));
+    }
+
+    @Test
+    public void checkImageInputNull() {
+
+        // simulated image
+
+
+        // result to return from gallery
+        Intent intent = new Intent();
+        intent.putExtra(Constants.KEY_Uri, "img");
+        Instrumentation.ActivityResult result = new Instrumentation.ActivityResult(Activity.RESULT_CANCELED, intent);
 
         // tells Espresso to respond with the ActivityResult
         intending(toPackage("com.google.android.apps.photos")).respondWith(result);
