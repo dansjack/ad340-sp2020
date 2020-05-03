@@ -89,7 +89,9 @@ public class MainActivityTest {
     @Test
     public void hasCorrectBirthdayAlt() {
         if (currentDayOfMonth < 28) {
-            onView(withId(R.id.dobBtn)).perform(click()); // Enter Birthday
+            onView(withId(R.id.dobBtn))
+                    .perform(ViewActions.scrollTo())
+                    .perform(click()); // Enter Birthday
             onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                     Constants.TEST_YEAR, currentMonth, currentDayOfMonth + 1));
             onView(withId(android.R.id.button1)).perform(click());
