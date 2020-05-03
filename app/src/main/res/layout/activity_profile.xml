@@ -26,10 +26,10 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/profilePicContainer"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="@dimen/profileContainerHeight"
                 android:elevation="0dp"
                 app:cardBackgroundColor="@color/melon"
-                app:cardCornerRadius="16dp">
+                app:cardCornerRadius="@dimen/cardCornerRadius">
 
                 <ImageView
                     android:id="@+id/profilePic"
@@ -63,7 +63,7 @@
                 android:id="@+id/profileOcc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_work_black_24dp"
+                android:drawableStart="@drawable/ic_work_darkbluegray_24dp"
                 android:textColor="@color/darkBlueGray"
                 android:ellipsize="end"
                 android:maxLines="1"

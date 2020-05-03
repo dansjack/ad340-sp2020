@@ -37,12 +37,6 @@ public class MainActivityTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
-
-    @Test
-    public void hasNameDate() {
-        onView(withId(R.id.nameDateView)).check(matches(withText(R.string.nameDate)));
-    }
-
     @Test
     public void hasCorrectFirstName() {
         onView(withId(R.id.firstNameText)) // Enter First Name

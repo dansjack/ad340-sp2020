@@ -30,7 +30,7 @@
     <!--Form/Profile Buttons-->
     <string name="submit">Submit</string>
     <string name="new_sign_up">New Sign Up</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="sign_up">Sign Up for GreatDate</string>
     <string name="about_me">About me…</string>
     <string name="profile_picture">Profile Picture</string>
     <string name="ellipses">"…"</string>

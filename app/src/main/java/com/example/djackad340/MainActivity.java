@@ -90,10 +90,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             formSuccessIntent.putExtra(Constants.KEY_LOC, locationText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_AGE, ageText.getText().toString());
             formSuccessIntent.putExtra(Constants.KEY_DESC, descText.getText().toString());
+            formSuccessIntent.putExtra(Constants.KEY_Uri, imageUri);
 
-            if (imageUri != null) {
-                formSuccessIntent.putExtra(Constants.KEY_Uri, imageUri);
-            }
             startActivity(formSuccessIntent);
         }
     }
