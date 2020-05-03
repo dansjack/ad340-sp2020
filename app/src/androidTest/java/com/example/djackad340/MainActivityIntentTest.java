@@ -1,7 +1,14 @@
 package com.example.djackad340;
 
+import android.app.Activity;
+import android.app.Instrumentation;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.DatePicker;
 
+import androidx.test.InstrumentationRegistry;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
@@ -16,6 +23,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
 import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.Intents.intending;
 import static androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
@@ -57,5 +65,25 @@ public class MainActivityIntentTest {
                 hasComponent(hasShortClassName(".ProfileActivity")),
                 toPackage("com.example.djackad340"),
                 hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
+    }
+
+    @Test
+    public void validateCameraInput() {
+
+        // simulated image
+        Bitmap img = BitmapFactory.decodeResource(ApplicationProvider.getApplicationContext().getResources(),
+                R.drawable.bobby);
+
+        // result to return from gallery
+        Intent intent = new Intent();
+        intent.putExtra(Constants.KEY_Uri, img);
+        Instrumentation.ActivityResult result = new Instrumentation.ActivityResult(Activity.RESULT_OK, intent);
+
+        // tells Espresso to respond with the ActivityResult
+        intending(toPackage("com.google.android.apps.photos")).respondWith(result);
+
+        // check an intent was sent to photos package
+        onView(withId(R.id.profilePicBtn)).perform(click());
+        intended(toPackage("com.google.android.apps.photos"));
     }
 }
