@@ -10,46 +10,44 @@
         android:id="@+id/formContainer"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/signUpVerticalMargins"
         android:isScrollContainer="false"
         app:layout_constraintBottom_toTopOf="@id/formBottomGuide"
         app:layout_constraintEnd_toStartOf="@+id/formRightGuide"
         app:layout_constraintStart_toStartOf="@+id/formLeftGuide"
         app:layout_constraintTop_toBottomOf="@id/signUpText">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/ProfilePicContainer"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/thumbnailHeight"
-                android:orientation="horizontal">
+            <Button
+                android:id="@+id/profilePicBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/profilePicBtnStart"
+                android:onClick="getImageFromPhone"
+                android:text="@string/add_photo_text"
+                android:textColor="?android:textColorHint"
+                android:theme="@style/ButtonStyles"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="16dp" />
 
-                <Button
-                    android:id="@+id/profilePicBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClick="getImageFromPhone"
-                    android:text="@string/add_photo_text"
-                    android:textColor="?android:textColorHint"
-                    android:theme="@style/ButtonStyles" />
-
-                <ImageView
-                    android:id="@+id/profilePicThumb"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:contentDescription="@string/profile_picture_thumbnail"
-                    app:srcCompat="@drawable/ic_person_melon_48dp" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/profilePicThumb"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/profilePicBtnStart"
+                android:contentDescription="@string/profile_picture_thumbnail"
+                app:layout_constraintBottom_toTopOf="@+id/firstNameText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_person_melon_48dp" />
 
             <EditText
                 android:id="@+id/firstNameText"
+                app:layout_constraintTop_toBottomOf="@id/profilePicBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -60,6 +58,7 @@
 
             <EditText
                 android:id="@+id/lastNameText"
+                app:layout_constraintTop_toBottomOf="@id/firstNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -70,6 +69,7 @@
 
             <EditText
                 android:id="@+id/emailText"
+                app:layout_constraintTop_toBottomOf="@id/lastNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -80,6 +80,7 @@
 
             <EditText
                 android:id="@+id/occupationText"
+                app:layout_constraintTop_toBottomOf="@id/emailText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -90,6 +91,7 @@
 
             <EditText
                 android:id="@+id/locationText"
+                app:layout_constraintTop_toBottomOf="@id/occupationText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -100,6 +102,7 @@
 
             <Button
                 android:id="@+id/dobBtn"
+                app:layout_constraintTop_toBottomOf="@id/locationText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -114,6 +117,7 @@
 
             <TextView
                 android:id="@+id/ageText"
+                app:layout_constraintTop_toBottomOf="@id/dobBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -124,6 +128,7 @@
 
             <EditText
                 android:id="@+id/descText"
+                app:layout_constraintTop_toBottomOf="@id/ageText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/form_text_margin"
@@ -132,7 +137,7 @@
                 android:gravity="start|top"
                 android:hint="@string/description"
                 android:inputType="textMultiLine" />
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <Button
