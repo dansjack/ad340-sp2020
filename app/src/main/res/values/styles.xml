@@ -8,11 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/unbleachedSilk</item>
-        <item name="android:buttonStyle">@style/ButtonStyles</item>
     </style>
 
     <style name="ButtonStyles" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/melon</item>
+        <item name="tabIndicatorColor">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <style name="TabStyles" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">@color/melon</item>
     </style>
 
 </resources>

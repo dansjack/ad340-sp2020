@@ -1,6 +1,7 @@
 package com.example.djackad340;
 
 class Constants {
+
     static final int GET_IMAGE = 9;
     static final String KEY_LOC = "location";
     static final String KEY_DESC = "description";
@@ -24,6 +25,13 @@ class Constants {
     static final String TEST_AGE_TOO_LOW = "0";
     static final String TEST_AGE_TOO_HIGH = "100";
     static final String TEST_DESC = "Hello there";
+    static String TEST_NAME_ERR = "Enter your full name";
+    static String TEST_EMAIL_ERR = "Enter a valid email";
+    static String TEST_OCC_ERR = "Enter your occupation";
+    static String TEST_DOBY_ERR = "Must be 18 to sign up";
+    static String TEST_DOBI_ERR = "Select a valid age";
+    static String TEST_DESC_ERR = "Describe yourself!";
+    static String TEST_LOC_ERR = "Enter your location";
 
     static final int TEST_YEAR = 1987;
     static final int TEST_MONTH = 4;

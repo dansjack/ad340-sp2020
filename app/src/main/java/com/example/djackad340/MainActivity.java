@@ -36,12 +36,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private Button dobBtn;
     private TextView ageText;
     private EditText descText;
-    private TextView errorText;
     private int yearsOfAge;
     private Uri imageUri;
     private ImageView profilePicThumb;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         dobBtn = findViewById(R.id.dobBtn);
         ageText = findViewById(R.id.ageText);
         descText = findViewById(R.id.descText);
-        errorText = findViewById(R.id.errorText);
         profilePicThumb = findViewById(R.id.profilePicThumb);
     }
 
@@ -98,31 +94,61 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private boolean isFormValid() {
         boolean isValid = true;
-        if (firstNameText.getText().toString().isEmpty() ||
-                (lastNameText.getText().toString().isEmpty())) { // user didn't enter a full name
+        if (firstNameText.getText().toString().isEmpty()) { // user didn't enter a first name
+            firstNameText.setError(getString(R.string.err_enter_name));
             isValid = false;
-            errorText.setText(R.string.err_enter_name);
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(
-                emailText.getText().toString().trim()).matches()) { // user didn't enter a valid password
-            isValid = false;
-            errorText.setText(R.string.err_enter_email);
-        } else if (occupationText.getText().toString().isEmpty()) { // user didn't entered a occupation
-            isValid = false;
-            errorText.setText(R.string.err_enter_occ);
-        } else if (locationText.getText().toString().isEmpty()) { // user didn't entered a location
-            isValid = false;
-            errorText.setText(R.string.err_enter_loc);
-        } else if (yearsOfAge < 18) { // user is under 18 or over
-            isValid = false;
-            errorText.setText(R.string.err_enter_dob_young);
-        } else if (yearsOfAge > 99) { // user is improbably old
-            isValid = false;
-            errorText.setText(R.string.err_enter_dob_invalid);
-        } else if (descText.getText().toString().isEmpty()) { // user didn't entered any description
-            isValid = false;
-            errorText.setText(R.string.err_enter_desc);
         } else {
-            errorText.setText("");
+            firstNameText.setError(null);
+        }
+
+        if (lastNameText.getText().toString().isEmpty()) { // user didn't enter a last name
+            lastNameText.setError(getString(R.string.err_enter_name));
+            isValid = false;
+        } else {
+            lastNameText.setError(null);
+        }
+
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(
+                emailText.getText().toString().trim()).matches()) { // user didn't enter a valid password
+            emailText.setError(getString(R.string.err_enter_email));
+            isValid = false;
+        } else {
+            emailText.setError(null);
+        }
+
+        if (occupationText.getText().toString().isEmpty()) { // user didn't entered a occupation
+            occupationText.setError(getString(R.string.err_enter_occ));
+            isValid = false;
+        } else {
+            occupationText.setError(null);
+        }
+
+        if (locationText.getText().toString().isEmpty()) { // user didn't entered a location
+            locationText.setError(getString(R.string.err_enter_loc));
+            isValid = false;
+        } else {
+            occupationText.setError(null);
+        }
+
+        if (yearsOfAge < 18) { // user is under 18 or over
+            ageText.setText(R.string.err_enter_dob_young);
+            isValid = false;
+        } else {
+            ageText.setError(null);
+        }
+
+        if (yearsOfAge > 99) { // user is improbably old
+            ageText.setText(R.string.err_enter_dob_invalid);
+            isValid = false;
+        } else {
+            ageText.setError(null);
+        }
+
+        if (descText.getText().toString().isEmpty()) { // user didn't entered any description
+            descText.setError(getString(R.string.err_enter_desc));
+            isValid = false;
+        } else {
+            descText.setError(null);
         }
         return isValid;
     }
@@ -148,7 +174,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (yearsOfAge < 1) yearsOfAge = 0;
 
         dobBtn.setText(currentDateString);
-        ageText.setText(String.valueOf(yearsOfAge));
     }
 
     public void getImageFromPhone(View view) {

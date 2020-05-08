@@ -37,4 +37,11 @@
     <string name="add_photo_text">Add Photo</string>
     <string name="profile_picture_thumbnail">Profile picture thumbnail</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="matches_placeholder">This is where matches will go</string>
+    <string name="settings_placeholder">This is where settings will go</string>
+    <string name="s">s</string>
+    <string name="sadas">Enter your full name</string>
+
 </resources>

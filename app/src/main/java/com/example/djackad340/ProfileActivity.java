@@ -1,45 +1,94 @@
 package com.example.djackad340;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
+    private MatchesFragment matchesFragment;
+    private ProfileFragment profileFragment;
+    private SettingsFragment settingsFragment;
 
+    private ViewPager2 viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        TextView profName = findViewById(R.id.profileName);
-        TextView profAgeLoc = findViewById(R.id.profileAgeLoc);
-        TextView profOcc = findViewById(R.id.profileOcc);
-        TextView profDesc = findViewById(R.id.profileDesc);
-        ImageView profilePic = findViewById(R.id.profilePic);
+        setContentView(R.layout.activity_tabbed);
 
         Intent mainIntent = getIntent();
-        Bundle bundle = mainIntent.getExtras();
+        Bundle bundleIntent = mainIntent.getExtras();
 
-        StringBuilder nameString = new StringBuilder();
-        StringBuilder ageLocString = new StringBuilder();
-        StringBuilder occString = new StringBuilder();
-        StringBuilder descString = new StringBuilder();
+        matchesFragment = new MatchesFragment();
+        profileFragment = new ProfileFragment();
+        settingsFragment = new SettingsFragment();
+        profileFragment.setArguments(bundleIntent);
 
-        nameString.append(bundle.getString(Constants.KEY_FNAME).trim());
-        ageLocString.append(bundle.getString(Constants.KEY_AGE))
-                    .append(", ")
-                    .append(bundle.getString(Constants.KEY_LOC).trim());
-        occString.append(" ").append(bundle.getString(Constants.KEY_OCC).trim());
-        descString.append(bundle.getString(Constants.KEY_DESC).trim());
+        viewPager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
 
-        profilePic.setImageURI((Uri) bundle.get(Constants.KEY_Uri));
-        profName.setText(nameString);
-        profAgeLoc.setText(ageLocString);
-        profOcc.setText(occString);
-        profDesc.setText(descString);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+        viewPagerAdapter.addFragment(matchesFragment);
+        viewPagerAdapter.addFragment(profileFragment);
+        viewPagerAdapter.addFragment(settingsFragment);
+        viewPager.setAdapter(viewPagerAdapter);
+
+
+        new TabLayoutMediator(tabLayout, viewPager,
+                (tab, position) -> {
+                    switch (position) {
+                        case 0:
+                            tab.setText("Matches");
+                            break;
+                        case 1:
+                            tab.setText("Profile");
+                            break;
+                        case 2:
+                            tab.setText("Settings ");
+                            break;
+                        default:
+                            tab.setText("UNKNOWN " + (position + 1));
+                    }
+                }
+        ).attach();
+    }
+
+    public class ViewPagerAdapter extends FragmentStateAdapter {
+
+        private List<Fragment> fragments = new ArrayList<>();
+        private List<String> fragmentTitle = new ArrayList<>();
+
+        public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            return fragments.get(position);
+        }
+
+        public void addFragment(Fragment fragment) {
+            fragments.add(fragment);
+        }
+
+        @Override
+        public int getItemCount() {
+            return fragments.size();
+        }
     }
 }
