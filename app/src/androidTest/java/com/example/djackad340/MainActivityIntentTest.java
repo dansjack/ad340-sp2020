@@ -3,13 +3,8 @@ package com.example.djackad340;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.widget.DatePicker;
 
-import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
@@ -20,7 +15,9 @@ import org.junit.Test;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.swipeLeft;
 import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.Intents.intending;
@@ -30,10 +27,11 @@ import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
 
 public class MainActivityIntentTest {
-
+    private static final String TAG = MainActivityIntentTest.class.getSimpleName();
     @Rule
     public IntentsTestRule<MainActivity> mActivityRule = new IntentsTestRule<>(
             MainActivity.class);
@@ -64,6 +62,35 @@ public class MainActivityIntentTest {
                 hasComponent(hasShortClassName(".ProfileActivity")),
                 toPackage("com.example.djackad340"),
                 hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
+    }
+
+    @Test
+    public void verifyFragments() {
+        onView(withId(R.id.firstNameText)) // Enter First Name
+                .perform(typeText(Constants.TEST_FNAME), closeSoftKeyboard());
+        onView(withId(R.id.lastNameText)) // Enter Last Name
+                .perform(typeText(Constants.TEST_LNAME), closeSoftKeyboard());
+        onView(withId(R.id.emailText)).perform(typeText(Constants.TEST_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.occupationText)) // Enter Occupation
+                .perform(typeText(Constants.TEST_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.locationText)) // Enter Location
+                .perform(typeText(Constants.TEST_LOCATION), closeSoftKeyboard());
+        onView(withId(R.id.dobBtn))
+                .perform(ViewActions.scrollTo())
+                .perform(click()); // Enter Birthday
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                Constants.TEST_YEAR, Constants.TEST_MONTH, Constants.TEST_DAY));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.descText)) // Enter Description
+                .perform(ViewActions.scrollTo())
+                .perform(typeText(Constants.TEST_DESC), closeSoftKeyboard());
+
+        onView(withId(R.id.submitBtn)).perform(click());
+
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.matchesPlaceholder)).check(matches(withText(Constants.TEST_MATCHES_PL)));
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
     }
 
     @Test
