@@ -2,6 +2,7 @@ package com.example.djackad340;
 
 class Constants {
 
+
     static final int GET_IMAGE = 9;
     static final String KEY_LOC = "location";
     static final String KEY_DESC = "description";
@@ -32,6 +33,9 @@ class Constants {
     static String TEST_DOBI_ERR = "Select a valid age";
     static String TEST_DESC_ERR = "Describe yourself!";
     static String TEST_LOC_ERR = "Enter your location";
+
+    static final String TEST_MATCHES_PL = "This is where matches will go";
+    static final String TEST_SETTINGS_PL = "This is where settings will go";
 
     static final int TEST_YEAR = 1987;
     static final int TEST_MONTH = 4;

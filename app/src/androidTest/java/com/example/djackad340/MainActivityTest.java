@@ -30,14 +30,14 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
-    Calendar c = Calendar.getInstance();
-    int currentYear = c.get(Calendar.YEAR);
-    int currentMonth = c.get(Calendar.MONTH);
-    int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+    private Calendar c = Calendar.getInstance();
+    private int currentYear = c.get(Calendar.YEAR);
+    private int currentMonth = c.get(Calendar.MONTH);
+    private int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
-            new ActivityScenarioRule<MainActivity>(MainActivity.class);
+            new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
     public void hasCorrectFirstName() {

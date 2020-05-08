@@ -42,20 +42,19 @@ public class ProfileActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPagerAdapter.addFragment(matchesFragment);
         viewPagerAdapter.addFragment(profileFragment);
+        viewPagerAdapter.addFragment(matchesFragment);
         viewPagerAdapter.addFragment(settingsFragment);
         viewPager.setAdapter(viewPagerAdapter);
-
 
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
                     switch (position) {
                         case 0:
-                            tab.setText("Matches");
+                            tab.setText("Profile");
                             break;
                         case 1:
-                            tab.setText("Profile");
+                            tab.setText("Matches");
                             break;
                         case 2:
                             tab.setText("Settings ");
@@ -70,7 +69,6 @@ public class ProfileActivity extends AppCompatActivity {
     public class ViewPagerAdapter extends FragmentStateAdapter {
 
         private List<Fragment> fragments = new ArrayList<>();
-        private List<String> fragmentTitle = new ArrayList<>();
 
         public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
             super(fragmentActivity);
