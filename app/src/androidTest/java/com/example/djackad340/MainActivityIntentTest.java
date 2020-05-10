@@ -16,6 +16,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.swipeLeft;
+import static androidx.test.espresso.action.ViewActions.swipeRight;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
@@ -88,6 +89,10 @@ public class MainActivityIntentTest {
         onView(withId(R.id.submitBtn)).perform(click());
 
         onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.matchesPlaceholder)).check(matches(withText(Constants.TEST_MATCHES_PL)));
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
+        onView(withId(R.id.view_pager)).perform(swipeRight());
         onView(withId(R.id.matchesPlaceholder)).check(matches(withText(Constants.TEST_MATCHES_PL)));
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
