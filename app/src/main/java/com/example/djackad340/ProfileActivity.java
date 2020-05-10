@@ -49,18 +49,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
-                    switch (position) {
-                        case 0:
-                            tab.setText("Profile");
-                            break;
-                        case 1:
-                            tab.setText("Matches");
-                            break;
-                        case 2:
-                            tab.setText("Settings ");
-                            break;
-                        default:
-                            tab.setText("UNKNOWN " + (position + 1));
+                    if (position == 0) {
+                        tab.setText("Profile");
+                    } else if (position == 1) {
+                        tab.setText("Matches");
+                    } else if (position == 2) {
+                        tab.setText("Settings");
                     }
                 }
         ).attach();

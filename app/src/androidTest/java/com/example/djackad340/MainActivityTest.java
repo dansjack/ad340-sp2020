@@ -78,8 +78,7 @@ public class MainActivityTest {
     @Test
     public void hasCorrectBirthday() {
         onView(withId(R.id.dobBtn))
-                .perform(ViewActions.scrollTo())
-                .perform(click()); // Enter Birthday
+                .perform(ViewActions.scrollTo(), click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, 12, Constants.TEST_DAY));
         onView(withId(android.R.id.button1)).perform(click());

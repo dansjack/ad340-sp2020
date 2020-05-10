@@ -4,6 +4,7 @@ class Constants {
 
 
     static final int GET_IMAGE = 9;
+    static final int DEFAULT_AGE = 0;
     static final String KEY_LOC = "location";
     static final String KEY_DESC = "description";
     static final String KEY_OCC = "occupation";
