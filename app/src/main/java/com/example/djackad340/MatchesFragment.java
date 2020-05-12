@@ -29,9 +29,6 @@ public class MatchesFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));
         MatchCardRecyclerViewAdapter adapter = new MatchCardRecyclerViewAdapter();
         recyclerView.setAdapter(adapter);
-        int largePadding = getResources().getDimensionPixelSize(R.dimen.profileMarginTop);
-        int smallPadding = getResources().getDimensionPixelSize(R.dimen.profileMarginHorizontal);
-//        recyclerView.addItemDecoration(new MatchGridItemDecoration(largePadding, smallPadding));
         return view;
     }
 }

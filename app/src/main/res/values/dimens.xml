@@ -17,6 +17,8 @@
     <dimen name="profileContainerHeight">400dp</dimen>
     <dimen name="profilePicBtnStart">72dp</dimen>
     <dimen name="match_card_height">440dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
 
     <item name="form_text_guide_perc" type="dimen">0.05</item>
     <item name="form_text_guide_rperc" type="dimen">0.95</item>

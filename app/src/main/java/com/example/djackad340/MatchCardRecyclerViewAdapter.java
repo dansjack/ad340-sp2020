@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MatchCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchCardViewHolder> {
     private static final int LENGTH = 10;
-    private String[] mNames;
-    private String[] mDescription;
-    private TypedArray mImages;
 
     MatchCardRecyclerViewAdapter() {
 
@@ -29,12 +26,13 @@ public class MatchCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchCard
     @Override
     public void onBindViewHolder(@NonNull MatchCardViewHolder holder, int position) {
         Resources res = holder.itemView.getContext().getResources();
-        mNames = res.getStringArray(R.array.matchNames);
-        mDescription = res.getStringArray(R.array.matchDesc);
-        mImages = res.obtainTypedArray(R.array.matchImages);
+        String[] mNames = res.getStringArray(R.array.matchNames);
+        String[] mDescription = res.getStringArray(R.array.matchDesc);
+        TypedArray mImages = res.obtainTypedArray(R.array.matchImages);
         holder.matchName.setText(mNames[position]);
         holder.matchDesc.setText(mDescription[position]);
         holder.matchImage.setImageDrawable(mImages.getDrawable(position));
+        mImages.recycle();
     }
 
     @Override

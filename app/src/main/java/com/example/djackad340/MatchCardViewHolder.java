@@ -7,13 +7,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MatchCardViewHolder extends RecyclerView.ViewHolder {
-    public ImageView matchImage;
-    public TextView matchName;
-    public TextView matchDesc;
+class MatchCardViewHolder extends RecyclerView.ViewHolder {
+    ImageView matchImage;
+    TextView matchName;
+    TextView matchDesc;
 
 
-    public MatchCardViewHolder(@NonNull View itemView) {
+    MatchCardViewHolder(@NonNull View itemView) {
         super(itemView);
         matchImage = itemView.findViewById(R.id.matchImage);
         matchName = itemView.findViewById(R.id.matchName);

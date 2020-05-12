@@ -9,7 +9,7 @@
     android:layout_marginTop="@dimen/profileMarginTop"
     android:layout_marginBottom="@dimen/cardCornerRadius"
     app:cardBackgroundColor="@color/melon"
-    android:elevation="0dp"
+    android:elevation="@dimen/match_constraint"
     app:cardCornerRadius="@dimen/cardCornerRadius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/matchImage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/matchName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +35,8 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingStart="10dp"
-            android:paddingTop="2dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_2"
             android:textSize="@dimen/profileNameSize"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/matchDesc"
@@ -49,8 +49,8 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingVertical="2dp"
-            android:paddingLeft="10dp"
+            android:paddingVertical="@dimen/dp_2"
+            android:paddingLeft="@dimen/dp_10"
             android:textSize="@dimen/form_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
