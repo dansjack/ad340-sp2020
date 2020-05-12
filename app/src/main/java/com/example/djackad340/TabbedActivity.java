@@ -17,7 +17,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileActivity extends AppCompatActivity {
+public class TabbedActivity extends AppCompatActivity {
     private MatchesFragment matchesFragment;
     private ProfileFragment profileFragment;
     private SettingsFragment settingsFragment;

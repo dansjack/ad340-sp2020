@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="matchNames">
+        <item>Luanne</item>
+        <item>Nancy</item>
+        <item>John</item>
+        <item>Bobby</item>
+        <item>Buck</item>
+        <item>Minh</item>
+        <item>Lenore</item>
+        <item>DiDi</item>
+        <item>Octavio</item>
+        <item>Bill</item>
+    </string-array>
+    <string-array name="matchDesc">
+        <item>19, Arlen, TX</item>
+        <item>44, Arlen, TX</item>
+        <item>41, Arlen, TX</item>
+        <item>18, Arlen, TX</item>
+        <item>67, Arlen, TX</item>
+        <item>38, Arlen, TX</item>
+        <item>47, Dallas, TX</item>
+        <item>32, Arlen, TX</item>
+        <item>42, El Paso, TX</item>
+        <item>45, Arlen, TX</item>
+    </string-array>
+    <integer-array name="matchImages">
+        <item>@drawable/luanne_platter</item>
+        <item>@drawable/nancy_gribble</item>
+        <item>@drawable/john_redcorn</item>
+        <item>@drawable/bobby</item>
+        <item>@drawable/buck</item>
+        <item>@drawable/minh</item>
+        <item>@drawable/lenore</item>
+        <item>@drawable/didi</item>
+        <item>@drawable/octavio</item>
+        <item>@drawable/bill</item>
+    </integer-array>
+</resources>

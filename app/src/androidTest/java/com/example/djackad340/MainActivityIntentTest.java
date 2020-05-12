@@ -60,7 +60,7 @@ public class MainActivityIntentTest {
 
         onView(withId(R.id.submitBtn)).perform(click());
         intended(allOf(
-                hasComponent(hasShortClassName(".ProfileActivity")),
+                hasComponent(hasShortClassName(".TabbedActivity")),
                 toPackage("com.example.djackad340"),
                 hasExtra(Constants.KEY_FNAME, Constants.TEST_FNAME)));
     }
@@ -89,11 +89,11 @@ public class MainActivityIntentTest {
         onView(withId(R.id.submitBtn)).perform(click());
 
         onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withId(R.id.matchesPlaceholder)).check(matches(withText(Constants.TEST_MATCHES_PL)));
+//        onView(withId(R.id.matchesPlaceholder)).check(matches(withText(Constants.TEST_MATCHES_PL)));
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
         onView(withId(R.id.view_pager)).perform(swipeRight());
-        onView(withId(R.id.matchesPlaceholder)).check(matches(withText(Constants.TEST_MATCHES_PL)));
+//        onView(withId(R.id.matchesPlaceholder)).check(matches(withText(Constants.TEST_MATCHES_PL)));
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
     }
