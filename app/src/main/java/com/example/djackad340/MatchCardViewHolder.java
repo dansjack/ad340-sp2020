@@ -11,6 +11,8 @@ class MatchCardViewHolder extends RecyclerView.ViewHolder {
     ImageView matchImage;
     TextView matchName;
     TextView matchDesc;
+    ImageView matchFavBtn;
+
 
 
     MatchCardViewHolder(@NonNull View itemView) {
@@ -18,5 +20,7 @@ class MatchCardViewHolder extends RecyclerView.ViewHolder {
         matchImage = itemView.findViewById(R.id.matchImage);
         matchName = itemView.findViewById(R.id.matchName);
         matchDesc = itemView.findViewById(R.id.matchDesc);
+        matchFavBtn = itemView.findViewById(R.id.favorite_button);
+
     }
 }

@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/profileMarginTop"
+        android:layout_marginTop="@dimen/dp_24"
         android:paddingStart="@dimen/profileMarginHorizontal"
         android:paddingEnd="@dimen/profileMarginHorizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">

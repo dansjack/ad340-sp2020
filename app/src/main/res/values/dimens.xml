@@ -9,7 +9,7 @@
 
     <dimen name="profileMarginBottom">8dp</dimen>
     <dimen name="profileMarginHorizontal">16dp</dimen>
-    <dimen name="profileMarginTop">24dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
     <dimen name="profileNameSize">24sp</dimen>
     <dimen name="thumbnailHeight">100dp</dimen>
     <dimen name="signUpVerticalMargins">8dp</dimen>

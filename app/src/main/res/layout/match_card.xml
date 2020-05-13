@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="@dimen/match_card_height"
-    android:layout_marginTop="@dimen/profileMarginTop"
+    android:layout_marginTop="@dimen/dp_24"
     android:layout_marginBottom="@dimen/cardCornerRadius"
     app:cardBackgroundColor="@color/melon"
     android:elevation="@dimen/match_constraint"
@@ -27,35 +26,53 @@
             app:layout_constraintBottom_toTopOf="@+id/matchName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/image_of_match" />
 
         <TextView
             android:id="@+id/matchName"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingStart="@dimen/dp_10"
             android:paddingTop="@dimen/dp_2"
+            android:text="sdfdsf"
             android:textSize="@dimen/profileNameSize"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/matchDesc"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/favorite_button"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/matchDesc"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingVertical="@dimen/dp_2"
-            android:paddingLeft="@dimen/dp_10"
+            android:paddingStart="@dimen/dp_10"
+            android:text="31, fsdfsdf"
             android:textSize="@dimen/form_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/favorite_button"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/favorite_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_marginEnd="@dimen/dp_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/favorite_button"
+            android:tag="@string/unliked"
+            android:paddingVertical="@dimen/dp_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/matchImage"
+            app:srcCompat="@drawable/ic_favorite_border_bluegray_24dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

@@ -43,5 +43,10 @@
     <string name="settings_placeholder">This is where settings will go</string>
     <string name="s">s</string>
     <string name="sadas">Enter your full name</string>
+    <string name="image_of_match">Image of match</string>
+    <string name="favorite_button">Favorite button</string>
+    <string name="unliked">unliked</string>
+    <string name="you_unliked">"You unliked "</string>
+    <string name="you_liked">"You liked "</string>
 
 </resources>

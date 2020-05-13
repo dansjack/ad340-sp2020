@@ -3,6 +3,8 @@ package com.example.djackad340;
 class Constants {
 
 
+    static final String UNLIKED = "unliked";
+    static final String LIKED = "liked";
     static final int GET_IMAGE = 9;
     static final int DEFAULT_AGE = 0;
     static final String KEY_LOC = "location";
