@@ -85,18 +85,6 @@ public class MainActivityTest {
         onView(withId(R.id.dobBtn)).check(matches(withText(Constants.TEST_DOB))); // Birthday
     }
 
-//    @Test
-//    public void hasCorrectBirthdayAlt() {
-//        if (currentDayOfMonth < 28) {
-//            onView(withId(R.id.dobBtn))
-//                    .perform(ViewActions.scrollTo())
-//                    .perform(click()); // Enter Birthday
-//            onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-//                    Constants.TEST_YEAR, currentMonth, currentDayOfMonth + 1));
-//            onView(withId(android.R.id.button1)).perform(click());
-//        }
-//    }
-
     @Test
     public void hasCorrectDescription() {
         onView(withId(R.id.descText)) // Enter Description
