@@ -47,5 +47,6 @@
     <string name="unliked">unliked</string>
     <string name="you_unliked">"You unliked "</string>
     <string name="you_liked">"You liked "</string>
+    <string name="exclamation_mark">!</string>
 
 </resources>
