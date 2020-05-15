@@ -20,6 +20,9 @@ import static androidx.test.espresso.action.ViewActions.swipeRight;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnHolderItem;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName;
@@ -27,7 +30,9 @@ import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
@@ -96,16 +101,16 @@ public class MainActivityIntentTest {
         onView(withRecyclerView(R.id.recycler_view).atPosition(0))
                 .check(matches(hasDescendant(withText("19, Arlen, TX"))));
     }
-//
-//    @Test
-//    public void hasLastMatch() {
-//        onView(withId(R.id.view_pager)).perform(swipeLeft());
-//        onView(withId(R.id.recycler_view)).perform(scrollToPosition(10));
-//        onView(withRecyclerView(R.id.recycler_view)
-//                .atPosition(10))
-//                .check(matches(hasDescendant(withText("Bill"))));
-//        onView(withRecyclerView(R.id.recycler_view).atPosition(10))
-//                .check(matches(hasDescendant(withText("45, Arlen, TX"))));
-//    }
+
+    @Test
+    public void hasLastMatch() {
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.recycler_view)).perform(scrollToPosition(9));
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPosition(9))
+                .check(matches(hasDescendant(withText("Bill"))));
+        onView(withRecyclerView(R.id.recycler_view).atPosition(9))
+                .check(matches(hasDescendant(withText("45, Arlen, TX"))));
+    }
 
 }
