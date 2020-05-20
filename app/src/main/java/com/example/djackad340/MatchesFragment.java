@@ -10,12 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 
 public class MatchesFragment extends Fragment {
-
-    public MatchesFragment() {
-        // Required empty public constructor
-    }
+    public MatchesFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,11 +22,16 @@ public class MatchesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_matches, container, false);
 
+
+        // Initialize ViewModel and get model info
+        MatchItemViewModel viewModel = new MatchItemViewModel(this);
+        List<MatchItemModel> matchItems = viewModel.getMatchItems();
+
         // Set up RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));
-        MatchCardRecyclerViewAdapter adapter = new MatchCardRecyclerViewAdapter();
+        MatchCardRecyclerViewAdapter adapter = new MatchCardRecyclerViewAdapter(matchItems);
         recyclerView.setAdapter(adapter);
         return view;
     }
