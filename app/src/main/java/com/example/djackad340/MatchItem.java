@@ -9,6 +9,7 @@ import com.google.firebase.firestore.Exclude;
 import java.util.HashMap;
 import java.util.Map;
 
+public class MatchItem implements Parcelable {
     public String uid;
     public String name;
     public String lat;
