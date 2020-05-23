@@ -3,6 +3,7 @@ package com.example.djackad340;
 class Constants {
 
 
+    static final String MATCHES = "matches";
     static final String UNLIKED = "unliked";
     static final String LIKED = "liked";
     static final int GET_IMAGE = 9;

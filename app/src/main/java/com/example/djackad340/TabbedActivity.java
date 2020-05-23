@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -16,7 +20,10 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabbedActivity extends AppCompatActivity {
+public class TabbedActivity extends AppCompatActivity implements MatchesFragment.OnListFragmentInteractionListener {
+    private MatchViewModel viewModel;
+    private static final String TAG = TabbedActivity.class.getName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,6 @@ public class TabbedActivity extends AppCompatActivity {
         ProfileFragment profileFragment = new ProfileFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
         profileFragment.setArguments(bundleIntent);
-
         ViewPager2 viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
 
@@ -38,7 +44,35 @@ public class TabbedActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(profileFragment);
         viewPagerAdapter.addFragment(matchesFragment);
         viewPagerAdapter.addFragment(settingsFragment);
+
+        viewModel = new MatchViewModel();
+
+        viewModel.getMatchItems(
+            (ArrayList<MatchItem> matchItems) -> {
+//                FragmentManager manager = getSupportFragmentManager();
+//                MatchesFragment fragment = (MatchesFragment) manager.findFragmentByTag("MatchesFragment");
+
+//                if (fragment != null) {
+//                    // Remove fragment to re-add it
+//                    FragmentTransaction transaction = manager.beginTransaction();
+//                    transaction.remove(fragment);
+//                    transaction.commit();
+//                }
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList(Constants.MATCHES, matchItems);
+
+                matchesFragment.setArguments(bundle);
+
+//                FragmentTransaction transaction = manager.beginTransaction();
+//                transaction.add(R.id.recycler_view, matchesFragment, "MatchesFragment");
+//                transaction.commit();
+            }
+        );
+
         viewPager.setAdapter(viewPagerAdapter);
+
+
 
 
         new TabLayoutMediator(tabLayout, viewPager,
@@ -52,6 +86,27 @@ public class TabbedActivity extends AppCompatActivity {
                     }
                 }
         ).attach();
+    }
+
+
+    @Override
+    public void onListFragmentInteraction(MatchItem item) {
+        item.liked = !item.liked;
+        viewModel.updateMatchItem(item);
+    }
+
+    @Override
+    protected void onPause() {
+        viewModel.clear();
+        super.onPause();
+    }
+
+    public MatchViewModel getViewModel() {
+        return viewModel;
+    }
+
+    public void setViewModel(MatchViewModel vm) {
+        viewModel = vm;
     }
 
 
