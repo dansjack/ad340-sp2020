@@ -36,6 +36,7 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
         MatchesFragment matchesFragment = new MatchesFragment();
         ProfileFragment profileFragment = new ProfileFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
+
         profileFragment.setArguments(bundleIntent);
         ViewPager2 viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
@@ -49,31 +50,13 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
 
         viewModel.getMatchItems(
             (ArrayList<MatchItem> matchItems) -> {
-//                FragmentManager manager = getSupportFragmentManager();
-//                MatchesFragment fragment = (MatchesFragment) manager.findFragmentByTag("MatchesFragment");
-
-//                if (fragment != null) {
-//                    // Remove fragment to re-add it
-//                    FragmentTransaction transaction = manager.beginTransaction();
-//                    transaction.remove(fragment);
-//                    transaction.commit();
-//                }
-
                 Bundle bundle = new Bundle();
                 bundle.putParcelableArrayList(Constants.MATCHES, matchItems);
-
                 matchesFragment.setArguments(bundle);
-
-//                FragmentTransaction transaction = manager.beginTransaction();
-//                transaction.add(R.id.recycler_view, matchesFragment, "MatchesFragment");
-//                transaction.commit();
             }
         );
 
         viewPager.setAdapter(viewPagerAdapter);
-
-
-
 
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
@@ -101,13 +84,13 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
         super.onPause();
     }
 
-    public MatchViewModel getViewModel() {
-        return viewModel;
-    }
-
-    public void setViewModel(MatchViewModel vm) {
-        viewModel = vm;
-    }
+//    public MatchViewModel getViewModel() {
+//        return viewModel;
+//    }
+//
+//    public void setViewModel(MatchViewModel vm) {
+//        viewModel = vm;
+//    }
 
 
 

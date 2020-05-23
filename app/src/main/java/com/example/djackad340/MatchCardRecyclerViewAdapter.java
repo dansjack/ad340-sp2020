@@ -39,23 +39,23 @@ public class MatchCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchCard
         Resources res = parent.getResources();
         ImageButton favBtn = layoutView.findViewById(R.id.favorite_button);
         TextView name = layoutView.findViewById(R.id.matchName);
-        favBtn.setOnClickListener(view -> {
-            if (favBtn.getTag().equals(Constants.UNLIKED)) {
-                StringBuilder likeMsg = new StringBuilder(res.getString(R.string.you_liked))
-                        .append(name.getText()).append(res.getString(R.string.exclamation_mark));
-                favBtn.setImageResource(R.drawable.ic_favorite_bluegray_24dp);
-                favBtn.setTag(Constants.LIKED);
-                Toast.makeText(parent.getContext(), likeMsg, Toast.LENGTH_SHORT).show();
-                likeMsg.setLength(0);
-            } else {
-                StringBuilder likeMsg = new StringBuilder(res.getString(R.string.you_unliked))
-                        .append(name.getText()).append(res.getString(R.string.exclamation_mark));
-                favBtn.setImageResource(R.drawable.ic_favorite_border_bluegray_24dp);
-                favBtn.setTag(Constants.UNLIKED);
-                Toast.makeText(parent.getContext(), likeMsg, Toast.LENGTH_SHORT).show();
-                likeMsg.setLength(0);
-            }
-        });
+//        favBtn.setOnClickListener(view -> {
+//            if (favBtn.getTag().equals(Constants.UNLIKED)) {
+//                StringBuilder likeMsg = new StringBuilder(res.getString(R.string.you_liked))
+//                        .append(name.getText()).append(res.getString(R.string.exclamation_mark));
+//                favBtn.setImageResource(R.drawable.ic_favorite_bluegray_24dp);
+//                favBtn.setTag(Constants.LIKED);
+//                Toast.makeText(parent.getContext(), likeMsg, Toast.LENGTH_SHORT).show();
+//                likeMsg.setLength(0);
+//            } else {
+//                StringBuilder likeMsg = new StringBuilder(res.getString(R.string.you_unliked))
+//                        .append(name.getText()).append(res.getString(R.string.exclamation_mark));
+//                favBtn.setImageResource(R.drawable.ic_favorite_border_bluegray_24dp);
+//                favBtn.setTag(Constants.UNLIKED);
+//                Toast.makeText(parent.getContext(), likeMsg, Toast.LENGTH_SHORT).show();
+//                likeMsg.setLength(0);
+//            }
+//        });
         return new MatchCardViewHolder(layoutView);
     }
 
