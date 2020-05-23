@@ -115,7 +115,8 @@ public class MainActivityIntentTest {
 //    }
 
     @Test
-    public void hasLastMatch() {
+    public void hasLastMatch() throws InterruptedException {
+        Thread.sleep(2000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
         onView(withRecyclerView(R.id.recycler_view)
@@ -126,7 +127,8 @@ public class MainActivityIntentTest {
     }
 
     @Test
-    public void hasMatch() {
+    public void hasMatch() throws InterruptedException {
+        Thread.sleep(2000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
         onView(withRecyclerView(R.id.recycler_view)
