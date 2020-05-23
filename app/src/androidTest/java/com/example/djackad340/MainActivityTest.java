@@ -81,7 +81,7 @@ public class MainActivityTest {
                 .perform(ViewActions.scrollTo(), click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, 12, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(android.R.id.button1)).perform(click(), closeSoftKeyboard());
         onView(withId(R.id.dobBtn)).check(matches(withText(Constants.TEST_DOB))); // Birthday
     }
 
