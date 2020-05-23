@@ -88,27 +88,29 @@ public class MainActivityIntentTest {
     @Test
     public void favButtonWorks() throws InterruptedException {
         onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
 
         Thread.sleep(2000);
 
         onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(0, R.id.favorite_button))
-                .perform(click());
-
-        onView(withText(Constants.TEST_TOAST_LIKED))
-                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
-                .check(matches(isDisplayed()));
-
-        Thread.sleep(2000);
-
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(0, R.id.favorite_button))
+                .atPositionOnView(4, R.id.favorite_button))
                 .perform(click());
 
         onView(withText(Constants.TEST_TOAST_UNLIKED))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
 
+
+
+        Thread.sleep(2000);
+
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPositionOnView(4, R.id.favorite_button))
+                .perform(click());
+
+        onView(withText(Constants.TEST_TOAST_LIKED))
+                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
 
     }
 
