@@ -84,14 +84,14 @@ public class MainActivityIntentTest {
         onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
     }
 
-    @Test
-    public void hasFirstMatch() {
-        onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
-                .check(matches(hasDescendant(withText("Iceman Judah"))));
-        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
-                .check(matches(hasDescendant(withText("19, Arlen, TX"))));
-    }
+//    @Test
+//    public void hasFirstMatch() {
+//        onView(withId(R.id.view_pager)).perform(swipeLeft());
+//        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
+//                .check(matches(hasDescendant(withText("Iceman Judah"))));
+//        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
+//                .check(matches(hasDescendant(withText("19, Arlen, TX"))));
+//    }
 
     @Test
     public void hasLastMatch() {
