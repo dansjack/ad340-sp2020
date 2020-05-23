@@ -136,6 +136,27 @@ public class MainActivityIntentTest {
                 .check(matches(hasDescendant(withText("Cool Guy Mike"))));
         onView(withRecyclerView(R.id.recycler_view).atPosition(4))
                 .check(matches(hasDescendant(withText("67, Arlen, TX"))));
+
+        Thread.sleep(2000);
+
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPositionOnView(4, R.id.favorite_button))
+                .perform(click());
+
+        onView(withText(Constants.TEST_TOAST_UNLIKED))
+                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+
+
+        Thread.sleep(2000);
+
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPositionOnView(4, R.id.favorite_button))
+                .perform(click());
+
+        onView(withText(Constants.TEST_TOAST_LIKED))
+                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
     }
 
 }
