@@ -21,10 +21,8 @@ import java.util.List;
 public class MatchesFragment extends Fragment {
     private static final String TAG = MatchesFragment.class.getName();
     private List<MatchItem> mMatches;
-    private OnListFragmentInteractionListener mListener;
+    private MatchesFragment.OnListFragmentInteractionListener mListener;
 
-public class MatchesFragment extends Fragment {
-    public MatchesFragment() {}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

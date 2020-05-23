@@ -22,12 +22,12 @@ import java.util.List;
 public class MatchCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchCardViewHolder> {
 //    private static final int LENGTH = 6;
     private List<MatchItem> matches;
-    private OnListFragmentInteractionListener listener;
+    private MatchesFragment.OnListFragmentInteractionListener listener;
 
     private static final String TAG = MatchCardRecyclerViewAdapter.class.getName();
 
 
-    MatchCardRecyclerViewAdapter(List<MatchItem> mMatches, OnListFragmentInteractionListener mListener) {
+    MatchCardRecyclerViewAdapter(List<MatchItem> mMatches, MatchesFragment.OnListFragmentInteractionListener mListener) {
         matches = mMatches;
         listener = mListener;
     }
