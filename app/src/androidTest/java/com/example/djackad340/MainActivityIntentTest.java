@@ -1,12 +1,10 @@
 package com.example.djackad340;
 
-import android.view.View;
 import android.widget.DatePicker;
 
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
-import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
@@ -26,11 +24,14 @@ import static androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasSho
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.toPackage;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.Matchers.not;
 
 public class MainActivityIntentTest {
     private static final String TAG = MainActivityIntentTest.class.getSimpleName();
@@ -84,14 +85,32 @@ public class MainActivityIntentTest {
         onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
     }
 
-//    @Test
-//    public void hasFirstMatch() {
-//        onView(withId(R.id.view_pager)).perform(swipeLeft());
-//        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
-//                .check(matches(hasDescendant(withText("Iceman Judah"))));
-//        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
-//                .check(matches(hasDescendant(withText("19, Arlen, TX"))));
-//    }
+    @Test
+    public void favButtonWorks() throws InterruptedException {
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+
+        Thread.sleep(2000);
+
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPositionOnView(0, R.id.favorite_button))
+                .perform(click());
+
+        onView(withText(Constants.TEST_TOAST_LIKED))
+                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+
+        Thread.sleep(2000);
+
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPositionOnView(0, R.id.favorite_button))
+                .perform(click());
+
+        onView(withText(Constants.TEST_TOAST_UNLIKED))
+                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
+
+
+    }
 
     @Test
     public void hasLastMatch() {

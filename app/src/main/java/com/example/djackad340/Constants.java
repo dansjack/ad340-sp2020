@@ -3,6 +3,8 @@ package com.example.djackad340;
 class Constants {
 
 
+    static final String TEST_TOAST_LIKED = "You liked Iceman Judah!";
+    static final String TEST_TOAST_UNLIKED = "You unliked Iceman Judah!";
     static final String MATCHES = "matches";
     static final String UNLIKED = "unliked";
     static final String LIKED = "liked";
