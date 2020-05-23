@@ -85,34 +85,34 @@ public class MainActivityIntentTest {
         onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
     }
 
-    @Test
-    public void favButtonWorks() throws InterruptedException {
-        onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
-
-        Thread.sleep(2000);
-
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(4, R.id.favorite_button))
-                .perform(click());
-
-        onView(withText(Constants.TEST_TOAST_UNLIKED))
-                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
-                .check(matches(isDisplayed()));
-
-
-
-        Thread.sleep(2000);
-
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(4, R.id.favorite_button))
-                .perform(click());
-
-        onView(withText(Constants.TEST_TOAST_LIKED))
-                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
-                .check(matches(isDisplayed()));
-
-    }
+//    @Test
+//    public void favButtonWorks() throws InterruptedException {
+//        onView(withId(R.id.view_pager)).perform(swipeLeft());
+//        onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
+//
+//        Thread.sleep(2000);
+//
+//        onView(withRecyclerView(R.id.recycler_view)
+//                .atPositionOnView(4, R.id.favorite_button))
+//                .perform(click());
+//
+//        onView(withText(Constants.TEST_TOAST_UNLIKED))
+//                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
+//                .check(matches(isDisplayed()));
+//
+//
+//
+//        Thread.sleep(2000);
+//
+//        onView(withRecyclerView(R.id.recycler_view)
+//                .atPositionOnView(4, R.id.favorite_button))
+//                .perform(click());
+//
+//        onView(withText(Constants.TEST_TOAST_LIKED))
+//                .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
+//                .check(matches(isDisplayed()));
+//
+//    }
 
     @Test
     public void hasLastMatch() {
@@ -123,6 +123,17 @@ public class MainActivityIntentTest {
                 .check(matches(hasDescendant(withText("Overachiever Alex"))));
         onView(withRecyclerView(R.id.recycler_view).atPosition(5))
                 .check(matches(hasDescendant(withText("38, Arlen, TX"))));
+    }
+
+    @Test
+    public void hasMatch() {
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPosition(4))
+                .check(matches(hasDescendant(withText("Cool Guy Mike"))));
+        onView(withRecyclerView(R.id.recycler_view).atPosition(4))
+                .check(matches(hasDescendant(withText("67, Arlen, TX"))));
     }
 
 }
