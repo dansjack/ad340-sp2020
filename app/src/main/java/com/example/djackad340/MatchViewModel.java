@@ -14,10 +14,6 @@ public class MatchViewModel {
         matchModel = new MatchModel();
     }
 
-//    public void addMatchItem(MatchItem item) {
-//        matchModel.addMatchItem(item);
-//    }
-
     public void getMatchItems(Consumer<ArrayList<MatchItem>> responseCallback) {
         matchModel.getMatchItems(
                 (QuerySnapshot querySnapshot) -> {
@@ -25,7 +21,6 @@ public class MatchViewModel {
                         ArrayList<MatchItem> matchItems = new ArrayList<>();
                         for (DocumentSnapshot matchSnapshot : querySnapshot.getDocuments()) {
                             MatchItem item = matchSnapshot.toObject(MatchItem.class);
-                            assert item != null;
                             item.uid = matchSnapshot.getId();
                             matchItems.add(item);
                         }

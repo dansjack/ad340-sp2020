@@ -23,11 +23,6 @@ public class MatchModel {
         listeners = new ArrayList<>();
     }
 
-//    public void addMatchItem(MatchItem item) {
-//        CollectionReference matchItemsRef = db.collection("matches");
-//        matchItemsRef.add(item);
-//    }
-
     public void getMatchItems(Consumer<QuerySnapshot> dataChangedCallback, Consumer<FirebaseFirestoreException> dataErrorCallback) {
         ListenerRegistration listener = db.collection("matches")
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {

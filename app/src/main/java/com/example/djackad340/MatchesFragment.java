@@ -26,10 +26,7 @@ public class MatchesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
-        }
+        mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
     }
 
     @Override
@@ -53,9 +50,7 @@ public class MatchesFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        }
+        mListener = (OnListFragmentInteractionListener) context;
     }
 
     public interface OnListFragmentInteractionListener {
