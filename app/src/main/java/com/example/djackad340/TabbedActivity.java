@@ -61,11 +61,11 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
                     if (position == 0) {
-                        tab.setText("Profile");
+                        tab.setText(Constants.PROFILE_TAB);
                     } else if (position == 1) {
-                        tab.setText("Matches");
+                        tab.setText(Constants.MATCHES_TAB);
                     } else if (position == 2) {
-                        tab.setText("Settings");
+                        tab.setText(Constants.SETTINGS_TAB);
                     }
                 }
         ).attach();

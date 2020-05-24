@@ -50,10 +50,10 @@ public class MatchItem implements Parcelable {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("uid", uid);
-        result.put("name", name);
-        result.put("imageUrl", imageUrl);
-        result.put("liked", liked);
+        result.put(Constants.UID, uid);
+        result.put(Constants.NAME, name);
+        result.put(Constants.IMAGE_URL, imageUrl);
+        result.put(Constants.LIKED, liked);
 //        result.put("longitude", longitude);
 //        result.put("lat", lat);
 

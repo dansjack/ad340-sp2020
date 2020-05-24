@@ -24,7 +24,7 @@ public class MatchModel {
     }
 
     public void getMatchItems(Consumer<QuerySnapshot> dataChangedCallback, Consumer<FirebaseFirestoreException> dataErrorCallback) {
-        ListenerRegistration listener = db.collection("matches")
+        ListenerRegistration listener = db.collection(Constants.MATCHES)
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {
                     if (e != null) {
                         dataErrorCallback.accept(e);
@@ -36,9 +36,9 @@ public class MatchModel {
     }
 
     public void updateMatchItemById(MatchItem item) {
-        DocumentReference matchItemRef = db.collection("matches").document(item.uid);
+        DocumentReference matchItemRef = db.collection(Constants.MATCHES).document(item.uid);
         Map<String, Object> data = new HashMap<>();
-        data.put("liked", item.liked);
+        data.put(Constants.LIKED, item.liked);
         matchItemRef.update(data);
     }
 
