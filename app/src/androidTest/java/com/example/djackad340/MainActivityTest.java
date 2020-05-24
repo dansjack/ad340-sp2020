@@ -77,6 +77,7 @@ public class MainActivityTest {
 
     @Test
     public void hasCorrectBirthday() {
+        closeSoftKeyboard();
         onView(withId(R.id.dobBtn))
                 .perform(ViewActions.scrollTo(), click()); // Enter Birthday
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
