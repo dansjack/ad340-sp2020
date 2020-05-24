@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MatchCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchCardViewHolder> {
-//    private static final int LENGTH = 6;
     private List<MatchItem> matches;
     private MatchesFragment.OnListFragmentInteractionListener listener;
 
@@ -60,7 +59,7 @@ public class MatchCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchCard
 
                     Toast.makeText(holder.itemView.getContext(), likeMsg, Toast.LENGTH_SHORT).show();
                     likeMsg.setLength(0);
-                } else if (!match.liked){
+                } else {
                     holder.matchFavBtn.setImageResource(R.drawable.ic_favorite_bluegray_24dp);
                     StringBuilder likeMsg = new StringBuilder(res.getString(R.string.you_liked))
                             .append(holder.matchName.getText())

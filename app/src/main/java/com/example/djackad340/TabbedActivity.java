@@ -64,7 +64,7 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
                         tab.setText(Constants.PROFILE_TAB);
                     } else if (position == 1) {
                         tab.setText(Constants.MATCHES_TAB);
-                    } else if (position == 2) {
+                    } else {
                         tab.setText(Constants.SETTINGS_TAB);
                     }
                 }
