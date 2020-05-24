@@ -76,13 +76,15 @@ public class MainActivityTest {
     }
 
     @Test
-    public void hasCorrectBirthday() {
+    public void hasCorrectBirthday() throws InterruptedException {
+        Thread.sleep(2000);
         closeSoftKeyboard();
         onView(withId(R.id.dobBtn))
                 .perform(ViewActions.scrollTo(), click()); // Enter Birthday
+        Thread.sleep(2000);
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
                 Constants.TEST_YEAR, 12, Constants.TEST_DAY));
-        onView(withId(android.R.id.button1)).perform(click(), closeSoftKeyboard());
+        onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.dobBtn)).check(matches(withText(Constants.TEST_DOB))); // Birthday
     }
 
