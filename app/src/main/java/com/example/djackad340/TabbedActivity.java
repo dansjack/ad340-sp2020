@@ -2,20 +2,22 @@ package com.example.djackad340;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TimePicker;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +25,15 @@ import java.util.List;
 public class TabbedActivity extends AppCompatActivity implements MatchesFragment.OnListFragmentInteractionListener {
     private MatchViewModel viewModel;
     private static final String TAG = TabbedActivity.class.getName();
+//    private EditText matchReminderTime;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
+
+//        matchReminderTime = findViewById(R.id.match_reminder_value);
 
         Intent mainIntent = getIntent();
         Bundle bundleIntent = mainIntent.getExtras();
@@ -69,8 +74,15 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
                     }
                 }
         ).attach();
-    }
 
+//        matchReminderTime.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                DialogFragment timePicker = new TimePickerFragment();
+//                timePicker.show(getSupportFragmentManager(), getString(R.string.time_picker_tag));
+//            }
+//        });
+    }
 
     @Override
     public void onListFragmentInteraction(MatchItem item) {
@@ -83,16 +95,6 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
         viewModel.clear();
         super.onPause();
     }
-
-//    public MatchViewModel getViewModel() {
-//        return viewModel;
-//    }
-//
-//    public void setViewModel(MatchViewModel vm) {
-//        viewModel = vm;
-//    }
-
-
 
     public static class ViewPagerAdapter extends FragmentStateAdapter {
 

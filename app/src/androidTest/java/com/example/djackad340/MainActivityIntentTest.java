@@ -79,10 +79,10 @@ public class MainActivityIntentTest {
     public void verifyFragments() {
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
+//        onView(withId(R.id.match_reminder_text)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
         onView(withId(R.id.view_pager)).perform(swipeRight());
         onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withId(R.id.settingsPlaceholder)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
+//        onView(withId(R.id.match_reminder_text)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class MainActivityIntentTest {
         onView(withRecyclerView(R.id.recycler_view)
                 .atPositionOnView(4, R.id.favorite_button))
                 .perform(click());
-
+ 
         onView(withText(Constants.TEST_TOAST_UNLIKED))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));

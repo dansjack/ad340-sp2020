@@ -26,6 +26,7 @@
 
     <string name="profile_desc">About me:</string>
     <string name="date_picker_tag">date picker</string>
+    <string name="time_picker_tag">time picker</string>
 
     <!--Form/Profile Buttons-->
     <string name="submit">Submit</string>

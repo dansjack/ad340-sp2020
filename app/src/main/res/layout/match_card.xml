@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/match_card_height"
+    android:layout_height="@dimen/dp_440"
     android:layout_marginTop="@dimen/dp_24"
-    android:layout_marginBottom="@dimen/cardCornerRadius"
+    android:layout_marginBottom="@dimen/dp_16"
     app:cardBackgroundColor="@color/melon"
     android:elevation="@dimen/match_constraint"
-    app:cardCornerRadius="@dimen/cardCornerRadius">
+    app:cardCornerRadius="@dimen/dp_16">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:maxLines="1"
             android:paddingStart="@dimen/dp_10"
             android:paddingTop="@dimen/dp_2"
-            android:textSize="@dimen/profileNameSize"
+            android:textSize="@dimen/sp_24"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/matchDesc"
             app:layout_constraintEnd_toStartOf="@id/favorite_button"
@@ -51,7 +51,7 @@
             android:maxLines="1"
             android:paddingVertical="@dimen/dp_2"
             android:paddingStart="@dimen/dp_10"
-            android:textSize="@dimen/form_text_size"
+            android:textSize="@dimen/sp_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/favorite_button"
             app:layout_constraintStart_toStartOf="parent" />

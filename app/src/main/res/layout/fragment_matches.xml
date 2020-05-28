@@ -7,8 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MatchesFragment"
     android:layout_marginTop="@dimen/dp_24"
-    android:paddingStart="@dimen/profileMarginHorizontal"
-    android:paddingEnd="@dimen/profileMarginHorizontal"/>
+    android:paddingStart="@dimen/dp_16"
+    android:paddingEnd="@dimen/dp_16"/>
 
 
 

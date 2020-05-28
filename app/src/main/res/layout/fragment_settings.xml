@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,13 +9,94 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/settingsPlaceholder"
+        android:id="@+id/gender_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings_placeholder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="setGender"
+        app:layout_constraintStart_toStartOf="@+id/max_distance_value"
+        app:layout_constraintTop_toTopOf="@+id/gender_text" />
+
+    <TextView
+        android:id="@+id/match_reminder_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_72"
+        android:text="Daily Match Reminder:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/max_distance_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="Max Match Distance:"
+        app:layout_constraintStart_toStartOf="@+id/match_reminder_text"
+        app:layout_constraintTop_toBottomOf="@+id/match_reminder_text" />
+
+    <Button
+        android:id="@+id/match_reminder_value"
+        android:layout_width="@dimen/dp_72"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:clickable="true"
+        app:layout_constraintStart_toEndOf="@+id/match_reminder_text"
+        app:layout_constraintTop_toTopOf="@+id/match_reminder_text"
+        android:autofillHints="Click to set time"
+        android:focusable="false"
+        android:hint="Click to set time"
+        android:inputType="time" />
+
+    <TextView
+        android:id="@+id/max_distance_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="maxDist"
+        app:layout_constraintStart_toStartOf="@+id/match_reminder_value"
+        app:layout_constraintTop_toTopOf="@+id/max_distance_text" />
+
+    <TextView
+        android:id="@+id/gender_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="Match Gender:"
+        app:layout_constraintStart_toStartOf="@+id/max_distance_text"
+        app:layout_constraintTop_toBottomOf="@+id/max_distance_text" />
+
+    <TextView
+        android:id="@+id/account_type_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="Account Type:"
+        app:layout_constraintStart_toStartOf="@+id/gender_text"
+        app:layout_constraintTop_toBottomOf="@+id/gender_text" />
+
+    <TextView
+        android:id="@+id/account_type_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="accountType"
+        app:layout_constraintStart_toStartOf="@+id/gender_value"
+        app:layout_constraintTop_toTopOf="@+id/account_type_text" />
+
+    <TextView
+        android:id="@+id/age_range_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="Match Age Range:"
+        app:layout_constraintStart_toStartOf="@+id/account_type_text"
+        app:layout_constraintTop_toBottomOf="@+id/account_type_text" />
+
+    <TextView
+        android:id="@+id/age_range_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ageRange"
+        app:layout_constraintStart_toStartOf="@+id/account_type_value"
+        app:layout_constraintTop_toTopOf="@+id/age_range_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
