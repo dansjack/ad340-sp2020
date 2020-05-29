@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    tools:context=".fragments.SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -23,6 +23,7 @@
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_72"
         android:text="Daily Match Reminder:"
+        android:textSize="@dimen/sp_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,27 +33,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_24"
         android:text="Max Match Distance:"
+        android:textSize="@dimen/sp_24"
         app:layout_constraintStart_toStartOf="@+id/match_reminder_text"
         app:layout_constraintTop_toBottomOf="@+id/match_reminder_text" />
 
-    <Button
+    <EditText
         android:id="@+id/match_reminder_value"
         android:layout_width="@dimen/dp_72"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
-        android:clickable="true"
-        app:layout_constraintStart_toEndOf="@+id/match_reminder_text"
-        app:layout_constraintTop_toTopOf="@+id/match_reminder_text"
         android:autofillHints="Click to set time"
+        android:clickable="true"
         android:focusable="false"
-        android:hint="Click to set time"
-        android:inputType="time" />
+        android:hint="00:00"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="@+id/match_reminder_text"
+        app:layout_constraintStart_toEndOf="@+id/match_reminder_text"
+        app:layout_constraintTop_toTopOf="@+id/match_reminder_text" />
 
     <TextView
         android:id="@+id/max_distance_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="maxDist"
+        app:layout_constraintBottom_toBottomOf="@+id/max_distance_text"
         app:layout_constraintStart_toStartOf="@+id/match_reminder_value"
         app:layout_constraintTop_toTopOf="@+id/max_distance_text" />
 
@@ -62,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_24"
         android:text="Match Gender:"
+        android:textSize="@dimen/sp_24"
         app:layout_constraintStart_toStartOf="@+id/max_distance_text"
         app:layout_constraintTop_toBottomOf="@+id/max_distance_text" />
 
@@ -71,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_24"
         android:text="Account Type:"
+        android:textSize="@dimen/sp_24"
         app:layout_constraintStart_toStartOf="@+id/gender_text"
         app:layout_constraintTop_toBottomOf="@+id/gender_text" />
 
@@ -88,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_24"
         android:text="Match Age Range:"
+        android:textSize="@dimen/sp_24"
         app:layout_constraintStart_toStartOf="@+id/account_type_text"
         app:layout_constraintTop_toBottomOf="@+id/account_type_text" />
 
