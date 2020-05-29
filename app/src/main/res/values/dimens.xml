@@ -16,6 +16,7 @@
     <dimen name="dp_356">356dp</dimen>
     <dimen name="dp_400">400dp</dimen>
     <dimen name="dp_440">440dp</dimen>
+    <dimen name="dp_95">95dp</dimen>
 
     <item name="form_text_guide_perc" type="dimen">0.05</item>
     <item name="form_text_guide_rperc" type="dimen">0.95</item>

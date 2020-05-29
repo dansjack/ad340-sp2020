@@ -2,17 +2,22 @@ package com.example.djackad340.utils;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.util.Log;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.TextView;
+
+import com.example.djackad340.MainActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
 public class TimePickerUtils {
+    private static final String TAG = TimePickerUtils.class.getSimpleName();
 
     public static TimePickerDialog.OnTimeSetListener onTimeSetListener ( // MainActivity
-        Calendar c, StringBuilder timeString, TextView v) {
+        Calendar c, StringBuilder timeString, EditText v) {
         return (view, hourOfDay, minute) -> {
             c.set(Calendar.HOUR_OF_DAY, hourOfDay);
             c.set(Calendar.MINUTE, minute);

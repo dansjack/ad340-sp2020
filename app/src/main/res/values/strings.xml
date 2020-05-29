@@ -49,5 +49,12 @@
     <string name="you_unliked">"You unliked "</string>
     <string name="you_liked">"You liked "</string>
     <string name="exclamation_mark">!</string>
-
+    <string name="switch_public">"Public "</string>
+    <string name="switch_private">Private</string>
+    <string name="match_gender">Match Gender:</string>
+    <string name="_00_00">00:00</string>
+    <string name="match_reminder_hint">Click to set time</string>
+    <string name="match_age_range">Match Age Range:</string>
+    <string name="match_distance_miles">Match Distance (miles):</string>
+    <string name="daily_match_reminder">Daily Match Reminder:</string>
 </resources>

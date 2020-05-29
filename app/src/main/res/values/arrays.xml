@@ -36,4 +36,18 @@
         <item>@drawable/octavio</item>
         <item>@drawable/bill</item>
     </integer-array>
+    <string-array name="distance_array">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+        <item>50</item>
+        <item>100</item>
+        <item>250</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Trans</item>
+    </string-array>
+
 </resources>
