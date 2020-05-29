@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.djackad340.tabs.MatchesFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class MatchCardRecyclerViewAdapter extends RecyclerView.Adapter<MatchCard
     private static final String TAG = MatchCardRecyclerViewAdapter.class.getName();
 
 
-    MatchCardRecyclerViewAdapter(List<MatchItem> mMatches, MatchesFragment.OnListFragmentInteractionListener mListener) {
+    public MatchCardRecyclerViewAdapter(List<MatchItem> mMatches, MatchesFragment.OnListFragmentInteractionListener mListener) {
         matches = mMatches;
         listener = mListener;
     }

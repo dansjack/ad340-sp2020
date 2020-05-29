@@ -1,4 +1,4 @@
-package com.example.djackad340;
+package com.example.djackad340.tabs;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.djackad340.Constants;
+import com.example.djackad340.MatchCardRecyclerViewAdapter;
+import com.example.djackad340.MatchItem;
+import com.example.djackad340.R;
 
 import java.util.List;
 

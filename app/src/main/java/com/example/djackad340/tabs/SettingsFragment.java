@@ -1,9 +1,8 @@
-package com.example.djackad340;
+package com.example.djackad340.tabs;
 
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,14 +13,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.djackad340.R;
+
 import java.util.Calendar;
 
-import static com.example.djackad340.TimePickerUtils.onTimeSetListener;
-import static com.example.djackad340.TimePickerUtils.setTimePickerShowOnClick;
+import static com.example.djackad340.utils.TimePickerUtils.onTimeSetListener;
+import static com.example.djackad340.utils.TimePickerUtils.setTimePickerShowOnClick;
 
 
 public class SettingsFragment extends Fragment implements TimePickerDialog.OnTimeSetListener {
-    private Button matchReminderTime;
+    private EditText matchReminderTime;
     private TextView timeText;
 
     public SettingsFragment() {

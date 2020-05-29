@@ -1,9 +1,8 @@
-package com.example.djackad340;
+package com.example.djackad340.utils;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -26,9 +25,9 @@ public class TimePickerUtils {
     }
 
 
-    public static void setTimePickerShowOnClick(Context context, Calendar c, Button imageButton,
+    public static void setTimePickerShowOnClick(Context context, Calendar c, EditText v,
                                                 TimePickerDialog.OnTimeSetListener time) {
-        imageButton.setOnClickListener(view ->
+        v.setOnClickListener(view ->
                 new TimePickerDialog(context, time,
                         c.get(Calendar.HOUR_OF_DAY),
                         c.get(Calendar.MINUTE), false).show());

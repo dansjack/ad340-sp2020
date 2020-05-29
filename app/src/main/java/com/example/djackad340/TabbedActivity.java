@@ -2,19 +2,18 @@ package com.example.djackad340;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TimePicker;
 
+import com.example.djackad340.tabs.MatchesFragment;
+import com.example.djackad340.tabs.ProfileFragment;
+import com.example.djackad340.tabs.SettingsFragment;
+import com.example.djackad340.viewmodel.MatchViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

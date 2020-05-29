@@ -1,4 +1,4 @@
-package com.example.djackad340;
+package com.example.djackad340.tabs;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.djackad340.Constants;
+import com.example.djackad340.R;
 
 
 public class ProfileFragment extends Fragment {

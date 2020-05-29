@@ -1,5 +1,7 @@
-package com.example.djackad340;
+package com.example.djackad340.viewmodel;
 
+import com.example.djackad340.MatchItem;
+import com.example.djackad340.model.MatchModel;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
