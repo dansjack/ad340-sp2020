@@ -48,6 +48,7 @@
         <item>Male</item>
         <item>Female</item>
         <item>Trans</item>
+        <item>All</item>
     </string-array>
 
 </resources>
