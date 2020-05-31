@@ -61,18 +61,14 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
         } else {
             typeSwitch.setText(res.getString(R.string.switch_public));
         }
-        typeSwitch.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {
+        typeSwitch.setOnCheckedChangeListener((compoundButton, isPrivate) -> {
+            if (isPrivate) {
                 typeSwitch.setText(res.getString(R.string.switch_private));
             } else {
                 typeSwitch.setText(res.getString(R.string.switch_public));
             }
         });
-
-
-
         initSpinners();
-
         return view;
     }
 

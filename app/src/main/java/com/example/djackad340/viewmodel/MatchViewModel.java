@@ -29,7 +29,7 @@ public class MatchViewModel {
                         responseCallback.accept(matchItems);
                     }
                 },
-                (databaseError -> System.out.println("Error reading Match Items: " + databaseError))
+                (databaseError -> System.out.println("Error reading Settings Items: " + databaseError))
         );
     }
 
