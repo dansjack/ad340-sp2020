@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,8 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 
 import com.example.djackad340.R;
+import com.example.djackad340.Settings;
+import com.example.djackad340.SettingsViewModel;
 
 import java.util.Calendar;
 
@@ -32,6 +36,9 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
     private Spinner matchDistance;
     private Spinner matchGender;
     private Switch typeSwitch;
+    private SettingsViewModel mSettingsViewModel;
+
+
     private static final String TAG = SettingsFragment.class.getName();
 
     public SettingsFragment() {
@@ -47,6 +54,9 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
 
         Calendar c = Calendar.getInstance();
         StringBuilder timeString = new StringBuilder();
+
+        mSettingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
+
         matchReminderTime = view.findViewById(R.id.match_reminder_value);
         matchDistance = view.findViewById(R.id.distance_spinner);
         matchGender = view.findViewById(R.id.gender_spinner);
@@ -61,7 +71,9 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
         } else {
             typeSwitch.setText(res.getString(R.string.switch_public));
         }
+
         typeSwitch.setOnCheckedChangeListener((compoundButton, isPrivate) -> {
+            mSettingsViewModel.updatePrivate(true);
             if (isPrivate) {
                 typeSwitch.setText(res.getString(R.string.switch_private));
             } else {
@@ -69,6 +81,18 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
             }
         });
         initSpinners();
+
+        mSettingsViewModel.getSettings().observe(getViewLifecycleOwner(), settings -> {
+            // Update the cached copy of the words in the adapter.
+            Log.i(TAG, "onChanged: ");
+            Log.i(TAG, String.valueOf(settings.getId()));
+            matchReminderTime.setText(settings.getReminderTime());
+            matchDistance.setSelection(
+                    ((ArrayAdapter) matchDistance.getAdapter()).getPosition(settings.getDistance()));
+            matchGender.setSelection(
+                    ((ArrayAdapter) matchGender.getAdapter()).getPosition(settings.getGender()));
+            typeSwitch.setChecked(settings.getPrivate());
+        });
         return view;
     }
 

@@ -24,15 +24,11 @@ import java.util.List;
 public class TabbedActivity extends AppCompatActivity implements MatchesFragment.OnListFragmentInteractionListener {
     private MatchViewModel viewModel;
     private static final String TAG = TabbedActivity.class.getName();
-//    private EditText matchReminderTime;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
-
-//        matchReminderTime = findViewById(R.id.match_reminder_value);
 
         Intent mainIntent = getIntent();
         Bundle bundleIntent = mainIntent.getExtras();
@@ -73,14 +69,6 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
                     }
                 }
         ).attach();
-
-//        matchReminderTime.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DialogFragment timePicker = new TimePickerFragment();
-//                timePicker.show(getSupportFragmentManager(), getString(R.string.time_picker_tag));
-//            }
-//        });
     }
 
     @Override
