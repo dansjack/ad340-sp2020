@@ -18,6 +18,9 @@ public interface SettingsDao {
     @Query("DELETE FROM settings_table")
     void deleteAll();
 
+    @Query("SELECT COUNT(*) FROM settings_table")
+    LiveData<Integer> getCount();
+
     @Query("SELECT * from settings_table")
     LiveData<Settings> getSettings();
 

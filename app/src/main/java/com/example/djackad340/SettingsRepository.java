@@ -7,11 +7,13 @@ import androidx.lifecycle.LiveData;
 public class SettingsRepository {
     private SettingsDao mSettingsDao;
     private LiveData<Settings> allSettings;
+    private LiveData<Integer> settingsCount;
 
     SettingsRepository(Application application) {
         SettingsDatabase db = SettingsDatabase.getDatabase(application);
         mSettingsDao = db.settingsDao();
         allSettings = mSettingsDao.getSettings();
+        settingsCount = mSettingsDao.getCount();
 
         // Observed LiveData will notify the observer when the data has changed.
     }
@@ -22,6 +24,10 @@ public class SettingsRepository {
 
     void insert(Settings settings) {
         SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.insert(settings);});
+    }
+
+    LiveData<Integer> getCount() {
+        return settingsCount;
     }
 
     void updateReminder(String matchReminder) {

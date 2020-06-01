@@ -77,6 +77,10 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
 
             typeSwitch.setChecked(settings.getPrivate());
         });
+
+        mSettingsViewModel.getCount().observe(getViewLifecycleOwner(), count -> {
+            Log.i(TAG, String.valueOf(mSettingsViewModel.getCount().getValue()));
+        });
         return view;
     }
 
