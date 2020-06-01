@@ -24,7 +24,23 @@ public class SettingsRepository {
         SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.insert(settings);});
     }
 
-    void updatePrivate(int id, Boolean isPrivate) {
-        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updatePrivate(id, isPrivate);});
+    void updateReminder(String matchReminder) {
+        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateReminderTime(matchReminder);});
+    }
+
+    void updateDistance(String matchDistance) {
+        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateDistance(matchDistance);});
+    }
+
+    void updateGender(String gender) {
+        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateGender(gender);});
+    }
+
+    void updatePrivate(Boolean isPrivate) {
+        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updatePrivate(isPrivate);});
+    }
+
+    void updateAgeRange(String ageRange) {
+        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateAgeRange(ageRange);});
     }
 }

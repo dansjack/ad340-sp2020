@@ -21,19 +21,19 @@ public interface SettingsDao {
     @Query("SELECT * from settings_table")
     LiveData<Settings> getSettings();
 
-    @Query("UPDATE settings_table SET reminderTime = :reminderTime WHERE id = :id")
-    void updateReminderTime(int id, String reminderTime);
+    @Query("UPDATE settings_table SET reminderTime = :reminderTime")
+    void updateReminderTime(String reminderTime);
 
-    @Query("UPDATE settings_table SET distance = :distance WHERE id = :id")
-    void updateDistance(int id, String distance);
+    @Query("UPDATE settings_table SET distance = :distance")
+    void updateDistance(String distance);
 
-    @Query("UPDATE settings_table SET gender = :gender WHERE id = :id")
-    void updateGender(int id, String gender);
+    @Query("UPDATE settings_table SET gender = :gender")
+    void updateGender(String gender);
 
-    @Query("UPDATE settings_table SET private = :isPrivate WHERE id = :id")
-    void updatePrivate(int id, Boolean isPrivate);
+    @Query("UPDATE settings_table SET private = :isPrivate")
+    void updatePrivate(Boolean isPrivate);
 
-    @Query("UPDATE settings_table SET ageRange = :ageRange WHERE id = :id")
-    void updateAgeRange(int id, String ageRange);
+    @Query("UPDATE settings_table SET ageRange = :ageRange")
+    void updateAgeRange(String ageRange);
 
 }

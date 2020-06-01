@@ -21,5 +21,14 @@ public class SettingsViewModel extends AndroidViewModel {
 
     public void insert(Settings settings) { mRepository.insert(settings);}
 
-    public void updatePrivate(Boolean isPrivate) { mRepository.updatePrivate(8, isPrivate);}
+    public void updateReminder(String matchReminder) {mRepository.updateReminder(matchReminder);}
+
+    public void updateDistance(String matchDistance) { mRepository.updateDistance(matchDistance);}
+
+    public void updateGender(String gender) { mRepository.updateGender(gender);}
+
+    public void updatePrivate(Boolean isPrivate) { mRepository.updatePrivate(isPrivate);}
+
+    public void updateRange(String ageRange) { mRepository.updateAgeRange(ageRange);}
+
 }
