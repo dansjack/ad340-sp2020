@@ -1,6 +1,7 @@
 package com.example.djackad340;
 
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
@@ -18,6 +19,7 @@ import static androidx.test.espresso.action.ViewActions.swipeRight;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
+import static androidx.test.espresso.contrib.PickerActions.setTime;
 import static androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName;
@@ -79,10 +81,8 @@ public class MainActivityIntentTest {
     public void verifyFragments() {
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.view_pager)).perform(swipeLeft());
-//        onView(withId(R.id.match_reminder_text)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
         onView(withId(R.id.view_pager)).perform(swipeRight());
         onView(withId(R.id.view_pager)).perform(swipeLeft());
-//        onView(withId(R.id.match_reminder_text)).check(matches(withText(Constants.TEST_SETTINGS_PL)));
     }
 
     @Test
@@ -123,6 +123,22 @@ public class MainActivityIntentTest {
         onView(withText(Constants.TEST_TOAST_LIKED))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void timeSettingWorks() {
+        int hourOfDay = 16;
+        int minute = 30;
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.view_pager)).perform(swipeLeft());
+        onView(withId(R.id.match_reminder_value)).perform(click());
+        onView(withClassName(Matchers.equalTo(
+                TimePicker.class.getName()))).perform(setTime(hourOfDay, minute));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.match_reminder_value))
+                .check(matches(withText("4:30 PM")));
+
     }
 
 }
