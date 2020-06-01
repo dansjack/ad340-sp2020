@@ -9,7 +9,6 @@ import androidx.lifecycle.LiveData;
 public class SettingsViewModel extends AndroidViewModel {
     private SettingsRepository mRepository;
     private LiveData<Settings> mSettings;
-    private SettingsViewModel mSettingsViewModel;
 
     public SettingsViewModel(@NonNull Application application) {
         super(application);
@@ -29,6 +28,8 @@ public class SettingsViewModel extends AndroidViewModel {
 
     public void updatePrivate(Boolean isPrivate) { mRepository.updatePrivate(isPrivate);}
 
-    public void updateRange(String ageRange) { mRepository.updateAgeRange(ageRange);}
+    public void updateMinAge(String minAge) { mRepository.updateMinAge(minAge);}
+
+    public void updateMaxAge(String maxAge) { mRepository.updateMaxAge(maxAge);}
 
 }

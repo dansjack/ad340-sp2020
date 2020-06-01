@@ -33,10 +33,15 @@ public class Settings {
     public Boolean getPrivate() {return this.isPrivate;}
     public void setPrivate(Boolean isPrivate) {this.isPrivate = isPrivate;}
 
-    @ColumnInfo(name = "ageRange")
-    private String mAgeRange;
-    public String getAgeRange() {return this.mAgeRange;}
-    public void setAgeRange(String ageRange) {this.mAgeRange = ageRange;}
+    @ColumnInfo(name = "minAge")
+    private String mMinAge;
+    public String getMinAge() {return this.mMinAge;}
+    public void setMinAge(String minAge) {this.mMinAge = minAge;}
+
+    @ColumnInfo(name = "maxAge")
+    private String mMaxAge;
+    public String getMaxAge() {return this.mMaxAge;}
+    public void setMaxAge(String maxAge) {this.mMaxAge = maxAge;}
 
 
     public Settings(Integer id) {
@@ -45,6 +50,7 @@ public class Settings {
         this.mDistance = "25";
         this.mGender = "All";
         this.isPrivate = false;
-        this.mAgeRange = "18 45";
+        this.mMinAge = "18";
+        this.mMaxAge = "45";
     }
 }

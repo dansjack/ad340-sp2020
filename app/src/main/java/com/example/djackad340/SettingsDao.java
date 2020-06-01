@@ -36,7 +36,10 @@ public interface SettingsDao {
     @Query("UPDATE settings_table SET private = :isPrivate")
     void updatePrivate(Boolean isPrivate);
 
-    @Query("UPDATE settings_table SET ageRange = :ageRange")
-    void updateAgeRange(String ageRange);
+    @Query("UPDATE settings_table SET minAge = :minAge")
+    void updateMinAge(String minAge);
+
+    @Query("UPDATE settings_table SET maxAge = :maxAge")
+    void updateMaxAge(String maxAge);
 
 }

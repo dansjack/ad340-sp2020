@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Settings.class}, version = 1, exportSchema = false)
+@Database(entities = {Settings.class}, version = 2, exportSchema = false)
 public abstract class SettingsDatabase extends RoomDatabase {
     public abstract SettingsDao settingsDao();
 

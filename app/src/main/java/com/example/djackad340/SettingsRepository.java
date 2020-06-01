@@ -14,8 +14,6 @@ public class SettingsRepository {
         mSettingsDao = db.settingsDao();
         allSettings = mSettingsDao.getSettings();
         settingsCount = mSettingsDao.getCount();
-
-        // Observed LiveData will notify the observer when the data has changed.
     }
 
     LiveData<Settings> getAllSettings() {
@@ -40,7 +38,11 @@ public class SettingsRepository {
         SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updatePrivate(isPrivate);});
     }
 
-    void updateAgeRange(String ageRange) {
-        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateAgeRange(ageRange);});
+    void updateMinAge(String minAge) {
+        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateMinAge(minAge);});
+    }
+
+    void updateMaxAge(String maxAge) {
+        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateMaxAge(maxAge);});
     }
 }

@@ -56,7 +56,12 @@
     <string name="_00_00">00:00</string>
     <string name="match_reminder_hint">Click to set time</string>
     <string name="match_age_range">Match Age Range:</string>
-    <string name="match_distance_miles">Match Distance (miles):</string>
+    <string name="match_distance_miles">Match Distance (mi):</string>
     <string name="daily_match_reminder">Daily Match Reminder:</string>
     <string name="match_distance_tag">matchDistance</string>
+    <string name="private_account">Private Account:</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="min_age_toast">Min age must be between 18 and 99</string>
+    <string name="max_age_toast">Max age must be between 18 and 99</string>
 </resources>
