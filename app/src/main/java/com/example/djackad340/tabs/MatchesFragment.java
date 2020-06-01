@@ -19,6 +19,7 @@ import com.example.djackad340.MatchItem;
 import com.example.djackad340.R;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class MatchesFragment extends Fragment {
@@ -30,7 +31,7 @@ public class MatchesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
+        mMatches = Objects.requireNonNull(getArguments()).getParcelableArrayList(Constants.MATCHES);
     }
 
     @Override

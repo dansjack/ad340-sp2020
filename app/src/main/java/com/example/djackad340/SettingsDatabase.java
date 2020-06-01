@@ -36,19 +36,17 @@ public abstract class SettingsDatabase extends RoomDatabase {
 
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
-            super.onOpen(db);
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
 
             // If you want to keep data through app restarts,
             // comment out the following block
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
-//                SettingsDao dao = INSTANCE.settingsDao();
-//                dao.deleteAll();
-//
-//                Settings settings = new Settings(null);
-//                dao.insert(settings);
+                SettingsDao dao = INSTANCE.settingsDao();
+                Settings settings = new Settings(null);
+                dao.insert(settings);
             });
         }
     };
