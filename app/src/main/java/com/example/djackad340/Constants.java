@@ -21,6 +21,7 @@ public class Constants {
     public static final String KEY_AGE = "age";
     public static final String KEY_Uri = "imageUri";
     public static final String EMPTY_STRING = "";
+    public static final String COLON = ":";
 
     // Test Constants
     public static final String TEST_TOAST_LIKED = "You liked Cool Guy Mike!";

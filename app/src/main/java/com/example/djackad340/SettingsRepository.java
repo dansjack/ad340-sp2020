@@ -22,13 +22,7 @@ public class SettingsRepository {
         return allSettings;
     }
 
-    void insert(Settings settings) {
-        SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.insert(settings);});
-    }
-
-    LiveData<Integer> getCount() {
-        return settingsCount;
-    }
+    LiveData<Integer> getCount() { return settingsCount; }
 
     void updateReminder(String matchReminder) {
         SettingsDatabase.databaseWriteExecutor.execute(() -> { mSettingsDao.updateReminderTime(matchReminder);});

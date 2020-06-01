@@ -19,8 +19,6 @@ public class SettingsViewModel extends AndroidViewModel {
 
     public LiveData<Settings> getSettings() { return mSettings; }
 
-    public void insert(Settings settings) { mRepository.insert(settings);}
-
     public LiveData<Integer> getCount() { return mRepository.getCount();}
 
     public void updateReminder(String matchReminder) {mRepository.updateReminder(matchReminder);}

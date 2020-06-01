@@ -8,6 +8,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.example.djackad340.MainActivity;
+import com.example.djackad340.SettingsViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,8 +17,8 @@ import java.util.Locale;
 public class TimePickerUtils {
     private static final String TAG = TimePickerUtils.class.getSimpleName();
 
-    public static TimePickerDialog.OnTimeSetListener onTimeSetListener ( // MainActivity
-        Calendar c, StringBuilder timeString, EditText v) {
+    public static TimePickerDialog.OnTimeSetListener onTimeSetListener (Calendar c,
+        StringBuilder timeString, EditText v, SettingsViewModel vm) {
         return (view, hourOfDay, minute) -> {
             c.set(Calendar.HOUR_OF_DAY, hourOfDay);
             c.set(Calendar.MINUTE, minute);
@@ -25,6 +26,7 @@ public class TimePickerUtils {
             SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);
             timeString.setLength(0);
             timeString.append(sdf.format(c.getTime()));
+            vm.updateReminder(String.valueOf(timeString));
             v.setText(timeString);
         };
     }

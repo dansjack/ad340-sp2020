@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TimePicker;
 
 import com.example.djackad340.R;
 import com.example.djackad340.SettingsViewModel;
@@ -26,7 +25,7 @@ import static com.example.djackad340.utils.TimePickerUtils.onTimeSetListener;
 import static com.example.djackad340.utils.TimePickerUtils.setTimePickerShowOnClick;
 
 
-public class SettingsFragment extends Fragment implements TimePickerDialog.OnTimeSetListener, AdapterView.OnItemSelectedListener {
+public class SettingsFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private EditText matchReminderTime;
     private Spinner matchDistance;
     private Spinner matchGender;
@@ -53,7 +52,8 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
         matchGender = view.findViewById(R.id.gender_spinner);
         typeSwitch = view.findViewById(R.id.account_type_switch);
 
-        final TimePickerDialog.OnTimeSetListener time = onTimeSetListener(c, timeString, matchReminderTime);
+        final TimePickerDialog.OnTimeSetListener time = onTimeSetListener(
+                c, timeString, matchReminderTime, mSettingsViewModel);
         setTimePickerShowOnClick(this.getContext(), c, matchReminderTime, time);
 
         typeSwitch.setOnCheckedChangeListener(
@@ -84,24 +84,13 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
         return view;
     }
 
-
-    @Override
-    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-        matchReminderTime.setText(hourOfDay + ":" + minute);
-    }
-
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         adapterView.setSelection(i);
         if (mSettingsViewModel.getSettings().getValue() != null) {
             if (adapterView.getId() == R.id.distance_spinner) {
-                Log.i(TAG, "onItemSelected: setDistance");
-                Log.i(TAG, mSettingsViewModel.getSettings().getValue().getDistance());
                 mSettingsViewModel.updateDistance((String) adapterView.getItemAtPosition(i));
             } else if (adapterView.getId() == R.id.gender_spinner) {
-                Log.i(TAG, "onItemSelected: setGender");
-                Log.i(TAG, mSettingsViewModel.getSettings().getValue().getGender());
-
                 mSettingsViewModel.updateGender((String) adapterView.getItemAtPosition(i));
             }
         }
