@@ -65,6 +65,9 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
 
         mSettingsViewModel.getSettings().observe(getViewLifecycleOwner(), settings -> {
             // Update the cached copy of the words in the adapter.
+            Log.i(TAG, settings.getDistance());
+            Log.i(TAG, settings.getGender());
+
             matchReminderTime.setText(settings.getReminderTime());
             matchDistance.setSelection(
                     ((ArrayAdapter) matchDistance.getAdapter()).getPosition(settings.getDistance()));
@@ -86,12 +89,17 @@ public class SettingsFragment extends Fragment implements TimePickerDialog.OnTim
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         adapterView.setSelection(i);
-        if (adapterView.getId() == R.id.distance_spinner) {
-            Log.i(TAG, "onItemSelected: setDistance");
-            mSettingsViewModel.updateDistance((String) adapterView.getItemAtPosition(i));
-        } else if (adapterView.getId() == R.id.gender_spinner) {
-            Log.i(TAG, "onItemSelected: setGender");
-            mSettingsViewModel.updateGender((String) adapterView.getItemAtPosition(i));
+        if (mSettingsViewModel.getSettings().getValue() != null) {
+            if (adapterView.getId() == R.id.distance_spinner) {
+                Log.i(TAG, "onItemSelected: setDistance");
+                Log.i(TAG, mSettingsViewModel.getSettings().getValue().getDistance());
+                mSettingsViewModel.updateDistance((String) adapterView.getItemAtPosition(i));
+            } else if (adapterView.getId() == R.id.gender_spinner) {
+                Log.i(TAG, "onItemSelected: setGender");
+                Log.i(TAG, mSettingsViewModel.getSettings().getValue().getGender());
+
+                mSettingsViewModel.updateGender((String) adapterView.getItemAtPosition(i));
+            }
         }
     }
 
