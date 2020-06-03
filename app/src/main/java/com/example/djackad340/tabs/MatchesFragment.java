@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class MatchesFragment extends Fragment implements OnListFragmentInteracti
     private List<MatchItem> mMatches;
     private OnListFragmentInteractionListener mListener;
     private MatchViewModel viewModel;
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -36,6 +38,15 @@ public class MatchesFragment extends Fragment implements OnListFragmentInteracti
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getArguments() != null) {
+            mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
+            recyclerView.setAdapter(new MatchCardRecyclerViewAdapter(mMatches, mListener));
         }
     }
 
@@ -48,7 +59,7 @@ public class MatchesFragment extends Fragment implements OnListFragmentInteracti
 
 
         // Set up RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new MatchCardRecyclerViewAdapter(mMatches, mListener));
