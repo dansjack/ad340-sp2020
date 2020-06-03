@@ -71,22 +71,25 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
         mSettingsViewModel.getSettings().observe(getViewLifecycleOwner(), settings -> {
             // Update the cached copy of the words in the adapter.
 
-            matchReminderTime.setText(settings.getReminderTime());
-            ArrayAdapter<String> distanceList = (ArrayAdapter<String>) matchDistance.getAdapter();
-            matchDistance.setSelection(distanceList.getPosition(settings.getDistance()));
+            if (settings != null) {
+                ArrayAdapter<String> distanceList = (ArrayAdapter<String>) matchDistance.getAdapter();
+                matchDistance.setSelection(distanceList.getPosition(settings.getDistance()));
+                matchReminderTime.setText(settings.getReminderTime());
 
-            ArrayAdapter<String> genderList = (ArrayAdapter<String>) matchGender.getAdapter();
-            matchGender.setSelection(genderList.getPosition(settings.getGender()));
+                ArrayAdapter<String> genderList = (ArrayAdapter<String>) matchGender.getAdapter();
+                matchGender.setSelection(genderList.getPosition(settings.getGender()));
 
-            typeSwitch.setChecked(settings.getPrivate());
+                typeSwitch.setChecked(settings.getPrivate());
 
-            if (!settings.getMinAge().contentEquals(minAge.getText())) {
-                minAge.setText(settings.getMinAge());
+                if (!settings.getMinAge().contentEquals(minAge.getText())) {
+                    minAge.setText(settings.getMinAge());
+                }
+
+                if (!settings.getMaxAge().contentEquals(maxAge.getText())) {
+                    maxAge.setText(settings.getMaxAge());
+                }
             }
 
-            if (!settings.getMaxAge().contentEquals(maxAge.getText())) {
-                maxAge.setText(settings.getMaxAge());
-            }
         });
 
         mSettingsViewModel.getCount().observe(getViewLifecycleOwner(), count -> {

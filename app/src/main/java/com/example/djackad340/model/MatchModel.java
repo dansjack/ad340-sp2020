@@ -31,7 +31,6 @@ public class MatchModel {
                     if (e != null) {
                         dataErrorCallback.accept(e);
                     }
-
                     dataChangedCallback.accept(queryDocumentSnapshots);
                 });
         listeners.add(listener);

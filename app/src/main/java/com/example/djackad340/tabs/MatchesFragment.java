@@ -16,39 +16,42 @@ import android.view.ViewGroup;
 import com.example.djackad340.Constants;
 import com.example.djackad340.MatchCardRecyclerViewAdapter;
 import com.example.djackad340.MatchItem;
+import com.example.djackad340.OnListFragmentInteractionListener;
 import com.example.djackad340.R;
+import com.example.djackad340.viewmodel.MatchViewModel;
 
 import java.util.List;
-import java.util.Objects;
 
 
-public class MatchesFragment extends Fragment {
+
+public class MatchesFragment extends Fragment implements OnListFragmentInteractionListener{
     private static final String TAG = MatchesFragment.class.getName();
     private List<MatchItem> mMatches;
-    private MatchesFragment.OnListFragmentInteractionListener mListener;
+    private OnListFragmentInteractionListener mListener;
+    private MatchViewModel viewModel;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMatches = Objects.requireNonNull(getArguments()).getParcelableArrayList(Constants.MATCHES);
+        if (getArguments() != null) {
+            mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        viewModel = new MatchViewModel();
         View view = inflater.inflate(R.layout.fragment_matches, container, false);
 
 
         // Set up RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new MatchCardRecyclerViewAdapter(mMatches, mListener));
-
-
         return view;
     }
 
@@ -58,7 +61,15 @@ public class MatchesFragment extends Fragment {
         mListener = (OnListFragmentInteractionListener) context;
     }
 
-    public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(MatchItem item);
+    @Override
+    public void onListFragmentInteraction(MatchItem item) {
+        item.liked = !item.liked;
+        viewModel.updateMatchItem(item);
+    }
+
+    @Override
+    public void onPause() {
+        viewModel.clear();
+        super.onPause();
     }
 }

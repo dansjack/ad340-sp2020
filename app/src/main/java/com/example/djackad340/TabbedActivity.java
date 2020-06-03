@@ -9,6 +9,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
 
 import com.example.djackad340.tabs.MatchesFragment;
 import com.example.djackad340.tabs.ProfileFragment;
@@ -21,7 +24,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabbedActivity extends AppCompatActivity implements MatchesFragment.OnListFragmentInteractionListener {
+public class TabbedActivity extends AppCompatActivity implements OnListFragmentInteractionListener {
     private MatchViewModel viewModel;
     private static final String TAG = TabbedActivity.class.getName();
 
@@ -30,10 +33,23 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
 
+        viewModel = new MatchViewModel();
+
         Intent mainIntent = getIntent();
         Bundle bundleIntent = mainIntent.getExtras();
 
         MatchesFragment matchesFragment = new MatchesFragment();
+        viewModel.getMatchItems(
+                (ArrayList<MatchItem> matchItems) -> {
+                    Log.i(TAG, matchItems.toString());
+                    Bundle matchesBundle = new Bundle();
+                    matchesBundle.putParcelableArrayList(Constants.MATCHES, matchItems);
+                    matchesFragment.setArguments(matchesBundle);
+                }
+        );
+        if (matchesFragment.getArguments() == null) {
+            Log.i(TAG, "onCreate: WHAT");
+        }
         ProfileFragment profileFragment = new ProfileFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
 
@@ -42,19 +58,14 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
         TabLayout tabLayout = findViewById(R.id.tab_layout);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+
+
+
+
+
         viewPagerAdapter.addFragment(profileFragment);
         viewPagerAdapter.addFragment(matchesFragment);
         viewPagerAdapter.addFragment(settingsFragment);
-
-        viewModel = new MatchViewModel();
-
-        viewModel.getMatchItems(
-            (ArrayList<MatchItem> matchItems) -> {
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList(Constants.MATCHES, matchItems);
-                matchesFragment.setArguments(bundle);
-            }
-        );
 
         viewPager.setAdapter(viewPagerAdapter);
 
@@ -71,17 +82,20 @@ public class TabbedActivity extends AppCompatActivity implements MatchesFragment
         ).attach();
     }
 
+
     @Override
     public void onListFragmentInteraction(MatchItem item) {
         item.liked = !item.liked;
         viewModel.updateMatchItem(item);
     }
+//
+//    @Override
+//    public void onPause() {
+//        viewModel.clear();
+//        super.onPause();
+//    }
 
-    @Override
-    protected void onPause() {
-        viewModel.clear();
-        super.onPause();
-    }
+
 
     public static class ViewPagerAdapter extends FragmentStateAdapter {
 
