@@ -25,13 +25,11 @@ import java.util.List;
 
 
 
-public class MatchesFragment extends Fragment implements OnListFragmentInteractionListener{
+public class MatchesFragment extends Fragment {
     private static final String TAG = MatchesFragment.class.getName();
     private List<MatchItem> mMatches;
     private OnListFragmentInteractionListener mListener;
-    private MatchViewModel viewModel;
     private RecyclerView recyclerView;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,15 +52,14 @@ public class MatchesFragment extends Fragment implements OnListFragmentInteracti
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        viewModel = new MatchViewModel();
         View view = inflater.inflate(R.layout.fragment_matches, container, false);
-
+        MatchCardRecyclerViewAdapter rcvAdapter = new MatchCardRecyclerViewAdapter(mMatches, mListener);
 
         // Set up RecyclerView
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new MatchCardRecyclerViewAdapter(mMatches, mListener));
+        recyclerView.setAdapter(rcvAdapter);
         return view;
     }
 
@@ -70,17 +67,5 @@ public class MatchesFragment extends Fragment implements OnListFragmentInteracti
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mListener = (OnListFragmentInteractionListener) context;
-    }
-
-    @Override
-    public void onListFragmentInteraction(MatchItem item) {
-        item.liked = !item.liked;
-        viewModel.updateMatchItem(item);
-    }
-
-    @Override
-    public void onPause() {
-        viewModel.clear();
-        super.onPause();
     }
 }

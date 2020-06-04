@@ -9,9 +9,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 
 import com.example.djackad340.tabs.MatchesFragment;
 import com.example.djackad340.tabs.ProfileFragment;
@@ -38,18 +36,18 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         Intent mainIntent = getIntent();
         Bundle bundleIntent = mainIntent.getExtras();
 
-        MatchesFragment matchesFragment = new MatchesFragment();
+        Bundle matchesBundle = new Bundle();
         viewModel.getMatchItems(
                 (ArrayList<MatchItem> matchItems) -> {
                     Log.i(TAG, matchItems.toString());
-                    Bundle matchesBundle = new Bundle();
                     matchesBundle.putParcelableArrayList(Constants.MATCHES, matchItems);
-                    matchesFragment.setArguments(matchesBundle);
                 }
         );
-        if (matchesFragment.getArguments() == null) {
-            Log.i(TAG, "onCreate: WHAT");
-        }
+
+        MatchesFragment matchesFragment = new MatchesFragment();
+
+        matchesFragment.setArguments(matchesBundle);
+
         ProfileFragment profileFragment = new ProfileFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
 
@@ -58,10 +56,6 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         TabLayout tabLayout = findViewById(R.id.tab_layout);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-
-
-
-
 
         viewPagerAdapter.addFragment(profileFragment);
         viewPagerAdapter.addFragment(matchesFragment);
@@ -88,14 +82,6 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         item.liked = !item.liked;
         viewModel.updateMatchItem(item);
     }
-//
-//    @Override
-//    public void onPause() {
-//        viewModel.clear();
-//        super.onPause();
-//    }
-
-
 
     public static class ViewPagerAdapter extends FragmentStateAdapter {
 
