@@ -14,8 +14,8 @@ public class MatchItem implements Parcelable {
     public String name;
     public String imageUrl;
     public boolean liked;
-//    public String lat;
-//    public String longitude;
+    public String lat;
+    public String longitude;
 
     public MatchItem() {}
 
@@ -23,16 +23,16 @@ public class MatchItem implements Parcelable {
         this.name = name;
         this.imageUrl = imageUrl;
         this.liked = liked;
-//        this.lat = lat;
-//        this.longitude = longitude;
+        this.lat = lat;
+        this.longitude = longitude;
     }
 
     public MatchItem(Parcel in) {
         name = in.readString();
         imageUrl = in.readString();
         liked = in.readByte() != 0;
-//        lat = in.readString();
-//        longitude = in.readString();
+        lat = in.readString();
+        longitude = in.readString();
     }
 
     public static final Creator<MatchItem> CREATOR = new Creator<MatchItem>() {
@@ -54,8 +54,8 @@ public class MatchItem implements Parcelable {
         result.put(Constants.NAME, name);
         result.put(Constants.IMAGE_URL, imageUrl);
         result.put(Constants.LIKED, liked);
-//        result.put("longitude", longitude);
-//        result.put("lat", lat);
+        result.put("longitude", longitude);
+        result.put("lat", lat);
 
         return result;
     }
@@ -71,8 +71,8 @@ public class MatchItem implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(imageUrl);
         parcel.writeByte((byte) (liked ? 1 : 0));
-//        parcel.writeString(lat);
-//        parcel.writeString(longitude);
+        parcel.writeString(lat);
+        parcel.writeString(longitude);
 
     }
 }

@@ -19,7 +19,6 @@ import com.example.djackad340.MatchCardRecyclerViewAdapter;
 import com.example.djackad340.MatchItem;
 import com.example.djackad340.OnListFragmentInteractionListener;
 import com.example.djackad340.R;
-import com.example.djackad340.viewmodel.MatchViewModel;
 
 import java.util.List;
 
@@ -30,6 +29,7 @@ public class MatchesFragment extends Fragment {
     private List<MatchItem> mMatches;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
+    private MatchCardRecyclerViewAdapter rcvAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,10 +42,8 @@ public class MatchesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (getArguments() != null) {
-            mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
-            recyclerView.setAdapter(new MatchCardRecyclerViewAdapter(mMatches, mListener));
-        }
+        mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
+        recyclerView.setAdapter(new MatchCardRecyclerViewAdapter(mMatches, mListener));
     }
 
     @Override
@@ -53,7 +51,7 @@ public class MatchesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_matches, container, false);
-        MatchCardRecyclerViewAdapter rcvAdapter = new MatchCardRecyclerViewAdapter(mMatches, mListener);
+        rcvAdapter = new MatchCardRecyclerViewAdapter(mMatches, mListener);
 
         // Set up RecyclerView
         recyclerView = view.findViewById(R.id.recycler_view);

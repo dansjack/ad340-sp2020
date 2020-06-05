@@ -126,11 +126,12 @@ public class MainActivityIntentTest {
     }
 
     @Test
-    public void timeSettingWorks() {
+    public void timeSettingWorks() throws InterruptedException {
         int hourOfDay = 16;
         int minute = 30;
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.view_pager)).perform(swipeLeft());
+        Thread.sleep(250);
         onView(withId(R.id.match_reminder_value)).perform(click());
         onView(withClassName(Matchers.equalTo(
                 TimePicker.class.getName()))).perform(setTime(hourOfDay, minute));

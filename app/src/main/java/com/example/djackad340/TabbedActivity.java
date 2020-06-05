@@ -25,6 +25,7 @@ import java.util.List;
 public class TabbedActivity extends AppCompatActivity implements OnListFragmentInteractionListener {
     private MatchViewModel viewModel;
     private static final String TAG = TabbedActivity.class.getName();
+    private Bundle matchesBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         Intent mainIntent = getIntent();
         Bundle bundleIntent = mainIntent.getExtras();
 
-        Bundle matchesBundle = new Bundle();
+        matchesBundle = new Bundle();
         viewModel.getMatchItems(
                 (ArrayList<MatchItem> matchItems) -> {
                     Log.i(TAG, matchItems.toString());
@@ -76,6 +77,11 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         ).attach();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        viewModel.clear();
+    }
 
     @Override
     public void onListFragmentInteraction(MatchItem item) {
