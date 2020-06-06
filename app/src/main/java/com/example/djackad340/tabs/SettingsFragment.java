@@ -51,7 +51,7 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
         Calendar c = Calendar.getInstance();
         StringBuilder timeString = new StringBuilder();
 
-        mSettingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
+        mSettingsViewModel = new ViewModelProvider(requireActivity()).get(SettingsViewModel.class);
 
         matchReminderTime = view.findViewById(R.id.match_reminder_value);
         matchDistance = view.findViewById(R.id.distance_spinner);

@@ -90,36 +90,32 @@ public class MainActivityIntentTest {
         Thread.sleep(1000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         Thread.sleep(500);
-        onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
+        onView(withId(R.id.recycler_view)).perform(scrollToPosition(4));
         onView(withRecyclerView(R.id.recycler_view)
-                .atPosition(5))
+                .atPosition(4))
                 .check(matches(hasDescendant(withText("Overachiever Alex"))));
-        onView(withRecyclerView(R.id.recycler_view).atPosition(5))
-                .check(matches(hasDescendant(withText("38, Arlen, TX"))));
+        onView(withRecyclerView(R.id.recycler_view).atPosition(4))
+                .check(matches(hasDescendant(withText("67, Arlen, TX"))));
     }
 
     @Test
     public void favButtonWorks() throws InterruptedException {
         Thread.sleep(1000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
-        Thread.sleep(500);
-        onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
-
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(4, R.id.favorite_button))
+                .atPositionOnView(0, R.id.favorite_button))
                 .perform(click());
  
         onView(withText(Constants.TEST_TOAST_UNLIKED))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
 
-
         Thread.sleep(2000);
 
         onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(4, R.id.favorite_button))
+                .atPositionOnView(0, R.id.favorite_button))
                 .perform(click());
 
         onView(withText(Constants.TEST_TOAST_LIKED))
