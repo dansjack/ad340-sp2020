@@ -3,6 +3,7 @@ package com.example.djackad340;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
@@ -67,6 +68,11 @@ public class MainActivityIntentTest {
                 .perform(ViewActions.scrollTo())
                 .perform(typeText(Constants.TEST_DESC), closeSoftKeyboard());
         onView(withId(R.id.submitBtn)).perform(click());
+
+        try {
+            onView(withText("Cancel")).perform(click());
+        } catch (NoMatchingViewException ignored) {
+        }
     }
 
     @Test
@@ -95,14 +101,14 @@ public class MainActivityIntentTest {
                 .atPosition(5))
                 .check(matches(hasDescendant(withText("Overachiever Alex"))));
         onView(withRecyclerView(R.id.recycler_view).atPosition(5))
-                .check(matches(hasDescendant(withText("67, Arlen, TX"))));
+                .check(matches(hasDescendant(withText("38, Arlen, TX"))));
     }
 
     @Test
     public void favButtonWorks() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         onView(withRecyclerView(R.id.recycler_view)
                 .atPositionOnView(0, R.id.favorite_button))

@@ -122,7 +122,7 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
                 ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60 * 1000, 10, locationListenerGPS);
         } else {
-//            showAlert();
+            showAlert();
         }
     }
 
@@ -130,8 +130,6 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         public void onLocationChanged(Location location) {
             longitudeGPS = location.getLongitude();
             latitudeGPS = location.getLatitude();
-            matchesBundle.putDouble(Constants.LATITUDE, latitudeGPS);
-            matchesBundle.putDouble(Constants.LONGITUDE, longitudeGPS);
         }
 
         @Override
@@ -155,7 +153,7 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
                     Location.distanceBetween(latitudeGPS, longitudeGPS, Float.parseFloat(match.lat),
                             Float.parseFloat(match.longitude), mDistanceResults);
                     double mDistanceMiles = mDistanceResults[0] / 1609.34;
-                    if (mDistanceMiles > 100000) {
+                    if (mDistanceMiles > 10) {
                         matchItemIterator.remove();
                     }
                 }

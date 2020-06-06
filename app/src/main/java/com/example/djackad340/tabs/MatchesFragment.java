@@ -26,8 +26,6 @@ import java.util.List;
 public class MatchesFragment extends Fragment {
     private static final String TAG = MatchesFragment.class.getName();
     private List<MatchItem> mMatches;
-    private double latitude;
-    private double longitude;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
     private MatchCardRecyclerViewAdapter rcvAdapter;
@@ -37,8 +35,6 @@ public class MatchesFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
-            latitude = getArguments().getDouble(Constants.LATITUDE);
-            longitude = getArguments().getDouble(Constants.LONGITUDE);
         }
     }
 
