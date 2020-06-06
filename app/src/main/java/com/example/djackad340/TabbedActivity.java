@@ -159,9 +159,9 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
                         matchItemIterator.remove();
                     }
                 }
-                matchesBundle.putParcelableArrayList(Constants.MATCHES, matches);
-                matchesRetrieved = true;
             }
+            matchesBundle.putParcelableArrayList(Constants.MATCHES, matches);
+            matchesRetrieved = true;
         });
     }
 
