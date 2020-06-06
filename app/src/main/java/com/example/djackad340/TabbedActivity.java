@@ -155,7 +155,7 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
                     Location.distanceBetween(latitudeGPS, longitudeGPS, Float.parseFloat(match.lat),
                             Float.parseFloat(match.longitude), mDistanceResults);
                     double mDistanceMiles = mDistanceResults[0] / 1609.34;
-                    if (mDistanceMiles > 10) {
+                    if (mDistanceMiles > 100000) {
                         matchItemIterator.remove();
                     }
                 }
