@@ -90,11 +90,11 @@ public class MainActivityIntentTest {
         Thread.sleep(1000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         Thread.sleep(500);
-        onView(withId(R.id.recycler_view)).perform(scrollToPosition(4));
+        onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
         onView(withRecyclerView(R.id.recycler_view)
-                .atPosition(4))
+                .atPosition(5))
                 .check(matches(hasDescendant(withText("Overachiever Alex"))));
-        onView(withRecyclerView(R.id.recycler_view).atPosition(4))
+        onView(withRecyclerView(R.id.recycler_view).atPosition(5))
                 .check(matches(hasDescendant(withText("67, Arlen, TX"))));
     }
 

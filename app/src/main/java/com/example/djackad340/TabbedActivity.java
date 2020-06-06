@@ -122,7 +122,7 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
                 ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60 * 1000, 10, locationListenerGPS);
         } else {
-            showAlert();
+//            showAlert();
         }
     }
 
