@@ -11,6 +11,7 @@ public class Constants {
     public static final String UNLIKED = "unliked";
     public static final String LIKED = "liked";
     public static final int GET_IMAGE = 9;
+    public static final int GET_LOCATION_SETTINGS = 8;
     public static final String KEY_LOC = "location";
     public static final String KEY_DESC = "description";
     public static final String KEY_OCC = "occupation";
@@ -33,6 +34,8 @@ public class Constants {
     public static final String TEST_LOCATION = "Seattle, WA";
     public static final String TEST_DOB = " TUESDAY, DECEMBER 22, 1987";
     public static final String TEST_DESC = "Hello there";
+    public static final String LATITUDE = "Latitude";
+    public static final String LONGITUDE = "Longitude";
     public static String TEST_NAME_ERR = "Enter your full name";
     public static String TEST_EMAIL_ERR = "Enter a valid email";
     public static String TEST_OCC_ERR = "Enter your occupation";

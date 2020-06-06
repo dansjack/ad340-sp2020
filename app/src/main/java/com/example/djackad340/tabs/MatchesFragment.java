@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +22,11 @@ import com.example.djackad340.R;
 import java.util.List;
 
 
-
 public class MatchesFragment extends Fragment {
     private static final String TAG = MatchesFragment.class.getName();
     private List<MatchItem> mMatches;
+    private double latitude;
+    private double longitude;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
     private MatchCardRecyclerViewAdapter rcvAdapter;
@@ -36,6 +36,8 @@ public class MatchesFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mMatches = getArguments().getParcelableArrayList(Constants.MATCHES);
+            latitude = getArguments().getDouble(Constants.LATITUDE);
+            longitude = getArguments().getDouble(Constants.LONGITUDE);
         }
     }
 

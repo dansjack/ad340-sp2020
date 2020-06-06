@@ -87,8 +87,9 @@ public class MainActivityIntentTest {
 
     @Test
     public void hasLastMatch() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
+        Thread.sleep(500);
         onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
         onView(withRecyclerView(R.id.recycler_view)
                 .atPosition(5))
@@ -99,8 +100,9 @@ public class MainActivityIntentTest {
 
     @Test
     public void favButtonWorks() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
+        Thread.sleep(500);
         onView(withId(R.id.recycler_view)).perform(scrollToPosition(5));
 
         Thread.sleep(2000);
