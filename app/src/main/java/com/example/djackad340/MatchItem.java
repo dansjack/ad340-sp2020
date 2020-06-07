@@ -19,13 +19,13 @@ public class MatchItem implements Parcelable {
 
     public MatchItem() {}
 
-    public MatchItem(String name, String lat, String longitude, String imageUrl, boolean liked) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.liked = liked;
-        this.lat = lat;
-        this.longitude = longitude;
-    }
+//    public MatchItem(String name, String lat, String longitude, String imageUrl, boolean liked) {
+//        this.name = name;
+//        this.imageUrl = imageUrl;
+//        this.liked = liked;
+//        this.lat = lat;
+//        this.longitude = longitude;
+//    }
 
     public MatchItem(Parcel in) {
         name = in.readString();
@@ -47,18 +47,18 @@ public class MatchItem implements Parcelable {
         }
     };
 
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put(Constants.UID, uid);
-        result.put(Constants.NAME, name);
-        result.put(Constants.IMAGE_URL, imageUrl);
-        result.put(Constants.LIKED, liked);
-        result.put("longitude", longitude);
-        result.put("lat", lat);
-
-        return result;
-    }
+//    @Exclude
+//    public Map<String, Object> toMap() {
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put(Constants.UID, uid);
+//        result.put(Constants.NAME, name);
+//        result.put(Constants.IMAGE_URL, imageUrl);
+//        result.put(Constants.LIKED, liked);
+//        result.put("longitude", longitude);
+//        result.put("lat", lat);
+//
+//        return result;
+//    }
 
 
     @Override

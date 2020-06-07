@@ -15,8 +15,6 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class TimePickerUtils {
-    private static final String TAG = TimePickerUtils.class.getSimpleName();
-
     public static TimePickerDialog.OnTimeSetListener onTimeSetListener (Calendar c,
         StringBuilder timeString, EditText v, SettingsViewModel vm) {
         return (view, hourOfDay, minute) -> {
