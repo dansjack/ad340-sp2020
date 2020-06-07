@@ -106,7 +106,7 @@ public class MainActivityIntentTest {
 
     @Test
     public void favButtonWorks() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         Thread.sleep(2000);
 
