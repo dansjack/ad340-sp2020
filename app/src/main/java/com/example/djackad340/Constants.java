@@ -25,8 +25,8 @@ public class Constants {
     public static final String COLON = ":";
 
     // Test Constants
-    public static final String TEST_TOAST_LIKED = "You liked Cool Guy Mike!";
-    public static final String TEST_TOAST_UNLIKED = "You unliked Cool Guy Mike!";
+    public static final String TEST_TOAST_LIKED = "You liked Hayden the Wrestler!";
+    public static final String TEST_TOAST_UNLIKED = "You unliked Hayden the Wrestler!";
     public static final String TEST_FNAME = "Bobby";
     public static final String TEST_LNAME = "Hill";
     public static final String TEST_EMAIL = "thatMyPurse@idontknowyou.com";
