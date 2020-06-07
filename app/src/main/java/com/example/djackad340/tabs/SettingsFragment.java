@@ -107,10 +107,10 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
             public void afterTextChanged(Editable editable) {
                 String newMinAge = String.valueOf(minAge.getText());
 
-                if (!newMinAge.equals("") && (Integer.parseInt(newMinAge) < 18
-                        || Integer.parseInt(newMinAge) > 99 )) {
-                    Toast.makeText(view.getContext(), R.string.min_age_toast, Toast.LENGTH_SHORT).show();
-                }
+//                if (!newMinAge.equals("") && (Integer.parseInt(newMinAge) < 18
+//                        || Integer.parseInt(newMinAge) > 99 )) {
+//                    Toast.makeText(view.getContext(), R.string.min_age_toast, Toast.LENGTH_SHORT).show();
+//                }
 
                 mSettingsViewModel.updateMinAge(newMinAge);
             }
@@ -127,10 +127,10 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
             public void afterTextChanged(Editable editable) {
                 String newMaxAge = String.valueOf(maxAge.getText());
 
-                if (!newMaxAge.equals("") && (Integer.parseInt(newMaxAge) < 18
-                        || Integer.parseInt(newMaxAge) > 99 )) {
-                    Toast.makeText(view.getContext(), R.string.max_age_toast, Toast.LENGTH_SHORT).show();
-                }
+//                if (!newMaxAge.equals("") && (Integer.parseInt(newMaxAge) < 18
+//                        || Integer.parseInt(newMaxAge) > 99 )) {
+//                    Toast.makeText(view.getContext(), R.string.max_age_toast, Toast.LENGTH_SHORT).show();
+//                }
                 mSettingsViewModel.updateMaxAge(newMaxAge);
             }
         });
