@@ -99,7 +99,7 @@ public class MainActivityIntentTest {
         onView(withId(R.id.recycler_view)).perform(scrollToPosition(4));
         onView(withRecyclerView(R.id.recycler_view)
                 .atPosition(4))
-                .check(matches(hasDescendant(withText("Overachiever Alex"))));
+                .check(matches(hasDescendant(withText("Cool Guy Mike"))));
         onView(withRecyclerView(R.id.recycler_view).atPosition(4))
                 .check(matches(hasDescendant(withText("38, Arlen, TX"))));
     }
