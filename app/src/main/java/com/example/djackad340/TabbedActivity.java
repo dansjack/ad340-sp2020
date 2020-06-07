@@ -133,25 +133,23 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         requestUpdateGPS();
         Log.i(TAG, "onActivityResult: ");
         Log.i(TAG, String.valueOf(longitudeGPS));
-        if (!matchesRetrieved) { // user went through nav too fast for program to keep up, get matches
-            viewModel.getMatchItems((ArrayList<MatchItem> matchItems) -> {
-                matches = matchItems;
-                Iterator<MatchItem> matchItemIterator = matches.iterator();
-                    Log.i(TAG, "onActivityResult: long not 0");
-                    while (matchItemIterator.hasNext()) {
-                        MatchItem match = matchItemIterator.next();
-                        float[] mDistanceResults = new float[3];
-                        Location.distanceBetween(latitudeGPS, longitudeGPS, Float.parseFloat(match.lat),
-                                Float.parseFloat(match.longitude), mDistanceResults);
-                        double mDistanceMiles = mDistanceResults[0] / 1609.34;
-                        if (mDistanceMiles > 10) {
-                            matchItemIterator.remove();
-                        }
+        viewModel.getMatchItems((ArrayList<MatchItem> matchItems) -> {
+            matches = matchItems;
+            Iterator<MatchItem> matchItemIterator = matches.iterator();
+                Log.i(TAG, "onActivityResult: long not 0");
+                while (matchItemIterator.hasNext()) {
+                    MatchItem match = matchItemIterator.next();
+                    float[] mDistanceResults = new float[3];
+                    Location.distanceBetween(latitudeGPS, longitudeGPS, Float.parseFloat(match.lat),
+                            Float.parseFloat(match.longitude), mDistanceResults);
+                    double mDistanceMiles = mDistanceResults[0] / 1609.34;
+                    if (mDistanceMiles > 10) {
+                        matchItemIterator.remove();
                     }
-                matchesBundle.putParcelableArrayList(Constants.MATCHES, matches);
-                matchesRetrieved = true;
-            });
-        }
+                }
+            matchesBundle.putParcelableArrayList(Constants.MATCHES, matches);
+            matchesRetrieved = true;
+        });
     }
 
     public void requestUpdateGPS() {
