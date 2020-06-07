@@ -52,19 +52,38 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         mSettingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
 
-        mSettingsViewModel.getSettings().observe(this, settings -> {
-            Log.i(TAG, "onCreate: settingsviewmodel");
-            if (settings != null) {
-                Log.i(TAG, settings.getDistance());
-                matchDistance = Integer.parseInt(settings.getDistance());
-            }
-        });
-            viewModel = new MatchViewModel();
+//        mSettingsViewModel.getSettings().observe(this, settings -> {
+//            Log.i(TAG, "onCreate: settingsviewmodel");
+//            if (settings != null) {
+//                Log.i(TAG, settings.getDistance());
+//                matchDistance = Integer.parseInt(settings.getDistance());
+//            }
+//        });
+        viewModel = new MatchViewModel();
         Intent mainIntent = getIntent();
         Bundle bundleIntent = mainIntent.getExtras();
 
         matchesBundle = new Bundle();
-        getMatchItems();
+        viewModel.getMatchItems((ArrayList<MatchItem> matchItems) -> {
+            matches = matchItems;
+            Iterator<MatchItem> matchItemIterator = matches.iterator();
+                Log.i(TAG, "onCreate: getMatchItems");
+                Log.i(TAG, String.valueOf(longitudeGPS));
+                if (longitudeGPS != 0.0) {
+                    Log.i(TAG, String.valueOf(longitudeGPS));
+                    while (matchItemIterator.hasNext()) {
+                    MatchItem match = matchItemIterator.next();
+                    float[] mDistanceResults = new float[3];
+                    Location.distanceBetween(latitudeGPS, longitudeGPS, Float.parseFloat(match.lat),
+                            Float.parseFloat(match.longitude), mDistanceResults);
+                    double mDistanceMiles = mDistanceResults[0] / 1609.34;
+                    if (mDistanceMiles > 10) {
+                        matchItemIterator.remove();
+                    }
+                }}
+            matchesBundle.putParcelableArrayList(Constants.MATCHES, matches);
+            matchesRetrieved = true;
+        });
         requestUpdateGPS();
         MatchesFragment matchesFragment = new MatchesFragment();
         ProfileFragment profileFragment = new ProfileFragment();
@@ -112,8 +131,26 @@ public class TabbedActivity extends AppCompatActivity implements OnListFragmentI
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         requestUpdateGPS();
+        Log.i(TAG, "onActivityResult: ");
+        Log.i(TAG, String.valueOf(longitudeGPS));
         if (!matchesRetrieved) { // user went through nav too fast for program to keep up, get matches
-            getMatchItems();
+            viewModel.getMatchItems((ArrayList<MatchItem> matchItems) -> {
+                matches = matchItems;
+                Iterator<MatchItem> matchItemIterator = matches.iterator();
+                    Log.i(TAG, "onActivityResult: long not 0");
+                    while (matchItemIterator.hasNext()) {
+                        MatchItem match = matchItemIterator.next();
+                        float[] mDistanceResults = new float[3];
+                        Location.distanceBetween(latitudeGPS, longitudeGPS, Float.parseFloat(match.lat),
+                                Float.parseFloat(match.longitude), mDistanceResults);
+                        double mDistanceMiles = mDistanceResults[0] / 1609.34;
+                        if (mDistanceMiles > 10) {
+                            matchItemIterator.remove();
+                        }
+                    }
+                matchesBundle.putParcelableArrayList(Constants.MATCHES, matches);
+                matchesRetrieved = true;
+            });
         }
     }
 
